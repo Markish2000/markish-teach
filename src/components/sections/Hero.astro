@@ -3,7 +3,6 @@ import type { Locale } from "@shared/types";
 import { getTranslations } from "@i18n";
 import Button from "@shared/components/primitives/Button.astro";
 import Pill from "@shared/components/primitives/Pill.astro";
-import Hero3D from "@components/three/Hero3D.tsx";
 
 interface Props {
   readonly locale: Locale;
@@ -52,7 +51,13 @@ const t = getTranslations(locale).hero;
       </div>
 
       <div class="hero-stage">
-        <Hero3D client:visible />
+        <div class="hero-3d-mount" data-hero-3d-mount>
+          <div class="hero-3d-fallback" data-hero-3d-fallback aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
         <div class="hud-panel p1">
           <div class="label">SEO</div>
           <div class="value">100 <span class="ok">◉</span></div>
@@ -79,3 +84,66 @@ const t = getTranslations(locale).hero;
     </div>
   </div>
 </section>
+
+<script>
+  type IdleWindow = Window & {
+    requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+  };
+
+  const mountHero3D = (() => {
+    let loaded = false;
+
+    return async (mount: HTMLElement): Promise<void> => {
+      if (loaded) return;
+      loaded = true;
+
+      const [{ createElement }, { createRoot }, { default: Hero3D }] = await Promise.all([
+        import("react"),
+        import("react-dom/client"),
+        import("@components/three/Hero3D"),
+      ]);
+
+      mount.querySelector("[data-hero-3d-fallback]")?.remove();
+      createRoot(mount).render(createElement(Hero3D));
+    };
+  })();
+
+  const scheduleHero3D = (mount: HTMLElement): void => {
+    let scheduled = false;
+    const idleWindow = window as IdleWindow;
+
+    const schedule = (): void => {
+      if (scheduled) return;
+      scheduled = true;
+      window.setTimeout(() => {
+        if (idleWindow.requestIdleCallback) {
+          idleWindow.requestIdleCallback(() => void mountHero3D(mount), { timeout: 3200 });
+          return;
+        }
+        window.setTimeout(() => void mountHero3D(mount), 1600);
+      }, 1200);
+    };
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry?.isIntersecting) return;
+          observer.disconnect();
+          schedule();
+        },
+        { threshold: 0.05 }
+      );
+      observer.observe(mount);
+    } else {
+      schedule();
+    }
+
+    window.addEventListener("pointerdown", () => void mountHero3D(mount), {
+      once: true,
+      passive: true,
+    });
+  };
+
+  const hero3DMount = document.querySelector<HTMLElement>("[data-hero-3d-mount]");
+  if (hero3DMount) scheduleHero3D(hero3DMount);
+</script>

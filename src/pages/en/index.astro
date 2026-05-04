@@ -13,7 +13,7 @@ import Tech from "@components/sections/Tech.astro";
 import Quality from "@components/sections/Quality.astro";
 import Cta from "@components/sections/Cta.astro";
 import Contact from "@components/sections/Contact.astro";
-import Chatbot from "@components/chatbot/Chatbot.tsx";
+import Chatbot from "@components/chatbot/Chatbot.astro";
 import { getTranslations } from "@i18n";
 
 const locale = "en" as const;
@@ -38,7 +38,7 @@ const translations = getTranslations(locale);
     </div>
   </main>
   <Footer locale={locale} />
-  <Chatbot client:load chat={translations.chat} contactHref="#contact" />
+  <Chatbot chat={translations.chat} contactHref="#contact" />
 </BaseLayout>
 
 <style>

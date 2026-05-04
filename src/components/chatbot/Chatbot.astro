@@ -1,0 +1,212 @@
+---
+import type { ChatbotProps } from "./Chatbot.interfaces";
+
+type Props = ChatbotProps;
+
+const { chat, contactHref } = Astro.props;
+---
+
+<button
+  type="button"
+  class="chat-fab"
+  data-chat-fab
+  aria-label={chat.open_label}
+  aria-expanded="false"
+  aria-controls="chat-panel"
+  data-open-label={chat.open_label}
+  data-close-label={chat.close_label}
+>
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true">
+    <path
+      d="M21 12a8 8 0 0 1-12.4 6.7L3 20l1.3-5.5A8 8 0 1 1 21 12z"
+      stroke="currentColor"
+      stroke-width="1.6"
+      stroke-linejoin="round"
+    />
+  </svg>
+</button>
+
+<div
+  id="chat-panel"
+  class="chat-panel"
+  data-chat-panel
+  role="dialog"
+  aria-modal="false"
+  aria-label={chat.title}
+  hidden
+>
+  <header class="chat-head">
+    <span class="avatar" aria-hidden="true">M</span>
+    <div>
+      <div class="ttl">{chat.title}</div>
+      <div class="sub">{chat.status}</div>
+    </div>
+    <button type="button" class="close" data-chat-close aria-label={chat.close_label}>
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>
+    </button>
+  </header>
+  <div
+    class="chat-body"
+    data-chat-body
+    data-greet={chat.greet}
+    data-end={chat.end}
+    data-end-yes={chat.end_yes}
+    data-end-no={chat.end_no}
+    data-contact-href={contactHref}
+    role="log"
+    aria-live="polite"
+    aria-relevant="additions"
+  >
+    <div class="bubble bot">{chat.greet}</div>
+    <div class="chat-options" data-chat-menu>
+      {chat.options.map((option) => (
+        <button
+          type="button"
+          data-chat-option
+          data-label={option.label}
+          data-reply={option.reply}
+        >
+          <span>{option.label}</span>
+          <span class="arr" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </span>
+        </button>
+      ))}
+    </div>
+  </div>
+  <footer class="chat-foot">
+    <span>{chat.foot}</span>
+    <button
+      type="button"
+      data-chat-reset
+      style="margin-left: auto; background: transparent; border: 0; color: inherit; font-family: inherit; font-size: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer;"
+    >
+      {chat.restart}
+    </button>
+  </footer>
+</div>
+
+<script>
+  const TYPING_MS = 800;
+  const FOLLOWUP_MS = 600;
+
+  const appendBubble = (body: HTMLElement, author: "bot" | "user", text: string): HTMLElement => {
+    const bubble = document.createElement("div");
+    bubble.className = `bubble ${author}`;
+    bubble.textContent = text;
+    body.appendChild(bubble);
+    return bubble;
+  };
+
+  const appendTyping = (body: HTMLElement): HTMLElement => {
+    const typing = document.createElement("div");
+    typing.className = "typing";
+    typing.setAttribute("aria-hidden", "true");
+    typing.innerHTML = "<span></span><span></span><span></span>";
+    body.appendChild(typing);
+    return typing;
+  };
+
+  const scrollChatBody = (body: HTMLElement): void => {
+    requestAnimationFrame(() => {
+      body.scrollTop = body.scrollHeight;
+    });
+  };
+
+  const createFollowup = (body: HTMLElement, close: () => void, reset: () => void): HTMLElement => {
+    const options = document.createElement("div");
+    options.className = "chat-options";
+
+    const contact = document.createElement("a");
+    contact.className = "btn btn-primary";
+    contact.href = body.dataset.contactHref ?? "#contact";
+    contact.textContent = body.dataset.endYes ?? "";
+    contact.addEventListener("click", close);
+
+    const again = document.createElement("button");
+    again.type = "button";
+    again.textContent = body.dataset.endNo ?? "";
+    again.addEventListener("click", reset);
+
+    options.append(contact, again);
+    body.appendChild(options);
+    return options;
+  };
+
+  const initChatbot = (): void => {
+    const fab = document.querySelector<HTMLElement>("[data-chat-fab]");
+    const panel = document.querySelector<HTMLElement>("[data-chat-panel]");
+    const body = document.querySelector<HTMLElement>("[data-chat-body]");
+    const closeButton = document.querySelector<HTMLElement>("[data-chat-close]");
+    const resetButton = document.querySelector<HTMLElement>("[data-chat-reset]");
+    const originalMenu = body?.querySelector<HTMLElement>("[data-chat-menu]")?.cloneNode(true);
+    if (!fab || !panel || !body || !(originalMenu instanceof HTMLElement)) return;
+
+    let busy = false;
+    let timers: number[] = [];
+
+    const clearTimers = (): void => {
+      timers.forEach((timer) => window.clearTimeout(timer));
+      timers = [];
+      busy = false;
+    };
+
+    const setOpen = (open: boolean): void => {
+      panel.hidden = !open;
+      fab.setAttribute("aria-expanded", open ? "true" : "false");
+      fab.setAttribute("aria-label", open ? fab.dataset.closeLabel ?? "" : fab.dataset.openLabel ?? "");
+      if (!open) fab.focus();
+    };
+
+    const close = (): void => setOpen(false);
+
+    const reset = (): void => {
+      clearTimers();
+      body.textContent = "";
+      appendBubble(body, "bot", body.dataset.greet ?? "");
+      body.appendChild(originalMenu.cloneNode(true));
+      scrollChatBody(body);
+    };
+
+    fab.addEventListener("click", () => {
+      setOpen(panel.hidden);
+    });
+    closeButton?.addEventListener("click", close);
+    resetButton?.addEventListener("click", reset);
+    window.addEventListener("markish:open-chat", () => setOpen(true));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !panel.hidden) close();
+    });
+
+    body.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element) || busy) return;
+      const option = target.closest<HTMLElement>("[data-chat-option]");
+      if (!option) return;
+
+      busy = true;
+      body.querySelector("[data-chat-menu]")?.remove();
+      appendBubble(body, "user", option.dataset.label ?? "");
+      const typing = appendTyping(body);
+      scrollChatBody(body);
+
+      timers.push(window.setTimeout(() => {
+        typing.remove();
+        appendBubble(body, "bot", option.dataset.reply ?? "");
+        scrollChatBody(body);
+        timers.push(window.setTimeout(() => {
+          appendBubble(body, "bot", body.dataset.end ?? "");
+          createFollowup(body, close, reset);
+          busy = false;
+          scrollChatBody(body);
+        }, FOLLOWUP_MS));
+      }, TYPING_MS));
+    });
+  };
+
+  initChatbot();
+</script>

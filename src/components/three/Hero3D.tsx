@@ -261,22 +261,38 @@ const PointerParallax: FC<{ readonly reducedMotion: boolean }> = ({ reducedMotio
   const target = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const { gl } = useThree();
   const groupRef = useRef<THREE.Group>(null);
+  const rectRef = useRef<DOMRect | null>(null);
 
   useEffect(() => {
     if (reducedMotion) return;
     const dom = gl.domElement;
+    const updateRect = (): void => {
+      rectRef.current = dom.getBoundingClientRect();
+    };
     const onMove = (event: PointerEvent): void => {
-      const rect = dom.getBoundingClientRect();
+      const rect = rectRef.current;
+      if (!rect) return;
       const cx = ((event.clientX - rect.left) / rect.width) * 2 - 1;
       const cy = ((event.clientY - rect.top) / rect.height) * 2 - 1;
       target.current = { x: cx * 0.6, y: cy * 0.4 };
     };
     const onLeave = (): void => {
       target.current = { x: 0, y: 0 };
+      rectRef.current = null;
     };
+    const resizeObserver =
+      typeof ResizeObserver === "undefined"
+        ? null
+        : new ResizeObserver(() => {
+            rectRef.current = null;
+          });
+    resizeObserver?.observe(dom);
+    dom.addEventListener("pointerenter", updateRect);
     dom.addEventListener("pointermove", onMove);
     dom.addEventListener("pointerleave", onLeave);
     return () => {
+      resizeObserver?.disconnect();
+      dom.removeEventListener("pointerenter", updateRect);
       dom.removeEventListener("pointermove", onMove);
       dom.removeEventListener("pointerleave", onLeave);
     };
@@ -303,7 +319,7 @@ const Scene: FC = () => {
       <Lattice positions={positions} reducedMotion={reducedMotion} />
       <OrbitalRings reducedMotion={reducedMotion} />
       <OrbitingNodes count={isMobile ? 4 : 7} reducedMotion={reducedMotion} />
-      <ParticleField count={isMobile ? 220 : 600} reducedMotion={reducedMotion} />
+      <ParticleField count={isMobile ? 120 : 320} reducedMotion={reducedMotion} />
     </>
   );
 };
@@ -311,7 +327,7 @@ const Scene: FC = () => {
 export const Hero3D: FC<Hero3DProps> = () => {
   const reducedMotion = useReducedMotion();
   const isMobile = useMediaQuery("(max-width: 760px)");
-  const dpr: [number, number] = isMobile ? [1, 1.5] : [1, 2];
+  const dpr: [number, number] = isMobile ? [1, 1.25] : [1, 1.5];
 
   const [paused, setPaused] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -335,7 +351,7 @@ export const Hero3D: FC<Hero3DProps> = () => {
       <Canvas
         dpr={dpr}
         camera={{ fov: 38, position: [0, 0, 8] }}
-        gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
+        gl={{ alpha: true, antialias: false, powerPreference: "high-performance" }}
         frameloop={paused || reducedMotion ? "demand" : "always"}
       >
         <ambientLight intensity={0.35} />
