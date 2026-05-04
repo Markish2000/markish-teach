@@ -98,6 +98,10 @@ const t = getTranslations(locale).hero;
       if (loaded) return;
       loaded = true;
 
+      if (import.meta.env.DEV) {
+        await import("@vitejs/plugin-react/preamble");
+      }
+
       const [{ createElement }, { createRoot }, { default: Hero3D }] = await Promise.all([
         import("react"),
         import("react-dom/client"),

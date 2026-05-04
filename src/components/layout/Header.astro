@@ -145,12 +145,28 @@ const navLinks = [
       },
       { passive: true }
     );
+    trigger.addEventListener(
+      "pointerup",
+      function () {
+        pointerStart = null;
+      },
+      { passive: true }
+    );
+    trigger.addEventListener(
+      "pointercancel",
+      function () {
+        pointerStart = null;
+        ignoreNextClick = false;
+      },
+      { passive: true }
+    );
     trigger.addEventListener("click", function (event) {
-      if (ignoreNextClick) {
+      if (ignoreNextClick && event.detail !== 0) {
         event.preventDefault();
         ignoreNextClick = false;
         return;
       }
+      ignoreNextClick = false;
       setOpen(!menu.classList.contains("is-open"));
     });
     menu.addEventListener("click", function (event) {
