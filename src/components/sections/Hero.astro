@@ -26,6 +26,7 @@ const t = getTranslations(locale).hero;
         </div>
         <h1 id="hero-title">
           <span class="word">{t.title_a}</span>{" "}
+          <br class="hero-title-break" />
           <span class="word accent-word">{t.title_b}</span>
           <span class="word">{t.title_c}</span>
         </h1>
@@ -103,7 +104,6 @@ const t = getTranslations(locale).hero;
         import("@components/three/Hero3D"),
       ]);
 
-      mount.querySelector("[data-hero-3d-fallback]")?.remove();
       createRoot(mount).render(createElement(Hero3D));
     };
   })();

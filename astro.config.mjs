@@ -3,7 +3,7 @@ import { defineConfig } from "astro/config";
 import { fileURLToPath } from "node:url";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import node from "@astrojs/node";
+import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 
 /** @param {string} p */
@@ -13,7 +13,7 @@ export default defineConfig({
   site: "https://markish.dev",
   trailingSlash: "never",
   output: "server",
-  adapter: node({ mode: "standalone" }),
+  adapter: vercel(),
   build: { format: "directory" },
   devToolbar: { enabled: false },
   integrations: [react(), sitemap()],
