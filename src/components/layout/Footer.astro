@@ -1,0 +1,18 @@
+---
+import type { Locale } from "@shared/types";
+import { getTranslations } from "@i18n";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale).foot;
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-row">
+    <span class="meta">{t.copy}</span>
+    <span class="meta">{t.meta}</span>
+  </div>
+</footer>

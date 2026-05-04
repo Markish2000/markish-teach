@@ -1,0 +1,45 @@
+---
+import type { Locale } from "@shared/types";
+import { getTranslations } from "@i18n";
+import SectionHead from "@shared/components/sections/SectionHead.astro";
+import ContactForm from "@components/interactive/ContactForm.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale).contact;
+const labels = {
+  name: t.name,
+  email: t.email,
+  company: t.company,
+  service: t.service,
+  message: t.message,
+  submit: t.submit,
+  sending: t.sending,
+  sent: t.sent,
+  error_generic: t.error_generic,
+  error_required: t.error_required,
+  error_email: t.error_email,
+  error_min: t.error_min,
+  service_opts: t.service_opts,
+};
+---
+
+<section id="contact" aria-labelledby="contact-title">
+  <div class="container-mk">
+    <SectionHead id="contact" eyebrow={t.eyebrow} title={t.title} meta={t.meta} />
+    <div class="contact-grid">
+      <ContactForm labels={labels} endpoint="/api/contact" />
+      <aside class="contact-aside">
+        {t.info.map((row) => (
+          <div class="row">
+            <span class="lbl">{row.lbl}</span>
+            <span class="val">{row.val}</span>
+          </div>
+        ))}
+      </aside>
+    </div>
+  </div>
+</section>

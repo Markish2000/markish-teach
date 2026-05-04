@@ -1,0 +1,132 @@
+---
+import type { Locale } from "@shared/types";
+import { getTranslations } from "@i18n";
+import Brand from "@shared/components/brand/Brand.astro";
+import Button from "@shared/components/primitives/Button.astro";
+import LangSwitch from "@components/interactive/LangSwitch.astro";
+import ThemeToggle from "@components/interactive/ThemeToggle.astro";
+import MobileMenu from "@components/interactive/MobileMenu.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const translations = getTranslations(locale);
+const path = Astro.url.pathname;
+
+const navLinks = [
+  { label: translations.nav.services, href: "#services" },
+  { label: translations.nav.work, href: "#work" },
+  { label: translations.nav.process, href: "#process" },
+  { label: translations.nav.quality, href: "#quality" },
+  { label: translations.nav.contact, href: "#contact" },
+];
+---
+
+<header role="banner" class="nav" id="site-header">
+  <Brand text="Markish." />
+  <nav class="nav-links" aria-label="Primary">
+    {navLinks.map((link) => (
+      <a href={link.href}>{link.label}</a>
+    ))}
+  </nav>
+  <div class="nav-tools">
+    <LangSwitch current={locale} path={path} />
+    <ThemeToggle toggleLabel={translations.a11y.toggle_theme} />
+    <Button variant="primary" href="#contact" label={translations.nav.cta} />
+    <MobileMenu
+      locale={locale}
+      path={path}
+      links={navLinks}
+      ctaLabel={translations.nav.cta}
+      ctaHref="#contact"
+      openLabel={translations.a11y.open_menu}
+      closeLabel={translations.a11y.close_menu}
+      toggleThemeLabel={translations.a11y.toggle_theme}
+    />
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    const header = document.getElementById("site-header");
+    if (!header) return;
+    const onScroll = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 30);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  })();
+
+  (function () {
+    var storageKey = "mk-theme";
+    var getTheme = function () {
+      try {
+        var stored = localStorage.getItem(storageKey);
+        return stored === "light" ? "light" : "dark";
+      } catch (e) {
+        return "dark";
+      }
+    };
+    var setPressedState = function (theme) {
+      document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
+        button.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+      });
+    };
+    var applyTheme = function (theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      setPressedState(theme);
+      try {
+        localStorage.setItem(storageKey, theme);
+      } catch (e) {
+        /* Ignore unavailable storage. */
+      }
+    };
+
+    setPressedState(getTheme());
+    document.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!(target instanceof Element)) return;
+      if (!target.closest("[data-theme-toggle]")) return;
+      var next = getTheme() === "dark" ? "light" : "dark";
+      applyTheme(next);
+    });
+  })();
+
+  (function () {
+    var trigger = document.querySelector("[data-mobile-menu-trigger]");
+    var menu = document.querySelector("[data-mobile-menu]");
+    if (!(trigger instanceof HTMLElement) || !(menu instanceof HTMLElement)) return;
+
+    var firstLink = menu.querySelector("a");
+    var openLabel = trigger.dataset.openLabel || "";
+    var closeLabel = trigger.dataset.closeLabel || openLabel;
+
+    var setOpen = function (open) {
+      menu.classList.toggle("is-open", open);
+      menu.setAttribute("aria-hidden", open ? "false" : "true");
+      trigger.setAttribute("aria-expanded", open ? "true" : "false");
+      trigger.setAttribute("aria-label", open ? closeLabel : openLabel);
+      document.body.style.overflow = open ? "hidden" : "";
+      if (open && firstLink instanceof HTMLElement) firstLink.focus();
+      if (!open) trigger.focus();
+    };
+
+    trigger.addEventListener("click", function () {
+      setOpen(!menu.classList.contains("is-open"));
+    });
+    menu.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!(target instanceof Element)) return;
+      if (target.closest("[data-mobile-menu-close], [data-mobile-menu-link]")) {
+        setOpen(false);
+      }
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && menu.classList.contains("is-open")) {
+        setOpen(false);
+      }
+    });
+  })();
+</script>

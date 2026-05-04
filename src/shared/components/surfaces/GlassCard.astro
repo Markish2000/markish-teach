@@ -1,0 +1,11 @@
+---
+import type { GlassCardProps } from "./GlassCard.interfaces";
+
+interface Props extends GlassCardProps {}
+
+const { as: Tag = "div", className, id } = Astro.props;
+---
+
+<Tag class:list={["glass", className]} id={id}>
+  <slot />
+</Tag>

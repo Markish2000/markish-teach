@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\MarcosParella\\\\Desktop\\\\Markish\\\\markish-teach\\\\design_handoff_markish_astro\\\\reference\\\\\" -Recurse -File | ForEach-Object { @{ Path = $_.FullName; Lines = if \\($_.Extension -match '\\\\.\\(html|css|js|jsx|json\\)$'\\) { @\\(Get-Content $_.FullName -ErrorAction SilentlyContinue | Measure-Object -Line\\).Lines } else { 'N/A' } } } | Format-Table @{Name=\"Archivo\"; Expression={$_.Path}}, @{Name=\"Líneas\"; Expression={$_.Lines}})",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\MarcosParella\\\\Desktop\\\\Markish\\\\markish-teach\\\\design_handoff_markish_astro\\\\\" -Recurse | Select-Object FullName, @{Name=\"Tipo\"; Expression={if\\($_.PSIsContainer\\){\"DIR\"} else {$_.Extension}}})",
+      "PowerShell(Test-Path \"c:\\\\Users\\\\MarcosParella\\\\Desktop\\\\Markish\\\\markish-teach\\\\design_handoff_markish_astro\\\\\"; \\(Get-ChildItem -Path \"c:\\\\Users\\\\MarcosParella\\\\Desktop\\\\Markish\\\\markish-teach\\\\design_handoff_markish_astro\\\\\" -ErrorAction SilentlyContinue | Measure-Object\\).Count)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\MarcosParella\\\\Desktop\\\\Markish\\\\markish-teach\\\\design_handoff_markish_astro\\\\\" | Select-Object Name, @{Name=\"Tipo\"; Expression={if\\($_.PSIsContainer\\){\"DIRECTORIO\"} else {$_.Extension}}})",
+      "Bash(grep -n \"^/\\\\*\\\\|^\\\\..*{\" \"c:\\\\Users\\\\MarcosParella\\\\Desktop\\\\Markish\\\\markish-teach\\\\design_handoff_markish_astro\\\\reference\\\\styles.css\")",
+      "WebFetch(domain:docs.astro.build)",
+      "Bash(git init *)",
+      "Bash(git config *)"
+    ]
+  }
+}

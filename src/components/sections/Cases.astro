@@ -1,0 +1,34 @@
+---
+import type { Locale } from "@shared/types";
+import { getTranslations } from "@i18n";
+import SectionHead from "@shared/components/sections/SectionHead.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale).cases;
+---
+
+<section id="cases" aria-labelledby="cases-title">
+  <div class="container-mk">
+    <SectionHead id="cases" eyebrow={t.eyebrow} title={t.title} meta={t.meta} />
+    <div class="cases-grid">
+      {t.items.map((item) => (
+        <article class="case-card">
+          <div class="head">
+            <div>
+              <div class="industry">{item.industry}</div>
+              <div class="ttl" style="margin-top: 4px;">{item.ttl}</div>
+            </div>
+            <span class="badge">{item.badge}</span>
+          </div>
+          <div class="preview">
+            <span class="placeholder-text">Coming soon</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

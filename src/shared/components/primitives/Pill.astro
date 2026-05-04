@@ -1,0 +1,12 @@
+---
+import type { PillProps } from "./Pill.interfaces";
+
+interface Props extends PillProps {}
+
+const { text, pulse = false, className } = Astro.props;
+---
+
+<span class:list={["pill", className]}>
+  {pulse && <span class="pulse" aria-hidden="true"></span>}
+  {text}
+</span>

@@ -1,0 +1,248 @@
+---
+import type { ContactFormProps } from "./ContactForm.interfaces";
+
+type Props = ContactFormProps;
+
+const { labels, endpoint } = Astro.props;
+const messageMin = 8;
+const minMessage = labels.error_min.replace("{min}", String(messageMin));
+---
+
+<div class="contact-form-shell" data-contact-shell>
+  <form
+    class="contact-form"
+    data-contact-form
+    data-endpoint={endpoint}
+    data-error-required={labels.error_required}
+    data-error-email={labels.error_email}
+    data-error-min={minMessage}
+    data-error-generic={labels.error_generic}
+    data-submit-label={labels.submit}
+    data-sending-label={labels.sending}
+    novalidate
+  >
+    <div class="field-row">
+      <div class="field">
+        <label for="contact-name">{labels.name}</label>
+        <input
+          id="contact-name"
+          name="name"
+          type="text"
+          autocomplete="name"
+          aria-describedby="contact-name-error"
+        />
+        <span id="contact-name-error" role="alert" class="field-error" data-field-error="name" hidden></span>
+      </div>
+      <div class="field">
+        <label for="contact-email">{labels.email}</label>
+        <input
+          id="contact-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          aria-describedby="contact-email-error"
+        />
+        <span id="contact-email-error" role="alert" class="field-error" data-field-error="email" hidden></span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="contact-company">{labels.company}</label>
+      <input id="contact-company" name="company" type="text" autocomplete="organization" />
+    </div>
+
+    <div class="field">
+      <label for="contact-service">{labels.service}</label>
+      <select
+        id="contact-service"
+        name="service"
+        aria-describedby="contact-service-error"
+      >
+        <option value="">-</option>
+        {labels.service_opts.map((option) => (
+          <option value={option}>{option}</option>
+        ))}
+      </select>
+      <span id="contact-service-error" role="alert" class="field-error" data-field-error="service" hidden></span>
+    </div>
+
+    <div class="field">
+      <label for="contact-message">{labels.message}</label>
+      <textarea
+        id="contact-message"
+        name="message"
+        data-min-length={messageMin}
+        aria-describedby="contact-message-error"
+      ></textarea>
+      <span id="contact-message-error" role="alert" class="field-error" data-field-error="message" hidden></span>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      data-submit-button
+      aria-busy="false"
+    >
+      <span data-submit-text>{labels.submit}</span>
+      <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+        <path
+          d="M3 8h10M9 4l4 4-4 4"
+          stroke="currentColor"
+          stroke-width="1.5"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+
+    <div role="alert" class="field-error form-error" data-form-error hidden>
+      {labels.error_generic}
+    </div>
+  </form>
+
+  <div class="contact-success" role="status" aria-live="polite" data-contact-success hidden>
+    <span class="check-medallion" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M5 12l4 4 10-10"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+    <p style="margin: 0">{labels.sent}</p>
+  </div>
+</div>
+
+<script>
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const getText = (form: HTMLFormElement, key: string, fallback = ""): string =>
+    form.dataset[key] ?? fallback;
+
+  const setFieldError = (
+    form: HTMLFormElement,
+    fieldName: string,
+    message: string
+  ): void => {
+    const field = form.elements.namedItem(fieldName);
+    const error = form.querySelector<HTMLElement>(`[data-field-error="${fieldName}"]`);
+    if (field instanceof HTMLElement) {
+      field.setAttribute("aria-invalid", message ? "true" : "false");
+    }
+    if (!error) return;
+    error.textContent = message;
+    error.hidden = message.length === 0;
+  };
+
+  const getValue = (form: HTMLFormElement, fieldName: string): string => {
+    const field = form.elements.namedItem(fieldName);
+    return field instanceof HTMLInputElement ||
+      field instanceof HTMLSelectElement ||
+      field instanceof HTMLTextAreaElement
+      ? field.value.trim()
+      : "";
+  };
+
+  const validateForm = (form: HTMLFormElement): boolean => {
+    const required = getText(form, "errorRequired");
+    const emailError = getText(form, "errorEmail");
+    const minError = getText(form, "errorMin");
+    let valid = true;
+
+    const values = {
+      name: getValue(form, "name"),
+      email: getValue(form, "email"),
+      service: getValue(form, "service"),
+      message: getValue(form, "message"),
+    };
+
+    setFieldError(form, "name", values.name ? "" : required);
+    setFieldError(
+      form,
+      "email",
+      !values.email ? required : emailPattern.test(values.email) ? "" : emailError
+    );
+    setFieldError(form, "service", values.service ? "" : required);
+    setFieldError(form, "message", values.message.length >= 8 ? "" : minError);
+
+    valid = Boolean(
+      values.name &&
+        values.email &&
+        emailPattern.test(values.email) &&
+        values.service &&
+        values.message.length >= 8
+    );
+    return valid;
+  };
+
+  const setSubmitting = (form: HTMLFormElement, submitting: boolean): void => {
+    const button = form.querySelector<HTMLButtonElement>("[data-submit-button]");
+    const text = form.querySelector<HTMLElement>("[data-submit-text]");
+    if (button) {
+      button.disabled = submitting;
+      button.setAttribute("aria-busy", submitting ? "true" : "false");
+    }
+    if (text) {
+      text.textContent = submitting
+        ? getText(form, "sendingLabel")
+        : getText(form, "submitLabel");
+    }
+  };
+
+  document.querySelectorAll<HTMLFormElement>("[data-contact-form]").forEach((form) => {
+    const formError = form.querySelector<HTMLElement>("[data-form-error]");
+
+    form.addEventListener("input", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target instanceof HTMLSelectElement)) return;
+      setFieldError(form, target.name, "");
+      if (formError) formError.hidden = true;
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (formError) formError.hidden = true;
+
+      if (!validateForm(form)) {
+        form.querySelector<HTMLElement>("[aria-invalid='true']")?.focus();
+        return;
+      }
+
+      const data = {
+        name: getValue(form, "name"),
+        email: getValue(form, "email"),
+        company: getValue(form, "company"),
+        service: getValue(form, "service"),
+        message: getValue(form, "message"),
+      };
+
+      setSubmitting(form, true);
+      try {
+        const response = await fetch(form.dataset.endpoint ?? "/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        if (!response.ok) throw new Error("send_failed");
+
+        const shell = form.closest<HTMLElement>("[data-contact-shell]");
+        const success = shell?.querySelector<HTMLElement>("[data-contact-success]");
+        form.reset();
+        form.hidden = true;
+        if (success) success.hidden = false;
+      } catch {
+        if (formError) {
+          formError.textContent = getText(form, "errorGeneric");
+          formError.hidden = false;
+        }
+      } finally {
+        setSubmitting(form, false);
+      }
+    });
+  });
+</script>

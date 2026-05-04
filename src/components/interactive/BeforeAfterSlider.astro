@@ -1,0 +1,157 @@
+---
+import type { BeforeAfterSliderProps } from "./BeforeAfterSlider.interfaces";
+
+type Props = BeforeAfterSliderProps;
+
+const {
+  tagLeft,
+  tagRight,
+  ariaLabel,
+  beforeTitle,
+  beforeStatLabels,
+  beforeStatValues,
+  afterTitle,
+  afterStatLabels,
+  afterStatValues,
+} = Astro.props;
+---
+
+<div
+  class="ba-stage"
+  data-before-after-slider
+  role="slider"
+  tabindex="0"
+  aria-label={ariaLabel}
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-valuenow="50"
+  style="--split: 50%;"
+>
+  <div class="ba-side before" aria-hidden="false">
+    <div
+      class="ba-fake-site"
+      style="background: #d8d4cc; color: #444; font-family: Times New Roman, Times, serif; padding: 32px 40px; gap: 20px;"
+    >
+      <div style="font-size: 28px; font-weight: 700; color: #222;">{beforeTitle}</div>
+      <div style="height: 1px; background: #aaa; margin: 12px 0;"></div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+        {beforeStatLabels.map((label, index) => (
+          <div style="background: #bdb6a8; padding: 10px 12px;">
+            <div style="font-size: 11px; color: #555;">{label}</div>
+            <div style="font-size: 22px; font-weight: 700; color: #202020;">
+              {beforeStatValues[index] ?? "?"}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top: 24px; font-size: 14px; color: #555; line-height: 1.6;">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tortor quam.
+      </div>
+    </div>
+  </div>
+  <div class="ba-side after" aria-hidden="false">
+    <div
+      class="ba-fake-site"
+      style="background: linear-gradient(180deg, #0a0d14 0%, #0f1320 100%); color: var(--ink); padding: 32px 40px; gap: 20px;"
+    >
+      <div style="font-family: var(--font-display); font-size: 30px;">{afterTitle}</div>
+      <div style="height: 1px; background: linear-gradient(90deg, var(--accent), transparent); margin: 12px 0;"></div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+        {afterStatLabels.map((label, index) => (
+          <div
+            style="background: rgba(94,233,255,0.06); border: 1px solid rgba(94,233,255,0.25); padding: 12px 14px; border-radius: 12px;"
+          >
+            <div
+              style="font-size: 10px; color: var(--ink-3); letter-spacing: 0.14em; text-transform: uppercase; font-family: var(--font-mono);"
+            >
+              {label}
+            </div>
+            <div
+              style="font-size: 26px; color: var(--accent-2); font-family: var(--font-display); margin-top: 4px;"
+            >
+              {afterStatValues[index] ?? "?"}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+  <div class="ba-handle" aria-hidden="true"></div>
+  <div class="ba-knob" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="M9 6l-4 6 4 6M15 6l4 6-4 6"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+  <span class="ba-tag left">{tagLeft}</span>
+  <span class="ba-tag right">{tagRight}</span>
+</div>
+
+<script>
+  const KEYBOARD_STEP = 4;
+
+  const clamp = (value: number, min: number, max: number): number =>
+    Math.min(max, Math.max(min, value));
+
+  document.querySelectorAll<HTMLElement>("[data-before-after-slider]").forEach((stage) => {
+    let dragging = false;
+    let rect: DOMRect | null = null;
+
+    const setSplit = (value: number): void => {
+      const split = clamp(value, 0, 100);
+      stage.style.setProperty("--split", `${split}%`);
+      stage.setAttribute("aria-valuenow", String(Math.round(split)));
+    };
+
+    const updateFromX = (clientX: number): void => {
+      if (!rect) return;
+      const ratio = ((clientX - rect.left) / rect.width) * 100;
+      setSplit(ratio);
+    };
+
+    stage.addEventListener("pointerdown", (event) => {
+      dragging = true;
+      rect = stage.getBoundingClientRect();
+      stage.setPointerCapture(event.pointerId);
+      updateFromX(event.clientX);
+    });
+
+    stage.addEventListener("pointermove", (event) => {
+      if (!dragging) return;
+      updateFromX(event.clientX);
+    });
+
+    const stopDragging = (event: PointerEvent): void => {
+      dragging = false;
+      rect = null;
+      if (stage.hasPointerCapture(event.pointerId)) {
+        stage.releasePointerCapture(event.pointerId);
+      }
+    };
+
+    stage.addEventListener("pointerup", stopDragging);
+    stage.addEventListener("pointercancel", stopDragging);
+
+    stage.addEventListener("keydown", (event) => {
+      const current = Number(stage.getAttribute("aria-valuenow") ?? "50");
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        setSplit(current - KEYBOARD_STEP);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        setSplit(current + KEYBOARD_STEP);
+      } else if (event.key === "Home") {
+        event.preventDefault();
+        setSplit(0);
+      } else if (event.key === "End") {
+        event.preventDefault();
+        setSplit(100);
+      }
+    });
+  });
+</script>

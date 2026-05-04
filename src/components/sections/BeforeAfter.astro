@@ -1,0 +1,51 @@
+---
+import type { Locale } from "@shared/types";
+import { getTranslations } from "@i18n";
+import SectionHead from "@shared/components/sections/SectionHead.astro";
+import BeforeAfterSlider from "@components/interactive/BeforeAfterSlider.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale).ba;
+const a11y = getTranslations(locale).a11y;
+
+const beforeStatLabels = t.stats.map((stat) => stat.lbl);
+const beforeStatValues = t.stats.slice(0, 3).map((stat) => stat.from);
+const afterStatLabels = t.stats.map((stat) => stat.lbl);
+const afterStatValues = t.stats.slice(0, 3).map((stat) => stat.to);
+---
+
+<section id="work" aria-labelledby="work-title">
+  <div class="container-mk">
+    <SectionHead id="work" eyebrow={t.eyebrow} title={t.title} meta={t.meta} />
+    <p class="lede" style="margin-bottom: 32px;">{t.desc}</p>
+    <div class="ba-wrap">
+      <BeforeAfterSlider
+        tagLeft={t.tag_left}
+        tagRight={t.tag_right}
+        ariaLabel={a11y.before_after_label}
+        beforeTitle="Acme Corp"
+        beforeStatLabels={beforeStatLabels}
+        beforeStatValues={beforeStatValues}
+        afterTitle="Acme Corp"
+        afterStatLabels={afterStatLabels}
+        afterStatValues={afterStatValues}
+      />
+      <div class="ba-stats">
+        {t.stats.map((stat) => (
+          <div class="ba-stat">
+            <div class="lbl">{stat.lbl}</div>
+            <div class="val">
+              <span class="from">{stat.from}</span>
+              <span class="to">{stat.to}</span>
+            </div>
+            <div class="delta" style="margin-top: 4px;">{stat.delta}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

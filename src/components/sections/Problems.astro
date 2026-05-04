@@ -1,0 +1,32 @@
+---
+import type { Locale } from "@shared/types";
+import { getTranslations } from "@i18n";
+import SectionHead from "@shared/components/sections/SectionHead.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale).problems;
+---
+
+<section id="problems" class="problems" aria-labelledby="problems-title">
+  <div class="container-mk">
+    <SectionHead id="problems" eyebrow={t.eyebrow} title={t.title} meta={t.meta} />
+    <div class="problems-grid">
+      {t.items.map((item, index) => (
+        <div class="problem-row">
+          <span class="idx">{String(index + 1).padStart(2, "0")}</span>
+          <div>
+            <div class="ttl">{item.ttl}</div>
+            <div class="desc">{item.desc}</div>
+          </div>
+          <svg class="arrow" width="18" height="18" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

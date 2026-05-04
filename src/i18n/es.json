@@ -1,0 +1,185 @@
+{
+  "nav": {
+    "services": "Servicios",
+    "work": "Trabajo",
+    "process": "Proceso",
+    "quality": "Calidad",
+    "contact": "Contacto",
+    "cta": "Auditoría gratuita"
+  },
+  "hero": {
+    "eyebrow": "Estudio técnico — desde Buenos Aires",
+    "status": "Tomando proyectos · Q2 / Q3 2026",
+    "title_a": "Creamos webs",
+    "title_b": "modernas",
+    "title_c": " que hacen crecer tu negocio.",
+    "subtitle": "Diseñamos, desarrollamos y optimizamos experiencias digitales rápidas, accesibles y responsive — pensadas para convertir visitas en clientes reales.",
+    "cta_primary": "Solicitar auditoría gratuita",
+    "cta_secondary": "Ver proyectos",
+    "stat1_num": "100",
+    "stat1_label": "Lighthouse target",
+    "stat2_num": "<1.5",
+    "stat2_label": "Tiempo de carga (s)",
+    "stat3_num": "WCAG",
+    "stat3_label": "AA mínimo"
+  },
+  "services": {
+    "eyebrow": "Servicios",
+    "title": "Todo lo que tu web necesita,\nbajo un mismo estándar técnico.",
+    "meta": "07 capacidades",
+    "items": [
+      { "tag": "FEATURED", "title": "Desarrollo web a medida", "desc": "Sitios y aplicaciones construidos desde cero, con código limpio y arquitectura escalable. Sin templates, sin atajos.", "foot": "React · Next.js · Astro" },
+      { "tag": "01", "title": "Rediseño de sitios", "desc": "Modernizamos webs existentes sin perder posicionamiento ni contenido.", "foot": "Migración progresiva" },
+      { "tag": "02", "title": "Performance", "desc": "Carga sub-segundo, Core Web Vitals en verde, imágenes y JS optimizados.", "foot": "Lighthouse 95+" },
+      { "tag": "03", "title": "SEO técnico", "desc": "Estructura, schema, sitemap, metadatos y velocidad — la base que Google necesita.", "foot": "Search Console" },
+      { "tag": "04", "title": "Accesibilidad", "desc": "Contraste, foco, lectores de pantalla y navegación por teclado. WCAG AA.", "foot": "axe · WAVE" },
+      { "tag": "05", "title": "Automatizaciones", "desc": "Conectamos tu web con tus herramientas: CRM, email, pagos, agendas.", "foot": "n8n · Zapier · APIs" },
+      { "tag": "06", "title": "Soluciones digitales", "desc": "Para PyMEs que necesitan ordenar procesos sin sumar fricción al equipo.", "foot": "Consultoría incluida" }
+    ]
+  },
+  "problems": {
+    "eyebrow": "Problemas que resolvemos",
+    "title": "Si te suena familiar, hablemos.",
+    "meta": "Desafíos comunes",
+    "items": [
+      { "ttl": "Tu web carga lento", "desc": "Pierde clientes antes de que vean tu propuesta." },
+      { "ttl": "No aparecés en Google", "desc": "SEO técnico ausente o mal implementado." },
+      { "ttl": "El diseño se ve viejo", "desc": "Tu marca creció, tu sitio quedó atrás." },
+      { "ttl": "No funciona en mobile", "desc": "El 70% de tu tráfico se va frustrado." },
+      { "ttl": "Tasa de conversión baja", "desc": "Tráfico hay, pero no convierten." },
+      { "ttl": "Procesos manuales", "desc": "Tu equipo pierde horas en tareas repetitivas." }
+    ]
+  },
+  "ba": {
+    "eyebrow": "Antes y después",
+    "title": "Mismo negocio, otro nivel\nde resultados.",
+    "meta": "Comparativa real",
+    "desc": "Arrastrá el control para ver el impacto en performance, SEO y conversión.",
+    "tag_left": "Antes",
+    "tag_right": "Después",
+    "stats": [
+      { "lbl": "Performance", "from": "42", "to": "98", "delta": "+56" },
+      { "lbl": "SEO", "from": "61", "to": "100", "delta": "+39" },
+      { "lbl": "Carga (s)", "from": "4.8", "to": "1.2", "delta": "−75%" },
+      { "lbl": "Conversión", "from": "1.4%", "to": "4.7%", "delta": "×3.4" }
+    ]
+  },
+  "cases": {
+    "eyebrow": "Casos",
+    "title": "Trabajo en producción.",
+    "meta": "Próximamente",
+    "items": [
+      { "industry": "E-commerce", "ttl": "Caso 01", "badge": "Coming soon" },
+      { "industry": "SaaS B2B", "ttl": "Caso 02", "badge": "Coming soon" },
+      { "industry": "Servicios profesionales", "ttl": "Caso 03", "badge": "Coming soon" }
+    ]
+  },
+  "process": {
+    "eyebrow": "Proceso",
+    "title": "Cinco etapas. Cero sorpresas.",
+    "meta": "Cómo trabajamos",
+    "steps": [
+      { "tag": "01 / Discovery", "ttl": "Investigación", "desc": "Auditoría técnica, objetivos de negocio y análisis competitivo." },
+      { "tag": "02 / Strategy", "ttl": "Estrategia", "desc": "Arquitectura de información, roadmap y métricas de éxito." },
+      { "tag": "03 / Design", "ttl": "Diseño", "desc": "Wireframes, sistema visual y prototipo interactivo." },
+      { "tag": "04 / Build", "ttl": "Desarrollo", "desc": "Código limpio, CI/CD, testing y revisión continua." },
+      { "tag": "05 / Launch", "ttl": "Lanzamiento", "desc": "Deploy, monitoreo, optimización iterativa y soporte." }
+    ]
+  },
+  "tech": {
+    "eyebrow": "Stack",
+    "title": "Herramientas elegidas con criterio.",
+    "items": ["Next.js 15", "React 19", "Astro", "TypeScript", "Tailwind", "Three.js", "Framer Motion", "Vercel", "Cloudflare", "Supabase", "PostgreSQL", "n8n", "Stripe", "Sanity"]
+  },
+  "quality": {
+    "eyebrow": "Estándares de calidad",
+    "title": "No entregamos hasta que\nlas cuatro métricas estén en verde.",
+    "meta": "Lighthouse · WCAG",
+    "desc": "Cada proyecto se mide. Cada métrica se documenta. Cada release se audita.",
+    "scores": [
+      { "lbl": "Performance", "num": 100, "grade": "A+" },
+      { "lbl": "Accessibility", "num": 100, "grade": "WCAG AA" },
+      { "lbl": "Best Practices", "num": 100, "grade": "A+" },
+      { "lbl": "SEO", "num": 100, "grade": "A+" }
+    ],
+    "checks": [
+      { "ttl": "Mobile-first responsive", "meta": "Todos los breakpoints" },
+      { "ttl": "Core Web Vitals en verde", "meta": "LCP · INP · CLS" },
+      { "ttl": "WCAG 2.2 AA mínimo", "meta": "Contraste · Foco · ARIA" },
+      { "ttl": "Schema y SEO técnico", "meta": "JSON-LD · sitemap" },
+      { "ttl": "Carga progresiva e imágenes optimizadas", "meta": "AVIF · WebP · CDN" },
+      { "ttl": "Arquitectura escalable y código limpio", "meta": "TypeScript · tests" }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Auditoría gratuita",
+    "title": "Te decimos exactamente\nqué mejorar en tu web.",
+    "desc": "Análisis técnico de performance, SEO y accesibilidad. Sin compromiso, sin venta forzada — un informe claro con prioridades reales.",
+    "btn1": "Solicitar auditoría",
+    "btn2": "Hablar con el bot"
+  },
+  "contact": {
+    "eyebrow": "Contacto",
+    "title": "Empecemos a hablar.",
+    "meta": "Respuesta en 24h",
+    "name": "Nombre",
+    "email": "Email",
+    "company": "Empresa",
+    "service": "¿Qué necesitás?",
+    "message": "Contanos brevemente",
+    "submit": "Enviar mensaje",
+    "sending": "Enviando…",
+    "sent": "Gracias — te respondemos en menos de 24h.",
+    "error_generic": "Ocurrió un error. Intentá de nuevo en unos minutos.",
+    "error_required": "Este campo es obligatorio.",
+    "error_email": "Email inválido.",
+    "error_min": "Mínimo {min} caracteres.",
+    "service_opts": ["Web nueva", "Rediseño", "Performance / SEO", "Accesibilidad", "Automatizaciones", "Solo conversar"],
+    "info": [
+      { "lbl": "Email", "val": "hola@markish.dev" },
+      { "lbl": "WhatsApp", "val": "+54 9 11 0000 0000" },
+      { "lbl": "Ubicación", "val": "Buenos Aires · Remoto global" },
+      { "lbl": "Horario", "val": "Lun–Vie · 9 a 18h ART" }
+    ]
+  },
+  "chat": {
+    "title": "Asistente Markish",
+    "status": "En línea",
+    "greet": "Hola, soy el asistente de Markish. ¿Qué necesitás mejorar?",
+    "restart": "Reiniciar conversación",
+    "foot": "Asistente guiado · sin IA",
+    "open_label": "Abrir asistente",
+    "close_label": "Cerrar asistente",
+    "options": [
+      { "id": "new", "label": "Quiero una web nueva", "reply": "Perfecto. Construimos sitios desde cero, con diseño y código a medida. Te paso un brief breve y coordinamos una llamada." },
+      { "id": "improve", "label": "Quiero mejorar mi web actual", "reply": "Buenísimo. Hacemos auditoría técnica + plan de mejora priorizado. Sin tocar tu sitio actual hasta tener todo claro." },
+      { "id": "optimize", "label": "Optimizar SEO, performance o accesibilidad", "reply": "Tres áreas en las que medimos antes y después. Te mando un reporte con métricas y propuestas concretas." },
+      { "id": "automate", "label": "Automatizar procesos", "reply": "Conectamos formularios, CRM, pagos, emails y agendas. Vos dejás de hacer trabajo repetitivo y tu equipo se enfoca en vender." },
+      { "id": "audit", "label": "Quiero una auditoría gratuita", "reply": "Genial. Necesito tu URL y un email — en 48h te llega el informe técnico, sin costo." },
+      { "id": "wa", "label": "Hablar por WhatsApp", "reply": "Esto es un demo de chat — en producción te llevaría directo a WhatsApp. Para tomar contacto real, escribí desde el formulario." }
+    ],
+    "end": "¿Querés que te contactemos?",
+    "end_yes": "Sí, dejar mis datos",
+    "end_no": "Volver al menú"
+  },
+  "foot": {
+    "copy": "© 2026 Markish — Estudio de tecnología",
+    "meta": "Hecho con código limpio · Buenos Aires"
+  },
+  "seo": {
+    "home": {
+      "title": "Markish — Estudio técnico de webs modernas",
+      "description": "Diseñamos, desarrollamos y optimizamos webs rápidas, accesibles y responsive desde Buenos Aires. Auditoría gratuita.",
+      "og_title": "Markish — Webs modernas que hacen crecer tu negocio",
+      "og_description": "Estudio técnico de Buenos Aires. Lighthouse 100, WCAG AA, performance medida y comprobada.",
+      "og_image_alt": "Markish — Estudio técnico"
+    }
+  },
+  "a11y": {
+    "skip_to_content": "Saltar al contenido",
+    "open_menu": "Abrir menú",
+    "close_menu": "Cerrar menú",
+    "toggle_theme": "Cambiar tema",
+    "before_after_label": "Comparativa antes y después"
+  }
+}

@@ -1,0 +1,18 @@
+---
+import type { IconShapeProps } from "./IconShape.interfaces";
+
+interface Props extends IconShapeProps {}
+
+const { size = 44, className, ariaLabel } = Astro.props;
+const sizeStyle = `width: ${size}px; height: ${size}px;`;
+---
+
+<span
+  class:list={["icon-shape", className]}
+  style={sizeStyle}
+  role={ariaLabel ? "img" : undefined}
+  aria-label={ariaLabel}
+  aria-hidden={ariaLabel ? undefined : "true"}
+>
+  <slot />
+</span>

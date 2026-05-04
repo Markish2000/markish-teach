@@ -1,0 +1,81 @@
+---
+import type { Locale } from "@shared/types";
+import { getTranslations } from "@i18n";
+import Button from "@shared/components/primitives/Button.astro";
+import Pill from "@shared/components/primitives/Pill.astro";
+import Hero3D from "@components/three/Hero3D.tsx";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale).hero;
+---
+
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="hero-coords" aria-hidden="true">
+    <span>34°36'S · 58°22'W · BUENOS AIRES</span>
+    <span>v1.0 · 2026</span>
+  </div>
+  <div class="container-mk">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-meta-row">
+          <span class="eyebrow">{t.eyebrow}</span>
+          <Pill text={t.status} pulse />
+        </div>
+        <h1 id="hero-title">
+          <span class="word">{t.title_a}</span>{" "}
+          <span class="word accent-word">{t.title_b}</span>
+          <span class="word">{t.title_c}</span>
+        </h1>
+        <p class="lede" style="margin-top: 28px;">{t.subtitle}</p>
+        <div class="hero-cta">
+          <Button variant="primary" href="#contact" label={t.cta_primary} />
+          <Button variant="secondary" href="#work" label={t.cta_secondary} />
+        </div>
+        <div class="hero-trust">
+          <div class="stat">
+            <div class="num">{t.stat1_num}<span class="unit">/100</span></div>
+            <div class="label">{t.stat1_label}</div>
+          </div>
+          <div class="stat">
+            <div class="num">{t.stat2_num}<span class="unit">s</span></div>
+            <div class="label">{t.stat2_label}</div>
+          </div>
+          <div class="stat">
+            <div class="num">{t.stat3_num}</div>
+            <div class="label">{t.stat3_label}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-stage">
+        <Hero3D client:visible />
+        <div class="hud-panel p1">
+          <div class="label">SEO</div>
+          <div class="value">100 <span class="ok">◉</span></div>
+          <div class="bar"><i style="width: 100%;"></i></div>
+        </div>
+        <div class="hud-panel p2">
+          <div class="label">Performance</div>
+          <div class="value">100</div>
+          <div class="bar"><i style="width: 100%;"></i></div>
+        </div>
+        <div class="hud-panel p3">
+          <div class="label">Accessibility</div>
+          <div class="value">AA <span class="ok">✓</span></div>
+        </div>
+        <div class="hud-panel p4">
+          <div class="label">Responsive</div>
+          <div class="value">320 → 4K</div>
+        </div>
+        <div class="hud-panel p5">
+          <div class="label">Automation</div>
+          <div class="value">24/7</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

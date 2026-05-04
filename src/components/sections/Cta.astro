@@ -1,0 +1,43 @@
+---
+import type { Locale } from "@shared/types";
+import { getTranslations } from "@i18n";
+import Eyebrow from "@shared/components/primitives/Eyebrow.astro";
+import Button from "@shared/components/primitives/Button.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale).cta;
+---
+
+<section id="cta" aria-labelledby="cta-title">
+  <div class="container-mk">
+    <div class="cta-block">
+      <div class="inner">
+        <div>
+          <Eyebrow text={t.eyebrow} />
+          <h2 id="cta-title" style="margin-top: 18px; white-space: pre-line;">{t.title}</h2>
+          <p class="lede" style="margin-top: 18px;">{t.desc}</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <Button variant="primary" href="#contact" label={t.btn1} />
+          <Button variant="secondary" label={t.btn2} dataChatbotOpen />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const trigger = target.closest("[data-chatbot-open]");
+    if (!trigger) return;
+
+    window.dispatchEvent(new CustomEvent("markish:open-chat"));
+  });
+</script>

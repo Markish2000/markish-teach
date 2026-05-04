@@ -1,0 +1,66 @@
+---
+import type { Locale } from "@shared/types";
+import { getTranslations } from "@i18n";
+import SectionHead from "@shared/components/sections/SectionHead.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale).quality;
+const radius = 32;
+const circumference = 2 * Math.PI * radius;
+---
+
+<section id="quality" aria-labelledby="quality-title">
+  <div class="container-mk">
+    <SectionHead id="quality" eyebrow={t.eyebrow} title={t.title} meta={t.meta} />
+    <p class="lede" style="margin-bottom: 40px;">{t.desc}</p>
+    <div class="quality-grid">
+      <div class="scores">
+        {t.scores.map((score) => {
+          const dash = (circumference * score.num) / 100;
+          return (
+            <div class="score-card">
+              <span class="lbl">{score.lbl}</span>
+              <div class="ring">
+                <svg viewBox="0 0 80 80" aria-hidden="true">
+                  <circle cx="40" cy="40" r={radius} stroke="var(--hairline)" stroke-width="3" fill="none" />
+                  <circle
+                    cx="40"
+                    cy="40"
+                    r={radius}
+                    stroke="var(--accent-2)"
+                    stroke-width="3"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-dasharray={`${dash} ${circumference}`}
+                    transform="rotate(-90 40 40)"
+                  />
+                </svg>
+                <div>
+                  <div class="num">{score.num}</div>
+                  <div class="grade">{score.grade}</div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div class="checklist glass" style="padding: 12px 24px;">
+        {t.checks.map((check) => (
+          <div class="check-row">
+            <span class="ck" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14">
+                <path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="ttl">{check.ttl}</span>
+            <span class="meta">{check.meta}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

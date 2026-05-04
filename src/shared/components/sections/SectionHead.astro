@@ -1,0 +1,22 @@
+---
+import Eyebrow from "../primitives/Eyebrow.astro";
+import type { SectionHeadProps } from "./SectionHead.interfaces";
+
+interface Props extends SectionHeadProps {}
+
+const { eyebrow, title, meta, id, showDot = true } = Astro.props;
+const headingId = id ? `${id}-title` : undefined;
+---
+
+<header class="section-head">
+  <div class="left">
+    <Eyebrow text={eyebrow} />
+    <h2 id={headingId} style="margin-top: 18px; white-space: pre-line;">{title}</h2>
+  </div>
+  {meta && (
+    <div class="section-meta">
+      {showDot && <span class="dot" aria-hidden="true"></span>}
+      <span>{meta}</span>
+    </div>
+  )}
+</header>

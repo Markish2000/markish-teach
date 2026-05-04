@@ -1,0 +1,185 @@
+{
+  "nav": {
+    "services": "Services",
+    "work": "Work",
+    "process": "Process",
+    "quality": "Quality",
+    "contact": "Contact",
+    "cta": "Free audit"
+  },
+  "hero": {
+    "eyebrow": "Technical studio — from Buenos Aires",
+    "status": "Booking projects · Q2 / Q3 2026",
+    "title_a": "We build",
+    "title_b": "modern",
+    "title_c": " websites that grow your business.",
+    "subtitle": "We design, develop and optimize fast, accessible and responsive digital experiences — engineered to turn visitors into real customers.",
+    "cta_primary": "Request a free audit",
+    "cta_secondary": "View projects",
+    "stat1_num": "100",
+    "stat1_label": "Lighthouse target",
+    "stat2_num": "<1.5",
+    "stat2_label": "Load time (s)",
+    "stat3_num": "WCAG",
+    "stat3_label": "AA minimum"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "Everything your site needs,\nunder one technical standard.",
+    "meta": "07 capabilities",
+    "items": [
+      { "tag": "FEATURED", "title": "Custom web development", "desc": "Sites and apps built from scratch with clean code and scalable architecture. No templates, no shortcuts.", "foot": "React · Next.js · Astro" },
+      { "tag": "01", "title": "Website redesign", "desc": "We modernize existing sites without losing rankings or content.", "foot": "Progressive migration" },
+      { "tag": "02", "title": "Performance", "desc": "Sub-second loads, green Core Web Vitals, optimized assets.", "foot": "Lighthouse 95+" },
+      { "tag": "03", "title": "Technical SEO", "desc": "Structure, schema, sitemaps, metadata and speed — the base Google needs.", "foot": "Search Console" },
+      { "tag": "04", "title": "Accessibility", "desc": "Contrast, focus, screen readers and keyboard nav. WCAG AA.", "foot": "axe · WAVE" },
+      { "tag": "05", "title": "Automations", "desc": "We connect your site to your tools: CRM, email, payments, calendars.", "foot": "n8n · Zapier · APIs" },
+      { "tag": "06", "title": "Digital solutions", "desc": "For SMBs that need to streamline processes without adding friction.", "foot": "Consulting included" }
+    ]
+  },
+  "problems": {
+    "eyebrow": "Problems we solve",
+    "title": "If this sounds familiar, let's talk.",
+    "meta": "Common challenges",
+    "items": [
+      { "ttl": "Your site loads slowly", "desc": "Visitors leave before seeing what you offer." },
+      { "ttl": "You're invisible on Google", "desc": "Technical SEO is missing or broken." },
+      { "ttl": "Your design feels dated", "desc": "Your brand grew. Your site didn't." },
+      { "ttl": "It breaks on mobile", "desc": "70% of your traffic walks away." },
+      { "ttl": "Low conversion rate", "desc": "Traffic comes in, but doesn't convert." },
+      { "ttl": "Manual processes", "desc": "Your team spends hours on repetitive tasks." }
+    ]
+  },
+  "ba": {
+    "eyebrow": "Before & after",
+    "title": "Same business,\na different result.",
+    "meta": "Real comparison",
+    "desc": "Drag the slider to see the impact on performance, SEO and conversion.",
+    "tag_left": "Before",
+    "tag_right": "After",
+    "stats": [
+      { "lbl": "Performance", "from": "42", "to": "98", "delta": "+56" },
+      { "lbl": "SEO", "from": "61", "to": "100", "delta": "+39" },
+      { "lbl": "Load (s)", "from": "4.8", "to": "1.2", "delta": "−75%" },
+      { "lbl": "Conversion", "from": "1.4%", "to": "4.7%", "delta": "×3.4" }
+    ]
+  },
+  "cases": {
+    "eyebrow": "Cases",
+    "title": "Production work.",
+    "meta": "Coming soon",
+    "items": [
+      { "industry": "E-commerce", "ttl": "Case 01", "badge": "Coming soon" },
+      { "industry": "B2B SaaS", "ttl": "Case 02", "badge": "Coming soon" },
+      { "industry": "Professional services", "ttl": "Case 03", "badge": "Coming soon" }
+    ]
+  },
+  "process": {
+    "eyebrow": "Process",
+    "title": "Five stages. Zero surprises.",
+    "meta": "How we work",
+    "steps": [
+      { "tag": "01 / Discovery", "ttl": "Research", "desc": "Technical audit, business goals and competitive analysis." },
+      { "tag": "02 / Strategy", "ttl": "Strategy", "desc": "Information architecture, roadmap and success metrics." },
+      { "tag": "03 / Design", "ttl": "Design", "desc": "Wireframes, visual system and interactive prototype." },
+      { "tag": "04 / Build", "ttl": "Build", "desc": "Clean code, CI/CD, testing and continuous review." },
+      { "tag": "05 / Launch", "ttl": "Launch", "desc": "Deploy, monitoring, iterative tuning and support." }
+    ]
+  },
+  "tech": {
+    "eyebrow": "Stack",
+    "title": "Tools chosen on purpose.",
+    "items": ["Next.js 15", "React 19", "Astro", "TypeScript", "Tailwind", "Three.js", "Framer Motion", "Vercel", "Cloudflare", "Supabase", "PostgreSQL", "n8n", "Stripe", "Sanity"]
+  },
+  "quality": {
+    "eyebrow": "Quality standards",
+    "title": "We don't ship until\nall four metrics are green.",
+    "meta": "Lighthouse · WCAG",
+    "desc": "Every project is measured. Every metric documented. Every release audited.",
+    "scores": [
+      { "lbl": "Performance", "num": 100, "grade": "A+" },
+      { "lbl": "Accessibility", "num": 100, "grade": "WCAG AA" },
+      { "lbl": "Best Practices", "num": 100, "grade": "A+" },
+      { "lbl": "SEO", "num": 100, "grade": "A+" }
+    ],
+    "checks": [
+      { "ttl": "Mobile-first responsive", "meta": "Every breakpoint" },
+      { "ttl": "Green Core Web Vitals", "meta": "LCP · INP · CLS" },
+      { "ttl": "WCAG 2.2 AA minimum", "meta": "Contrast · Focus · ARIA" },
+      { "ttl": "Schema & technical SEO", "meta": "JSON-LD · sitemap" },
+      { "ttl": "Progressive loading & optimized media", "meta": "AVIF · WebP · CDN" },
+      { "ttl": "Scalable architecture & clean code", "meta": "TypeScript · tests" }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Free audit",
+    "title": "We'll tell you exactly\nwhat to improve.",
+    "desc": "A technical analysis of performance, SEO and accessibility. No commitment, no hard sell — just a clear report with real priorities.",
+    "btn1": "Request audit",
+    "btn2": "Talk to the bot"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's start talking.",
+    "meta": "Reply within 24h",
+    "name": "Name",
+    "email": "Email",
+    "company": "Company",
+    "service": "What do you need?",
+    "message": "Tell us briefly",
+    "submit": "Send message",
+    "sending": "Sending…",
+    "sent": "Thank you — we reply within 24 hours.",
+    "error_generic": "Something went wrong. Please try again in a moment.",
+    "error_required": "This field is required.",
+    "error_email": "Invalid email.",
+    "error_min": "Minimum {min} characters.",
+    "service_opts": ["New website", "Redesign", "Performance / SEO", "Accessibility", "Automations", "Just chat"],
+    "info": [
+      { "lbl": "Email", "val": "hello@markish.dev" },
+      { "lbl": "WhatsApp", "val": "+54 9 11 0000 0000" },
+      { "lbl": "Location", "val": "Buenos Aires · Remote global" },
+      { "lbl": "Hours", "val": "Mon–Fri · 9–18 ART" }
+    ]
+  },
+  "chat": {
+    "title": "Markish Assistant",
+    "status": "Online",
+    "greet": "Hi, I'm the Markish assistant. What do you need to improve?",
+    "restart": "Restart conversation",
+    "foot": "Guided assistant · no AI",
+    "open_label": "Open assistant",
+    "close_label": "Close assistant",
+    "options": [
+      { "id": "new", "label": "I want a new website", "reply": "Perfect. We build sites from scratch with custom design and code. I'll send a brief and we book a call." },
+      { "id": "improve", "label": "I want to improve my current site", "reply": "Great. We do a technical audit + prioritized improvement plan. We don't touch your site until everything's clear." },
+      { "id": "optimize", "label": "Optimize SEO, performance or accessibility", "reply": "Three areas where we measure before and after. You get a report with metrics and concrete proposals." },
+      { "id": "automate", "label": "Automate processes", "reply": "We connect forms, CRM, payments, emails and calendars. You stop doing repetitive work and your team focuses on selling." },
+      { "id": "audit", "label": "I want a free audit", "reply": "Awesome. I need your URL and an email — within 48h you get the technical report, free of charge." },
+      { "id": "wa", "label": "Talk on WhatsApp", "reply": "This is a chat demo — in production this would take you straight to WhatsApp. To get in touch for real, use the form." }
+    ],
+    "end": "Want us to contact you?",
+    "end_yes": "Yes, leave my info",
+    "end_no": "Back to menu"
+  },
+  "foot": {
+    "copy": "© 2026 Markish — Technology studio",
+    "meta": "Built with clean code · Buenos Aires"
+  },
+  "seo": {
+    "home": {
+      "title": "Markish — Modern websites, technical studio",
+      "description": "We design, develop and optimize fast, accessible and responsive websites from Buenos Aires. Free audit.",
+      "og_title": "Markish — Modern websites that grow your business",
+      "og_description": "Technical studio in Buenos Aires. Lighthouse 100, WCAG AA, measured performance.",
+      "og_image_alt": "Markish — Technical studio"
+    }
+  },
+  "a11y": {
+    "skip_to_content": "Skip to content",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "toggle_theme": "Toggle theme",
+    "before_after_label": "Before and after comparison"
+  }
+}

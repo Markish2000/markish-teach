@@ -1,0 +1,64 @@
+---
+export const prerender = true;
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Header from "@components/layout/Header.astro";
+import Footer from "@components/layout/Footer.astro";
+import Hero from "@components/sections/Hero.astro";
+import Services from "@components/sections/Services.astro";
+import Problems from "@components/sections/Problems.astro";
+import BeforeAfter from "@components/sections/BeforeAfter.astro";
+import Cases from "@components/sections/Cases.astro";
+import Process from "@components/sections/Process.astro";
+import Tech from "@components/sections/Tech.astro";
+import Quality from "@components/sections/Quality.astro";
+import Cta from "@components/sections/Cta.astro";
+import Contact from "@components/sections/Contact.astro";
+import Chatbot from "@components/chatbot/Chatbot.tsx";
+import { getTranslations } from "@i18n";
+
+const locale = "en" as const;
+const translations = getTranslations(locale);
+---
+
+<BaseLayout locale={locale} page="home">
+  <a href="#main" class="skip-link">{translations.a11y.skip_to_content}</a>
+  <Header locale={locale} />
+  <main id="main">
+    <Hero locale={locale} />
+    <div class="container-mk">
+      <Services locale={locale} />
+      <Problems locale={locale} />
+      <BeforeAfter locale={locale} />
+      <Cases locale={locale} />
+      <Process locale={locale} />
+      <Tech locale={locale} />
+      <Quality locale={locale} />
+      <Cta locale={locale} />
+      <Contact locale={locale} />
+    </div>
+  </main>
+  <Footer locale={locale} />
+  <Chatbot client:load chat={translations.chat} contactHref="#contact" />
+</BaseLayout>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    z-index: 1000;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: top 0.2s;
+  }
+  .skip-link:focus {
+    top: 16px;
+  }
+</style>

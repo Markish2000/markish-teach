@@ -1,0 +1,9 @@
+---
+import type { EyebrowProps } from "./Eyebrow.interfaces";
+
+interface Props extends EyebrowProps {}
+
+const { text, as: Tag = "span", className } = Astro.props;
+---
+
+<Tag class:list={["eyebrow", className]}>{text}</Tag>

@@ -1,0 +1,28 @@
+---
+import type { Locale } from "@shared/types";
+import { getTranslations } from "@i18n";
+import SectionHead from "@shared/components/sections/SectionHead.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale).process;
+---
+
+<section id="process" aria-labelledby="process-title">
+  <div class="container-mk">
+    <SectionHead id="process" eyebrow={t.eyebrow} title={t.title} meta={t.meta} />
+    <ol class="process-rail" style="list-style: none; padding: 0; margin: 0;">
+      {t.steps.map((step, index) => (
+        <li class="process-step">
+          <div class="marker">{String(index + 1).padStart(2, "0")}</div>
+          <span class="tag">{step.tag}</span>
+          <h3>{step.ttl}</h3>
+          <p>{step.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

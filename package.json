@@ -1,0 +1,38 @@
+{
+  "name": "markish-teach",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "@astrojs/node": "^10.0.6",
+    "@astrojs/react": "^5.0.4",
+    "@astrojs/sitemap": "^3.7.2",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "@tailwindcss/vite": "^4.2.4",
+    "astro": "^6.2.1",
+    "motion": "^12.38.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-hook-form": "^7.75.0",
+    "resend": "^6.12.2",
+    "tailwindcss": "^4.2.4",
+    "three": "^0.184.0",
+    "zod": "^4.4.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "patch-package": "^8.0.1",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,76 @@
+---
+import type { ButtonProps } from "./Button.interfaces";
+
+type Props = ButtonProps;
+
+const {
+  variant = "primary",
+  label,
+  className,
+  showArrow = true,
+  arrowLabel,
+  href,
+  target,
+  rel,
+  type = "button",
+  dataChatbotOpen = false,
+} = Astro.props;
+
+const variantClass =
+  variant === "primary" ? "btn-primary" : variant === "secondary" ? "btn-secondary" : "icon-btn";
+const isIcon = variant === "icon";
+const normalizedHref = href?.trim().toLowerCase();
+const safeHref =
+  href && normalizedHref && normalizedHref !== "#" && !normalizedHref.startsWith("javascript:")
+    ? href
+    : undefined;
+const chatbotOpenAttribute = dataChatbotOpen ? "true" : undefined;
+---
+
+{safeHref ? (
+  <a
+    class:list={[isIcon ? "icon-btn" : "btn", !isIcon && variantClass, className]}
+    href={safeHref}
+    target={target}
+    rel={rel}
+    data-chatbot-open={chatbotOpenAttribute}
+  >
+    {!isIcon && <span>{label}</span>}
+    {isIcon && <span class="sr-only">{label}</span>}
+    {!isIcon && showArrow && (
+      <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden={arrowLabel ? "false" : "true"} aria-label={arrowLabel}>
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    )}
+    <slot />
+  </a>
+) : (
+  <button
+    type={type}
+    class:list={[isIcon ? "icon-btn" : "btn", !isIcon && variantClass, className]}
+    data-chatbot-open={chatbotOpenAttribute}
+  >
+    {!isIcon && <span>{label}</span>}
+    {isIcon && <span class="sr-only">{label}</span>}
+    {!isIcon && showArrow && (
+      <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden={arrowLabel ? "false" : "true"} aria-label={arrowLabel}>
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    )}
+    <slot />
+  </button>
+)}
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
