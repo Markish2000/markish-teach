@@ -100,8 +100,8 @@ const navLinks = [
     if (!(trigger instanceof HTMLElement) || !(menu instanceof HTMLElement)) return;
 
     var firstLink = menu.querySelector("a");
-    var openLabel = trigger.dataset.openLabel || "";
-    var closeLabel = trigger.dataset.closeLabel || openLabel;
+    var openLabel = trigger.dataset["openLabel"] || "";
+    var closeLabel = trigger.dataset["closeLabel"] || openLabel;
 
     var setOpen = function (open) {
       menu.classList.toggle("is-open", open);

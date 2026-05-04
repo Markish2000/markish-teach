@@ -222,7 +222,7 @@ const minMessage = labels.error_min.replace("{min}", String(messageMin));
 
       setSubmitting(form, true);
       try {
-        const response = await fetch(form.dataset.endpoint ?? "/api/contact", {
+        const response = await fetch(form.dataset["endpoint"] ?? "/api/contact", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),

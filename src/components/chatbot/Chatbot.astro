@@ -123,13 +123,13 @@ const { chat, contactHref } = Astro.props;
 
     const contact = document.createElement("a");
     contact.className = "btn btn-primary";
-    contact.href = body.dataset.contactHref ?? "#contact";
-    contact.textContent = body.dataset.endYes ?? "";
+    contact.href = body.dataset["contactHref"] ?? "#contact";
+    contact.textContent = body.dataset["endYes"] ?? "";
     contact.addEventListener("click", close);
 
     const again = document.createElement("button");
     again.type = "button";
-    again.textContent = body.dataset.endNo ?? "";
+    again.textContent = body.dataset["endNo"] ?? "";
     again.addEventListener("click", reset);
 
     options.append(contact, again);
@@ -158,7 +158,7 @@ const { chat, contactHref } = Astro.props;
     const setOpen = (open: boolean): void => {
       panel.hidden = !open;
       fab.setAttribute("aria-expanded", open ? "true" : "false");
-      fab.setAttribute("aria-label", open ? fab.dataset.closeLabel ?? "" : fab.dataset.openLabel ?? "");
+      fab.setAttribute("aria-label", open ? fab.dataset["closeLabel"] ?? "" : fab.dataset["openLabel"] ?? "");
       if (!open) fab.focus();
     };
 
@@ -167,7 +167,7 @@ const { chat, contactHref } = Astro.props;
     const reset = (): void => {
       clearTimers();
       body.textContent = "";
-      appendBubble(body, "bot", body.dataset.greet ?? "");
+      appendBubble(body, "bot", body.dataset["greet"] ?? "");
       body.appendChild(originalMenu.cloneNode(true));
       scrollChatBody(body);
     };
@@ -190,16 +190,16 @@ const { chat, contactHref } = Astro.props;
 
       busy = true;
       body.querySelector("[data-chat-menu]")?.remove();
-      appendBubble(body, "user", option.dataset.label ?? "");
+      appendBubble(body, "user", option.dataset["label"] ?? "");
       const typing = appendTyping(body);
       scrollChatBody(body);
 
       timers.push(window.setTimeout(() => {
         typing.remove();
-        appendBubble(body, "bot", option.dataset.reply ?? "");
+        appendBubble(body, "bot", option.dataset["reply"] ?? "");
         scrollChatBody(body);
         timers.push(window.setTimeout(() => {
-          appendBubble(body, "bot", body.dataset.end ?? "");
+          appendBubble(body, "bot", body.dataset["end"] ?? "");
           createFollowup(body, close, reset);
           busy = false;
           scrollChatBody(body);
