@@ -1753,6 +1753,8 @@
     position: fixed;
     inset: 0;
     z-index: 200;
+    min-height: 100vh;
+    height: 100dvh;
     background: var(--bg);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
@@ -1760,11 +1762,24 @@
     display: none;
     flex-direction: column;
     gap: 28px;
-    transform: translateY(-100%);
-    transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transform: translate3d(0, -100%, 0);
+    transition:
+      transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+      opacity 0.2s ease,
+      visibility 0s linear 0.45s;
+    will-change: transform, opacity;
   }
   .mobile-menu.is-open {
-    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+    transition-delay: 0s;
   }
   .mobile-menu .top {
     display: flex;
