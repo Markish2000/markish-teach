@@ -31,7 +31,10 @@
       "Bash(curl -s -o /dev/null -w \"home %{http_code}\\\\n\" http://127.0.0.1:4322/es)",
       "Bash(curl -s -o /dev/null -w \"mark %{http_code}\\\\n\" http://127.0.0.1:4322/markishLogo-mark.png)",
       "Bash(node -e \"try{require.resolve\\('playwright'\\);console.log\\('playwright OK'\\)}catch\\(e\\){try{require.resolve\\('playwright-core'\\);console.log\\('playwright-core OK'\\)}catch\\(e2\\){console.log\\('NO playwright'\\)}}\")",
-      "Bash(npx astro *)"
+      "Bash(npx astro *)",
+      "Bash(node -e \"const s=require\\('sharp'\\); s\\('public/og.svg'\\).png\\(\\).toFile\\('public/og.png'\\).then\\(i=>console.log\\('OK',i.width+'x'+i.height,i.size+'b'\\)\\).catch\\(e=>console.error\\('ERR',e.message\\)\\)\")",
+      "Bash(node -e \"const s=require\\('sharp'\\);Promise.all\\(['public/markishLogo.png','public/markishLogo-mark.png','public/favicon.svg'].map\\(f=>s\\(f\\).metadata\\(\\).then\\(m=>console.log\\(f,m.width+'x'+m.height,'hasAlpha:'+m.hasAlpha\\)\\).catch\\(e=>console.log\\(f,'ERR',e.message\\)\\)\\)\\)\")",
+      "Bash(mkdir -p public/icons)"
     ]
   }
 }

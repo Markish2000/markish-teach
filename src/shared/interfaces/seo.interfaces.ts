@@ -5,6 +5,9 @@ export interface OpenGraphMeta {
   readonly description: string;
   readonly image: string;
   readonly imageAlt: string;
+  readonly imageType: string;
+  readonly imageWidth: number;
+  readonly imageHeight: number;
   readonly type: "website" | "article";
   readonly siteName: string;
   readonly locale: string;

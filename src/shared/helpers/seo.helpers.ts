@@ -9,7 +9,7 @@ import type {
   SeoPageId,
 } from "@shared/interfaces";
 
-const ogImagePath = "/og.svg";
+const ogImagePath = "/og.png";
 
 const ogLocaleFor = (locale: Locale): string =>
   locale === "es" ? "es_AR" : "en_US";
@@ -46,6 +46,9 @@ export const getSeo = ({ locale, page }: GetSeoArgs): SeoData => {
       description: meta.og_description,
       image: ogImage,
       imageAlt: meta.og_image_alt,
+      imageType: "image/png",
+      imageWidth: 1200,
+      imageHeight: 630,
       type: "website",
       siteName: SITE_NAME,
       locale: ogLocaleFor(locale),
