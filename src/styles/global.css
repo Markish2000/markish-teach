@@ -1816,10 +1816,10 @@
      so it never leaks into hover transitions. */
   .reveal {
     opacity: 0;
-    translate: 0 24px;
+    translate: 0 16px;
     transition:
-      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
-      translate 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms);
+      opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+      translate 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms);
   }
   .reveal.in {
     opacity: 1;
@@ -1830,10 +1830,10 @@
      transform/box-shadow/etc keep their own (delay-free) transitions so card hovers stay smooth. */
   .reveal-group > * {
     opacity: 0;
-    translate: 0 24px;
+    translate: 0 16px;
     transition:
-      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
-      translate 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+      opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+      translate 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
       transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1),
       box-shadow 0.25s ease,
       background 0.25s ease,
@@ -1844,6 +1844,43 @@
   .reveal-group.in > * {
     opacity: 1;
     translate: 0 0;
+  }
+
+  /* scroll progress bar — width driven by --scroll-progress (0..1) set in JS */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    z-index: 150;
+    pointer-events: none;
+    transform: scaleX(var(--scroll-progress, 0));
+    transform-origin: 0 50%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    will-change: transform;
+  }
+
+  /* active-section nav underline — also shown on hover for consistency */
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 1.5px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .nav-links a[aria-current="true"] {
+    color: var(--ink);
+  }
+  .nav-links a[aria-current="true"]::after,
+  .nav-links a:hover::after {
+    transform: scaleX(1);
   }
 
   /* mobile menu sheet */
@@ -2086,4 +2123,51 @@
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Lenis smooth scroll — required runtime styles (unlayered to win the cascade).
+   The `lenis` / `lenis-smooth` classes are added to <html> by Lenis at init. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Custom scrollbar — themed accent thumb, floats over a transparent track.
+   Uses theme tokens so it swaps automatically between dark and light. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: var(--radius-pill);
+  /* border in the page colour + padding-box clip = a slim, floating thumb */
+  border: 2px solid var(--bg);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-2);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

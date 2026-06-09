@@ -83,6 +83,7 @@ const bodyLang = locale === "es" ? "es-AR" : "en-US";
     </noscript>
   </head>
   <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
     <div class="bg-atmosphere" aria-hidden="true"></div>
     <div class="bg-grid" aria-hidden="true"></div>
     <div class="bg-noise" aria-hidden="true"></div>
@@ -116,6 +117,11 @@ const bodyLang = locale === "es" ? "es-AR" : "en-US";
         );
         targets.forEach((el) => observer.observe(el));
       }
+    </script>
+
+    <script>
+      import { initScroll } from "@scripts/scroll";
+      initScroll();
     </script>
   </body>
 </html>
