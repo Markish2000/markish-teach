@@ -14,7 +14,7 @@ const t = getTranslations(locale).process;
 <section id="process" aria-labelledby="process-title">
   <div class="container-mk">
     <SectionHead id="process" eyebrow={t.eyebrow} title={t.title} meta={t.meta} />
-    <ol class="process-rail" style="list-style: none; padding: 0; margin: 0;">
+    <ol class="process-rail reveal-group" style="list-style: none; padding: 0; margin: 0;">
       {t.steps.map((step, index) => (
         <li class="process-step">
           <div class="marker">{String(index + 1).padStart(2, "0")}</div>

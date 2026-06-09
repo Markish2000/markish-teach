@@ -13,13 +13,14 @@ const t = getTranslations(locale).hero;
 ---
 
 <section id="top" class="hero" aria-labelledby="hero-title">
+  <img class="hero-watermark" src="/markishLogo.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
   <div class="hero-coords" aria-hidden="true">
     <span>34°36'S · 58°22'W · BUENOS AIRES</span>
     <span>v1.0 · 2026</span>
   </div>
   <div class="container-mk">
     <div class="hero-grid">
-      <div>
+      <div class="reveal-group">
         <div class="hero-meta-row">
           <span class="eyebrow">{t.eyebrow}</span>
           <Pill text={t.status} pulse />

@@ -70,7 +70,27 @@
     "meta": "Coming soon",
     "items": [
       { "industry": "E-commerce", "ttl": "Case 01", "badge": "Coming soon" },
-      { "industry": "B2B SaaS", "ttl": "Case 02", "badge": "Coming soon" },
+      {
+        "industry": "B2B SaaS / Fitness Tech",
+        "ttl": "Markish Arena",
+        "badge": "In development",
+        "desc": "A SaaS platform to run, manage and score functional fitness competitions. Manage athletes, categories, events, workouts, judges, results and real-time rankings.",
+        "highlights": [
+          "Organization and competition management.",
+          "Athlete, category and team administration.",
+          "Workout creation with formats like AMRAP, For Time, EMOM and RM.",
+          "Adaptable scoring system based on the workout type.",
+          "Leaderboard to track standings and results.",
+          "Roles and permissions for admins, judges and participants.",
+          "Configurable technical catalogs for movements, materials and categories.",
+          "Multi-tenant approach so each organization operates independently."
+        ],
+        "cta": "View case",
+        "href": "https://markisharena.vercel.app/",
+        "imageSrc": "/markish-arena-preview.png",
+        "imageAlt": "Markish Arena preview: live heat, real-time leaderboard and a judge-signed scorecard.",
+        "preview": "Live leaderboard · In development"
+      },
       { "industry": "Professional services", "ttl": "Case 03", "badge": "Coming soon" }
     ]
   },
@@ -136,7 +156,7 @@
     "error_min": "Minimum {min} characters.",
     "service_opts": ["New website", "Redesign", "Performance / SEO", "Accessibility", "Automations", "Just chat"],
     "info": [
-      { "lbl": "Email", "val": "hello@markish.dev" },
+      { "lbl": "Email", "val": "markishtech@gmail.com" },
       { "lbl": "WhatsApp", "val": "+54 9 11 0000 0000" },
       { "lbl": "Location", "val": "Buenos Aires · Remote global" },
       { "lbl": "Hours", "val": "Mon–Fri · 9–18 ART" }

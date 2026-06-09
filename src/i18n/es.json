@@ -70,7 +70,27 @@
     "meta": "Próximamente",
     "items": [
       { "industry": "E-commerce", "ttl": "Caso 01", "badge": "Coming soon" },
-      { "industry": "SaaS B2B", "ttl": "Caso 02", "badge": "Coming soon" },
+      {
+        "industry": "SaaS B2B / Fitness Tech",
+        "ttl": "Markish Arena",
+        "badge": "En desarrollo",
+        "desc": "Plataforma SaaS para organizar, administrar y puntuar competencias de fitness funcional. Permite gestionar atletas, categorías, eventos, workouts, jueces, resultados y rankings en tiempo real.",
+        "highlights": [
+          "Gestión de organizaciones y competencias.",
+          "Administración de atletas, categorías y equipos.",
+          "Creación de workouts con modalidades como AMRAP, For Time, EMOM y RM.",
+          "Sistema de scoring adaptable según el tipo de entrenamiento.",
+          "Leaderboard para visualizar posiciones y resultados.",
+          "Roles y permisos para administradores, jueces y participantes.",
+          "Catálogos técnicos configurables de movimientos, materiales y categorías.",
+          "Enfoque multi-tenant para que cada organización opere de forma independiente."
+        ],
+        "cta": "Ver caso",
+        "href": "https://markisharena.vercel.app/",
+        "imageSrc": "/markish-arena-preview.png",
+        "imageAlt": "Vista previa de Markish Arena: heat en vivo, leaderboard en tiempo real y scorecard firmada por el juez.",
+        "preview": "Leaderboard en vivo · En desarrollo"
+      },
       { "industry": "Servicios profesionales", "ttl": "Caso 03", "badge": "Coming soon" }
     ]
   },
@@ -136,7 +156,7 @@
     "error_min": "Mínimo {min} caracteres.",
     "service_opts": ["Web nueva", "Rediseño", "Performance / SEO", "Accesibilidad", "Automatizaciones", "Solo conversar"],
     "info": [
-      { "lbl": "Email", "val": "hola@markish.dev" },
+      { "lbl": "Email", "val": "markishtech@gmail.com" },
       { "lbl": "WhatsApp", "val": "+54 9 11 0000 0000" },
       { "lbl": "Ubicación", "val": "Buenos Aires · Remoto global" },
       { "lbl": "Horario", "val": "Lun–Vie · 9 a 18h ART" }

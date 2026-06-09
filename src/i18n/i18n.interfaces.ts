@@ -71,6 +71,13 @@ export interface CaseItem {
   readonly industry: string;
   readonly ttl: string;
   readonly badge: string;
+  readonly desc?: string;
+  readonly highlights?: ReadonlyArray<string>;
+  readonly cta?: string;
+  readonly href?: string;
+  readonly imageSrc?: string;
+  readonly imageAlt?: string;
+  readonly preview?: string;
 }
 
 export interface CasesTranslations {

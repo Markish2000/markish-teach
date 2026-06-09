@@ -14,7 +14,7 @@ const t = getTranslations(locale).cases;
 <section id="cases" aria-labelledby="cases-title">
   <div class="container-mk">
     <SectionHead id="cases" eyebrow={t.eyebrow} title={t.title} meta={t.meta} />
-    <div class="cases-grid">
+    <div class="cases-grid reveal-group">
       {t.items.map((item) => (
         <article class="case-card">
           <div class="head">
@@ -24,9 +24,42 @@ const t = getTranslations(locale).cases;
             </div>
             <span class="badge">{item.badge}</span>
           </div>
-          <div class="preview">
-            <span class="placeholder-text">Coming soon</span>
+
+          <div
+            class="preview"
+            role={item.imageAlt ? "img" : undefined}
+            aria-label={item.imageAlt}
+          >
+            {item.imageSrc ? (
+              <img src={item.imageSrc} alt={item.imageAlt} loading="lazy" decoding="async" />
+            ) : (
+              <span class="placeholder-text">{item.preview ?? "Coming soon"}</span>
+            )}
           </div>
+
+          {item.desc && <p class="case-desc">{item.desc}</p>}
+
+          {item.highlights && (
+            <ul class="case-highlights">
+              {item.highlights.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          )}
+
+          {item.cta && item.href && (
+            <a
+              class="case-cta"
+              href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              aria-label={`${item.cta}: ${item.ttl}`}
+              title={item.ttl}
+            >
+              {item.cta}
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          )}
         </article>
       ))}
     </div>

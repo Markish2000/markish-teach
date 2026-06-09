@@ -6,7 +6,7 @@ export const ORGANIZATION = {
   name: "Markish",
   legalName: "Markish",
   url: SITE_URL,
-  email: "hola@markish.dev",
+  email: "markishtech@gmail.com",
   city: "Buenos Aires",
   country: "AR",
 } as const;

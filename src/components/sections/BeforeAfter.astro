@@ -21,7 +21,7 @@ const afterStatValues = t.stats.slice(0, 3).map((stat) => stat.to);
 <section id="work" aria-labelledby="work-title">
   <div class="container-mk">
     <SectionHead id="work" eyebrow={t.eyebrow} title={t.title} meta={t.meta} />
-    <p class="lede" style="margin-bottom: 32px;">{t.desc}</p>
+    <p class="lede reveal" style="margin-bottom: 32px;">{t.desc}</p>
     <div class="ba-wrap">
       <BeforeAfterSlider
         tagLeft={t.tag_left}
@@ -34,7 +34,7 @@ const afterStatValues = t.stats.slice(0, 3).map((stat) => stat.to);
         afterStatLabels={afterStatLabels}
         afterStatValues={afterStatValues}
       />
-      <div class="ba-stats">
+      <div class="ba-stats reveal-group">
         {t.stats.map((stat) => (
           <div class="ba-stat">
             <div class="lbl">{stat.lbl}</div>

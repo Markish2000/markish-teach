@@ -271,18 +271,16 @@
     text-decoration: none;
   }
   .brand-mark {
-    width: 26px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
     position: relative;
     flex: none;
   }
-  .brand-mark svg {
+  .brand-mark img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
     display: block;
-  }
-  .brand-dot {
-    color: var(--accent-2);
   }
   .nav-links {
     display: flex;
@@ -492,6 +490,22 @@
     position: relative;
     display: flex;
     align-items: center;
+    overflow: hidden;
+  }
+  .hero-watermark {
+    position: absolute;
+    right: -3%;
+    bottom: -6%;
+    width: min(560px, 48vw);
+    height: auto;
+    opacity: 0.05;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  .hero .container-mk {
+    position: relative;
+    z-index: 1;
   }
   .hero-grid {
     display: grid;
@@ -1081,6 +1095,61 @@
     text-transform: uppercase;
     background: rgba(94, 233, 255, 0.08);
   }
+  .case-card .preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .case-card .case-desc {
+    color: var(--ink-2);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .case-card .case-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+  }
+  .case-card .case-highlights li {
+    position: relative;
+    padding-left: 18px;
+    color: var(--ink-2);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .case-card .case-highlights li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--accent-2);
+  }
+  .case-card .case-cta {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    text-decoration: none;
+    cursor: pointer;
+    transition: gap 0.2s ease, color 0.2s ease;
+  }
+  .case-card .case-cta:hover,
+  .case-card .case-cta:focus-visible {
+    gap: 12px;
+    color: var(--accent);
+  }
 
   /* process */
   .process-rail {
@@ -1236,7 +1305,7 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
-  .score-card .ring {
+  .score-card .score-ring {
     position: relative;
     z-index: 1;
     display: grid;
@@ -1244,7 +1313,7 @@
     align-items: center;
     gap: 18px;
   }
-  .score-card .ring svg {
+  .score-card .score-ring svg {
     width: 74px;
     height: 74px;
     flex: none;
@@ -1252,13 +1321,13 @@
     overflow: visible;
     filter: drop-shadow(0 0 14px rgba(94, 233, 255, 0.2));
   }
-  .score-card .ring .num {
+  .score-card .score-ring .num {
     font-family: var(--font-display);
     font-size: clamp(42px, 4vw, 54px);
     line-height: 0.9;
     letter-spacing: -0.03em;
   }
-  .score-card .ring .grade {
+  .score-card .score-ring .grade {
     display: inline-flex;
     width: max-content;
     margin-top: 10px;
@@ -1493,6 +1562,10 @@
   .site-footer {
     border-top: 1px solid var(--hairline);
     padding: 50px var(--pad-x) 28px;
+  }
+  .footer-brand {
+    max-width: var(--container);
+    margin: 0 auto 24px;
   }
   .footer-row {
     display: flex;
@@ -1737,15 +1810,40 @@
     }
   }
 
-  /* reveal (used by Reveal island; static fallback applies "in" class via JS) */
+  /* reveal — entrance fade-up, wired by the IntersectionObserver in BaseLayout.
+     Uses the `translate` property (NOT `transform`) so element hover transforms stay intact.
+     The stagger delay (--reveal-delay) is baked into the opacity/translate transitions only,
+     so it never leaks into hover transitions. */
   .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+    translate: 0 24px;
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+      translate 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms);
   }
   .reveal.in {
     opacity: 1;
-    transform: none;
+    translate: 0 0;
+  }
+
+  /* reveal-group — direct children fade-up in sequence; per-child --reveal-delay set by JS.
+     transform/box-shadow/etc keep their own (delay-free) transitions so card hovers stay smooth. */
+  .reveal-group > * {
+    opacity: 0;
+    translate: 0 24px;
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+      translate 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+      transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 0.25s ease,
+      background 0.25s ease,
+      border-color 0.25s ease,
+      color 0.2s ease,
+      filter 0.25s ease;
+  }
+  .reveal-group.in > * {
+    opacity: 1;
+    translate: 0 0;
   }
 
   /* mobile menu sheet */

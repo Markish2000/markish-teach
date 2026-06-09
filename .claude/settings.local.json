@@ -8,7 +8,30 @@
       "Bash(grep -n \"^/\\\\*\\\\|^\\\\..*{\" \"c:\\\\Users\\\\MarcosParella\\\\Desktop\\\\Markish\\\\markish-teach\\\\design_handoff_markish_astro\\\\reference\\\\styles.css\")",
       "WebFetch(domain:docs.astro.build)",
       "Bash(git init *)",
-      "Bash(git config *)"
+      "Bash(git config *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const b=fs.readFileSync\\('public/markishLogo.png'\\);const w=b.readUInt32BE\\(16\\),h=b.readUInt32BE\\(20\\),bd=b[24],ct=b[25];const types={0:'Gray',2:'RGB',3:'Palette',4:'GrayAlpha',6:'RGBA'};console.log\\('size',w+'x'+h,'bitDepth',bd,'colorType',ct,types[ct],'hasAlpha',ct===6||ct===4\\);console.log\\('bytes',b.length\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const b=fs.readFileSync\\('public/markishLogo.png'\\);let p=8;const chunks=[];while\\(p<b.length\\){const len=b.readUInt32BE\\(p\\);const type=b.toString\\('ascii',p+4,p+8\\);chunks.push\\(type\\);if\\(type==='IEND'\\)break;p+=12+len;}console.log\\('chunks:',chunks.join\\(','\\)\\);console.log\\('hasTRNS:',chunks.includes\\('tRNS'\\)\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const b=fs.readFileSync\\('public/markishLogo.png'\\);fs.writeFileSync\\('c:/tmp/logo-b64.txt','data:image/png;base64,'+b.toString\\('base64'\\)\\);console.log\\('b64 len',b.toString\\('base64'\\).length\\);\")",
+      "Bash(curl -s -X POST http://localhost:4321/api/contact -H \"Content-Type: application/json\" -d '{\"name\":\"Test\",\"email\":\"test@example.com\",\"company\":\"ACME\",\"service\":\"Web nueva\",\"message\":\"Hola, esto es una prueba del formulario.\"}' -w \"\\\\nHTTP %{http_code}\\\\n\")",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\);console.log\\(JSON.stringify\\(p.scripts,null,1\\)\\)\")",
+      "Bash(tail -n 15 tmp-astro-dev.log)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:4325/es)",
+      "Bash(curl -s --retry-connrefused --retry 40 --retry-delay 1 -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://127.0.0.1:4325/es)",
+      "mcp__playwright__browser_resize",
+      "Bash(sed -n '1,15p' src/styles/global.css)",
+      "Bash(sed -n '1745,1770p' src/styles/global.css)",
+      "Bash(break)",
+      "mcp__playwright__browser_close",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='chrome.exe'\" | Where-Object { $_.CommandLine -match 'mcp-chrome' } | Select-Object ProcessId, @{n='cmd';e={$_.CommandLine.Substring\\(0,[Math]::Min\\(120,$_.CommandLine.Length\\)\\)}})",
+      "Bash(node -e \"try{const s=require\\('sharp'\\);console.log\\('sharp OK',s.versions.sharp\\)}catch\\(e\\){console.log\\('NO sharp:',e.message\\)}\")",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='chrome.exe'\" | Where-Object { $_.CommandLine -match 'mcp-chrome' } | ForEach-Object { try { Stop-Process -Id $_.ProcessId -Force -ErrorAction Stop } catch {} }; Start-Sleep -Milliseconds 800; \\(Get-CimInstance Win32_Process -Filter \"Name='chrome.exe'\" | Where-Object { $_.CommandLine -match 'mcp-chrome' }\\).Count)",
+      "mcp__playwright__browser_wait_for",
+      "Bash(curl -s -o /dev/null -w \"home %{http_code}\\\\n\" http://127.0.0.1:4322/es)",
+      "Bash(curl -s -o /dev/null -w \"mark %{http_code}\\\\n\" http://127.0.0.1:4322/markishLogo-mark.png)",
+      "Bash(node -e \"try{require.resolve\\('playwright'\\);console.log\\('playwright OK'\\)}catch\\(e\\){try{require.resolve\\('playwright-core'\\);console.log\\('playwright-core OK'\\)}catch\\(e2\\){console.log\\('NO playwright'\\)}}\")",
+      "Bash(npx astro *)"
     ]
   }
 }

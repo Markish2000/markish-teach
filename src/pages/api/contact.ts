@@ -29,36 +29,38 @@ const jsonResponse = (status: number, body: Record<string, unknown>): Response =
     headers: { "Content-Type": "application/json" },
   });
 
-const sendViaResend = async (
-  apiKey: string,
-  to: string,
-  from: string,
+const sendViaWeb3Forms = async (
+  accessKey: string,
   payload: z.infer<typeof payloadSchema>
 ): Promise<boolean> => {
   const subject = `Markish · nuevo contacto — ${payload.name}`;
-  const body = [
-    `From: ${payload.name} <${payload.email}>`,
-    `Company: ${payload.company || "—"}`,
-    `Service: ${payload.service}`,
+  const message = [
+    `Servicio: ${payload.service}`,
+    `Empresa: ${payload.company || "—"}`,
     "",
     payload.message,
   ].join("\n");
 
-  const response = await fetch("https://api.resend.com/emails", {
+  const response = await fetch("https://api.web3forms.com/submit", {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
+      Accept: "application/json",
     },
     body: JSON.stringify({
-      from,
-      to: [to],
-      reply_to: payload.email,
+      access_key: accessKey,
       subject,
-      text: body,
+      from_name: payload.name,
+      name: payload.name,
+      email: payload.email,
+      company: payload.company || "—",
+      service: payload.service,
+      message,
     }),
   });
-  return response.ok;
+  if (!response.ok) return false;
+  const result = (await response.json().catch(() => null)) as { success?: boolean } | null;
+  return result?.success === true;
 };
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
@@ -76,16 +78,14 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     return jsonResponse(400, { error: "validation", issues: parsed.error.issues });
   }
 
-  const apiKey = import.meta.env["RESEND_API_KEY"];
-  const toEmail = import.meta.env["CONTACT_TO_EMAIL"] ?? "hola@markish.dev";
-  const fromEmail = import.meta.env["CONTACT_FROM_EMAIL"] ?? "Markish <noreply@markish.dev>";
+  const accessKey = import.meta.env["WEB3FORMS_ACCESS_KEY"];
 
-  if (!apiKey || apiKey.length === 0) {
-    console.info("[contact] RESEND_API_KEY missing — payload received in dev mode:", parsed.data);
+  if (!accessKey || String(accessKey).length === 0) {
+    console.info("[contact] WEB3FORMS_ACCESS_KEY missing — payload received in dev mode:", parsed.data);
     return jsonResponse(200, { ok: true, mode: "dev" });
   }
 
-  const sent = await sendViaResend(String(apiKey), String(toEmail), String(fromEmail), parsed.data);
+  const sent = await sendViaWeb3Forms(String(accessKey), parsed.data);
   if (!sent) {
     return jsonResponse(502, { error: "send_failed" });
   }

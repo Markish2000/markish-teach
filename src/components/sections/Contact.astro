@@ -30,7 +30,7 @@ const labels = {
 <section id="contact" aria-labelledby="contact-title">
   <div class="container-mk">
     <SectionHead id="contact" eyebrow={t.eyebrow} title={t.title} meta={t.meta} />
-    <div class="contact-grid">
+    <div class="contact-grid reveal-group">
       <ContactForm labels={labels} endpoint="/api/contact" />
       <aside class="contact-aside">
         {t.info.map((row) => (

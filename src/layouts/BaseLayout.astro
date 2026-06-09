@@ -62,11 +62,51 @@ const bodyLang = locale === "es" ? "es-AR" : "en-US";
     <script is:inline set:html={THEME_BOOTSTRAP_SCRIPT}></script>
 
     <script type="application/ld+json" set:html={JSON.stringify(organizationLd)} is:inline></script>
+
+    <noscript>
+      <style>
+        .reveal,
+        .reveal-group > * {
+          opacity: 1 !important;
+          translate: none !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
     <div class="bg-atmosphere" aria-hidden="true"></div>
     <div class="bg-grid" aria-hidden="true"></div>
     <div class="bg-noise" aria-hidden="true"></div>
     <slot />
+
+    <script>
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const targets = document.querySelectorAll<HTMLElement>(".reveal, .reveal-group");
+
+      const reveal = (el: HTMLElement): void => {
+        if (el.classList.contains("reveal-group")) {
+          Array.from(el.children).forEach((child, index) => {
+            (child as HTMLElement).style.setProperty("--reveal-delay", `${Math.min(index, 6) * 80}ms`);
+          });
+        }
+        el.classList.add("in");
+      };
+
+      if (reduce || !("IntersectionObserver" in window)) {
+        targets.forEach(reveal);
+      } else {
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              reveal(entry.target as HTMLElement);
+              obs.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+        );
+        targets.forEach((el) => observer.observe(el));
+      }
+    </script>
   </body>
 </html>

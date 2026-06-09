@@ -8,7 +8,7 @@ const { eyebrow, title, meta, id, showDot = true } = Astro.props;
 const headingId = id ? `${id}-title` : undefined;
 ---
 
-<header class="section-head">
+<header class="section-head reveal">
   <div class="left">
     <Eyebrow text={eyebrow} />
     <h2 id={headingId} style="margin-top: 18px; white-space: pre-line;">{title}</h2>
