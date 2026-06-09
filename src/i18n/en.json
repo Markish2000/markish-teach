@@ -1,8 +1,11 @@
 {
   "nav": {
     "services": "Services",
+    "problems": "Problems",
     "work": "Work",
+    "cases": "Cases",
     "process": "Process",
+    "tech": "Stack",
     "quality": "Quality",
     "contact": "Contact",
     "cta": "Free audit"

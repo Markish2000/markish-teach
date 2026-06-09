@@ -63,6 +63,31 @@ const headerOffset = (): number => {
   return header ? header.offsetHeight + HEADER_GAP : 0;
 };
 
+/** Scroll the page to the very top, reusing Lenis easing when it is active. */
+const scrollToTop = (): void => {
+  if (lenis) {
+    lenis.scrollTo(0);
+    return;
+  }
+  const behavior = matches(REDUCE_QUERY) ? "auto" : "smooth";
+  window.scrollTo({ top: 0, behavior });
+};
+
+/** Clicking the brand logo glides to the top instead of reloading the page. */
+const bindBrandToTop = (): void => {
+  document.addEventListener("click", (event) => {
+    if (event.defaultPrevented) return;
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    if (!target.closest(".brand")) return;
+    event.preventDefault();
+    scrollToTop();
+    if (window.history && window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+  });
+};
+
 /** Route in-page anchor clicks through Lenis so jumps inherit the smooth easing. */
 const bindAnchorLinks = (instance: Lenis): void => {
   document.addEventListener("click", (event) => {
@@ -106,6 +131,7 @@ export const initScrollController = (): void => {
     window.requestAnimationFrame(raf);
 
     bindAnchorLinks(instance);
+    bindBrandToTop();
     setState(readNative());
     return;
   }
@@ -114,5 +140,6 @@ export const initScrollController = (): void => {
   const onScroll = (): void => setState(readNative());
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll, { passive: true });
+  bindBrandToTop();
   onScroll();
 };

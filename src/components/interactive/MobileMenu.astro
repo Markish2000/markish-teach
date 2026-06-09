@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import logoMark from "../../assets/markishLogo-mark.png";
 import type { MobileMenuProps } from "./MobileMenu.interfaces";
 import LangSwitch from "./LangSwitch.astro";
 import ThemeToggle from "./ThemeToggle.astro";
@@ -43,7 +45,7 @@ const {
   <div class="top">
     <span class="brand">
       <span class="brand-mark">
-        <img src="/markishLogo-mark.png" alt="" width="30" height="30" loading="eager" decoding="async" />
+        <Image src={logoMark} alt="" width={30} height={30} densities={[2]} loading="eager" decoding="async" />
       </span>
       Markish.
     </span>

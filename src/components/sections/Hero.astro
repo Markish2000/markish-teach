@@ -1,8 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import type { Locale } from "@shared/types";
 import { getTranslations } from "@i18n";
 import Button from "@shared/components/primitives/Button.astro";
 import Pill from "@shared/components/primitives/Pill.astro";
+import watermark from "../../assets/markishLogo.png";
 
 interface Props {
   readonly locale: Locale;
@@ -13,7 +15,7 @@ const t = getTranslations(locale).hero;
 ---
 
 <section id="top" class="hero" aria-labelledby="hero-title">
-  <img class="hero-watermark" src="/markishLogo.png" alt="" aria-hidden="true" loading="lazy" decoding="async" data-parallax="-0.06" />
+  <Image class="hero-watermark" src={watermark} alt="" width={560} height={560} densities={[2]} aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" data-parallax="-0.06" />
   <div class="hero-coords" aria-hidden="true">
     <span>34°36'S · 58°22'W · BUENOS AIRES</span>
     <span>v1.0 · 2026</span>

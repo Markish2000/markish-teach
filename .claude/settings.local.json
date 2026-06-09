@@ -35,7 +35,9 @@
       "Bash(node -e \"const s=require\\('sharp'\\); s\\('public/og.svg'\\).png\\(\\).toFile\\('public/og.png'\\).then\\(i=>console.log\\('OK',i.width+'x'+i.height,i.size+'b'\\)\\).catch\\(e=>console.error\\('ERR',e.message\\)\\)\")",
       "Bash(node -e \"const s=require\\('sharp'\\);Promise.all\\(['public/markishLogo.png','public/markishLogo-mark.png','public/favicon.svg'].map\\(f=>s\\(f\\).metadata\\(\\).then\\(m=>console.log\\(f,m.width+'x'+m.height,'hasAlpha:'+m.hasAlpha\\)\\).catch\\(e=>console.log\\(f,'ERR',e.message\\)\\)\\)\\)\")",
       "Bash(mkdir -p public/icons)",
-      "Bash(node -e \"console.log\\(require\\('./node_modules/lenis/package.json'\\).version\\)\")"
+      "Bash(node -e \"console.log\\(require\\('./node_modules/lenis/package.json'\\).version\\)\")",
+      "Bash(node -e \"const p=require\\('./package.json'\\);console.log\\('astro',p.dependencies.astro||p.devDependencies.astro\\);console.log\\('sharp',\\(p.dependencies.sharp||p.devDependencies.sharp\\)||'bundled'\\)\")",
+      "Bash(git mv *)"
     ]
   }
 }

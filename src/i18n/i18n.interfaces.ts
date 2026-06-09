@@ -1,7 +1,10 @@
 export interface NavTranslations {
   readonly services: string;
+  readonly problems: string;
   readonly work: string;
+  readonly cases: string;
   readonly process: string;
+  readonly tech: string;
   readonly quality: string;
   readonly contact: string;
   readonly cta: string;
