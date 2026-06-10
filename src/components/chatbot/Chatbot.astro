@@ -173,7 +173,7 @@ const { chat, contactHref } = Astro.props;
     };
 
     fab.addEventListener("click", () => {
-      setOpen(panel.hidden);
+      setOpen(Boolean(panel.hidden));
     });
     closeButton?.addEventListener("click", close);
     resetButton?.addEventListener("click", reset);
