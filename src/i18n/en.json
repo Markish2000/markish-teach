@@ -94,6 +94,25 @@
         "imageAlt": "Markish Arena preview: live heat, real-time leaderboard and a judge-signed scorecard.",
         "preview": "Live leaderboard · In development"
       },
+      {
+        "industry": "Perfumery / Premium landing",
+        "ttl": "BERNUY",
+        "badge": "Phase 01",
+        "desc": "A premium landing for an author perfumery brand, focused on presenting BERNUY's visual identity, its fragrances and value proposition through an elegant, responsive and optimized experience.",
+        "highlights": [
+          "Premium brand landing.",
+          "Showcase of featured fragrances.",
+          "Identity, collection and value proposition sections.",
+          "Olfactory pyramids per fragrance.",
+          "Responsive design for desktop, tablet and mobile.",
+          "Contact or inquiry form."
+        ],
+        "cta": "View case",
+        "href": "https://bernuy.com.ar/",
+        "imageSrc": "/bernuy-preview.png",
+        "imageAlt": "BERNUY preview: premium author-perfumery landing with featured fragrances and olfactory pyramids.",
+        "preview": "Premium landing · Phase 01"
+      },
       { "industry": "Professional services", "ttl": "Case 03", "badge": "Coming soon" }
     ]
   },

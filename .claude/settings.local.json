@@ -52,7 +52,8 @@
       "Bash(node -e \"const p=require\\('@vitejs/plugin-react/package.json'\\); console.log\\(JSON.stringify\\(p.exports,null,1\\)\\)\")",
       "Bash(node -e \"console.log\\(require\\('@vitejs/plugin-react/package.json'\\).version\\)\")",
       "Bash(node -e \"console.log\\(require\\('./node_modules/@astrojs/react/package.json'\\).dependencies\\)\")",
-      "PowerShell($k='HKLM:\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\AppModelUnlock'; if\\(Test-Path $k\\){\\(Get-ItemProperty $k\\).AllowDevelopmentWithoutDevLicense} else {'key-missing'}; whoami /priv 2>$null | Select-String -Pattern 'SeCreateSymbolicLink')"
+      "PowerShell($k='HKLM:\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\AppModelUnlock'; if\\(Test-Path $k\\){\\(Get-ItemProperty $k\\).AllowDevelopmentWithoutDevLicense} else {'key-missing'}; whoami /priv 2>$null | Select-String -Pattern 'SeCreateSymbolicLink')",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('src/i18n/es.json','utf8'\\)\\); JSON.parse\\(require\\('fs'\\).readFileSync\\('src/i18n/en.json','utf8'\\)\\); console.log\\('OK both valid'\\)\")"
     ]
   }
 }
