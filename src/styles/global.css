@@ -1055,6 +1055,10 @@
     display: grid;
     place-items: center;
   }
+  .case-card .preview:has(img) {
+    flex: 0 0 auto;
+    aspect-ratio: 16 / 10;
+  }
   .case-card .preview .placeholder-text {
     font-family: var(--font-mono);
     font-size: 11px;
