@@ -69,14 +69,13 @@
   },
   "cases": {
     "eyebrow": "Casos",
-    "title": "Trabajo en producción.",
+    "title": "Proyectos destacados.",
     "meta": "Próximamente",
     "items": [
-      { "industry": "E-commerce", "ttl": "Caso 01", "badge": "Coming soon" },
       {
         "industry": "SaaS B2B / Fitness Tech",
         "ttl": "Markish Arena",
-        "badge": "En desarrollo",
+        "badge": "Finalizado",
         "desc": "Plataforma SaaS para organizar, administrar y puntuar competencias de fitness funcional. Permite gestionar atletas, categorías, eventos, workouts, jueces, resultados y rankings en tiempo real.",
         "highlights": [
           "Gestión de organizaciones y competencias.",
@@ -95,9 +94,30 @@
         "preview": "Leaderboard en vivo · En desarrollo"
       },
       {
+        "industry": "SaaS B2B / Fitness Management",
+        "ttl": "Markish Box",
+        "badge": "Próximamente",
+        "desc": "Plataforma integral para la gestión de boxes y centros de entrenamiento funcional. Permitirá administrar alumnos, membresías, clases, reservas, asistencia y progreso desde un único ecosistema digital.",
+        "highlights": [
+          "Gestión de alumnos, entrenadores, sucursales y membresías.",
+          "Reservas de clases con control de cupos y listas de espera.",
+          "Check-in de alumnos mediante reservas confirmadas.",
+          "Seguimiento de asistencia, progreso y récords personales.",
+          "Control de vencimientos, renovaciones y pagos.",
+          "Notificaciones y recordatorios automáticos.",
+          "Plataforma white-label adaptable a la identidad de cada box.",
+          "Panel administrativo y experiencia mobile para alumnos."
+        ],
+        "note": "Próximamente",
+        "imageSrc": "/markish-box-logo-dark.svg",
+        "imageSrcLight": "/markish-box-logo-light.svg",
+        "imageFit": "contain",
+        "imageAlt": "Vista previa de Markish Box, plataforma para la gestión de boxes y centros de entrenamiento."
+      },
+      {
         "industry": "Perfumería / Landing premium",
         "ttl": "BERNUY",
-        "badge": "Fase 01",
+        "badge": "Finalizado",
         "desc": "Landing premium para una marca de perfumería de autor, enfocada en presentar la identidad visual de BERNUY, sus fragancias y su propuesta de valor mediante una experiencia elegante, responsive y optimizada.",
         "highlights": [
           "Landing premium de marca.",

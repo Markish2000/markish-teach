@@ -79,8 +79,12 @@ export interface CaseItem {
   readonly cta?: string;
   readonly href?: string;
   readonly imageSrc?: string;
+  /** Variante del asset para el tema claro; si falta se usa `imageSrc` en ambos temas. */
+  readonly imageSrcLight?: string;
+  readonly imageFit?: "cover" | "contain";
   readonly imageAlt?: string;
   readonly preview?: string;
+  readonly note?: string;
 }
 
 export interface CasesTranslations {

@@ -1,6 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import logoMark from "../../assets/markishLogo-mark.png";
+import Brand from "@shared/components/brand/Brand.astro";
 import type { MobileMenuProps } from "./MobileMenu.interfaces";
 import LangSwitch from "./LangSwitch.astro";
 import ThemeToggle from "./ThemeToggle.astro";
@@ -43,12 +42,7 @@ const {
   aria-modal="true"
 >
   <div class="top">
-    <span class="brand">
-      <span class="brand-mark">
-        <Image src={logoMark} alt="" width={30} height={30} densities={[2]} loading="eager" decoding="async" />
-      </span>
-      Markish.
-    </span>
+    <Brand variant="lockup" data-mobile-menu-link />
     <button type="button" class="icon-btn" data-mobile-menu-close aria-label={closeLabel}>
       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
         <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />

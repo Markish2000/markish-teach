@@ -10,13 +10,25 @@ import tailwindcss from "@tailwindcss/vite";
 const r = (p) => fileURLToPath(new URL(p, import.meta.url));
 
 export default defineConfig({
-  site: "https://markish.dev",
+  site: "https://www.markishtech.com.ar",
   trailingSlash: "never",
   output: "server",
   adapter: vercel(),
   build: { format: "directory" },
   devToolbar: { enabled: false },
-  integrations: [react(), sitemap()],
+  // 301 real a nivel adapter en vez del meta-refresh que generaba `src/pages/index.astro`.
+  redirects: { "/": "/es" },
+  integrations: [
+    react(),
+    sitemap({
+      // El root solo redirige: no debe listarse como URL indexable.
+      filter: (page) => page !== "https://www.markishtech.com.ar/",
+      i18n: {
+        defaultLocale: "es",
+        locales: { es: "es-AR", en: "en-US" },
+      },
+    }),
+  ],
   i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],

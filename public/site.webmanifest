@@ -2,9 +2,10 @@
   "name": "Markish — Estudio técnico de webs modernas",
   "short_name": "Markish",
   "description": "Diseñamos, desarrollamos y optimizamos webs rápidas, accesibles y responsive desde Buenos Aires.",
+  "id": "/es",
   "lang": "es",
   "dir": "ltr",
-  "start_url": "/",
+  "start_url": "/es",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
@@ -25,7 +26,7 @@
       "purpose": "any"
     },
     {
-      "src": "/icons/icon-maskable-512.png",
+      "src": "/icons/icon-512-maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

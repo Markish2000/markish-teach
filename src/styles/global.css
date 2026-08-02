@@ -271,16 +271,30 @@
     text-decoration: none;
   }
   .brand-mark {
-    width: 30px;
-    height: 30px;
+    display: inline-flex;
+    align-items: center;
     position: relative;
     flex: none;
   }
-  .brand-mark img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  .brand-mark .logo-mark {
     display: block;
+    height: auto;
+  }
+  /* Variante con el logo horizontal completo: una imagen por tema. */
+  .brand-lockup {
+    gap: 0;
+  }
+  .brand-lockup-img {
+    display: block;
+    width: 176px;
+    height: auto;
+  }
+  [data-theme="dark"] .brand-lockup-img.is-light,
+  [data-theme="light"] .brand-lockup-img.is-dark {
+    display: none;
+  }
+  .footer-brand .brand-lockup-img {
+    width: 200px;
   }
   .nav-links {
     display: flex;
@@ -1082,6 +1096,9 @@
     color: var(--ink-3);
     letter-spacing: 0.14em;
     text-transform: uppercase;
+    /* Reserva 2 lineas para que el preview arranque a la misma altura en todas las tarjetas. */
+    line-height: 1.4;
+    min-height: 2.8em;
   }
   .case-card .ttl {
     font-family: var(--font-display);
@@ -1100,9 +1117,20 @@
     background: rgba(94, 233, 255, 0.08);
   }
   .case-card .preview img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  /* Assets de marca: se muestran completos, no recortados. */
+  .case-card .preview.is-contain img {
+    object-fit: contain;
+    padding: 9% 11%;
+  }
+  /* Una variante del asset por tema, igual que .brand-lockup-img. */
+  [data-theme="dark"] .case-card .preview-img.is-light,
+  [data-theme="light"] .case-card .preview-img.is-dark {
+    display: none;
   }
   .case-card .case-desc {
     color: var(--ink-2);
@@ -1153,6 +1181,22 @@
   .case-card .case-cta:focus-visible {
     gap: 12px;
     color: var(--accent);
+  }
+  .case-card .case-note {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    margin-top: auto;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px dashed var(--hairline-strong);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    cursor: default;
+    user-select: none;
   }
 
   /* process */
@@ -1961,6 +2005,11 @@
    ========================================================================== */
 
 @media (max-width: 1100px) {
+  /* Los 8 links del nav siguen visibles hasta 760px: el logo cede espacio.
+     Hijo directo para no alcanzar el logo del panel del menu movil. */
+  .nav > .brand-lockup .brand-lockup-img {
+    width: 132px;
+  }
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -2001,6 +2050,10 @@
 }
 
 @media (max-width: 760px) {
+  /* Con el nav colapsado en el menu hamburguesa vuelve a haber lugar. */
+  .nav > .brand-lockup .brand-lockup-img {
+    width: 152px;
+  }
   .nav-links {
     display: none;
   }
@@ -2043,6 +2096,10 @@
   }
   .cases-grid {
     grid-template-columns: 1fr;
+  }
+  /* Una sola columna: no hay tarjetas vecinas que alinear. */
+  .case-card .industry {
+    min-height: 0;
   }
   .process-rail {
     grid-template-columns: 1fr;

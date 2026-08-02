@@ -1,0 +1,32 @@
+---
+interface Props extends astroHTML.JSX.SVGAttributes {
+  readonly size?: number;
+  readonly className?: string;
+}
+
+/**
+ * Isotipo Markish. La "M" hereda `currentColor`, por lo que se adapta sola al
+ * tema claro/oscuro; la "T" mantiene siempre el azul de marca.
+ */
+const { size = 30, className, ...rest } = Astro.props;
+const height = Math.round((size * 378) / 460);
+---
+
+<svg
+  class:list={["logo-mark", className]}
+  viewBox="26 67 460 378"
+  width={size}
+  height={height}
+  fill="none"
+  role="img"
+  aria-hidden="true"
+  focusable="false"
+  {...rest}
+>
+  <polygon
+    fill="currentColor"
+    points="211.69,440.84 119.89,371.16 26.13,67.24 255.92,235.98 205.38,276.09 134.98,223.38"
+  />
+  <polygon fill="#5780C0" points="311.35,444.76 354.66,292.32 441.35,221.2 399.1,369.07" />
+  <polygon fill="#5780C0" points="281.73,328.92 220.86,284.8 485.79,67.63 448.86,195.62" />
+</svg>
