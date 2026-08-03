@@ -15,7 +15,7 @@ interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
 
 const {
   href = "/",
-  text = "Markish.",
+  text = "Markish Tech.",
   variant = "mark",
   loading = "eager",
   ...rest
@@ -45,7 +45,7 @@ const {
       />
     </a>
   ) : (
-    <a class="brand" href={href} aria-label="Markish" {...rest}>
+    <a class="brand" href={href} aria-label="Markish Tech" {...rest}>
       <span class="brand-mark">
         <LogoMark size={32} />
       </span>

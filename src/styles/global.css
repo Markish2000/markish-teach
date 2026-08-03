@@ -296,8 +296,14 @@
   .footer-brand .brand-lockup-img {
     width: 200px;
   }
+  /* El logo del header nunca se comprime: sin esto flex-shrink lo aplasta
+     cuando los links + tools no entran. */
+  .nav > .brand-lockup {
+    flex: none;
+  }
   .nav-links {
     display: flex;
+    flex-wrap: nowrap;
     gap: 30px;
     align-items: center;
   }
@@ -306,6 +312,7 @@
     text-decoration: none;
     font-size: 14px;
     letter-spacing: -0.005em;
+    white-space: nowrap;
     transition: color 0.15s;
     position: relative;
   }
@@ -314,8 +321,12 @@
   }
   .nav-tools {
     display: flex;
+    flex: none;
     align-items: center;
     gap: 10px;
+  }
+  .nav-tools > .btn {
+    white-space: nowrap;
   }
 
   /* icon button */
@@ -2004,11 +2015,29 @@
    Responsive
    ========================================================================== */
 
+/* Primer punto de presion del header: los 8 links + tools + logo dejan de
+   entrar cerca de 1270px. Se aprieta el nav en vez de dejar que flex aplaste
+   el logo y recorte el CTA. */
+@media (max-width: 1280px) {
+  .nav > .brand-lockup .brand-lockup-img {
+    width: 148px;
+  }
+  .nav-links {
+    gap: 20px;
+  }
+}
+
 @media (max-width: 1100px) {
-  /* Los 8 links del nav siguen visibles hasta 760px: el logo cede espacio.
+  /* Los 8 links del nav siguen visibles hasta 1024px: el logo cede espacio.
      Hijo directo para no alcanzar el logo del panel del menu movil. */
   .nav > .brand-lockup .brand-lockup-img {
     width: 132px;
+  }
+  .nav-links {
+    gap: 14px;
+  }
+  .nav-links a {
+    font-size: 13px;
   }
   .hero-grid {
     grid-template-columns: 1fr;
@@ -2049,15 +2078,20 @@
   }
 }
 
-@media (max-width: 760px) {
-  /* Con el nav colapsado en el menu hamburguesa vuelve a haber lugar. */
+/* Debajo de 1024px ni apretando entran los 8 links junto al CTA: se colapsa
+   todo al menu hamburguesa, que ya contiene links + lang + CTA. */
+@media (max-width: 1024px) {
+  /* Con el nav colapsado vuelve a haber lugar para el logo completo. */
   .nav > .brand-lockup .brand-lockup-img {
-    width: 152px;
+    width: 176px;
   }
   .nav-links {
     display: none;
   }
   .nav-tools > .btn {
+    display: none;
+  }
+  .nav-tools .lang-switch {
     display: none;
   }
   .menu-trigger {
@@ -2066,8 +2100,11 @@
   .mobile-menu {
     display: flex;
   }
-  .nav-tools .lang-switch {
-    display: none;
+}
+
+@media (max-width: 760px) {
+  .nav > .brand-lockup .brand-lockup-img {
+    width: 152px;
   }
   .scores {
     grid-template-columns: 1fr;

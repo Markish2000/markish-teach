@@ -33,7 +33,7 @@ const sendViaWeb3Forms = async (
   accessKey: string,
   payload: z.infer<typeof payloadSchema>
 ): Promise<boolean> => {
-  const subject = `Markish · nuevo contacto — ${payload.name}`;
+  const subject = `Markish Tech · nuevo contacto — ${payload.name}`;
   const message = [
     `Servicio: ${payload.service}`,
     `Empresa: ${payload.company || "—"}`,

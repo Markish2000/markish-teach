@@ -205,9 +205,9 @@
     ]
   },
   "chat": {
-    "title": "Markish Assistant",
+    "title": "Markish Tech Assistant",
     "status": "Online",
-    "greet": "Hi, I'm the Markish assistant. What do you need to improve?",
+    "greet": "Hi, I'm the Markish Tech assistant. What do you need to improve?",
     "restart": "Restart conversation",
     "foot": "Guided assistant · no AI",
     "open_label": "Open assistant",
@@ -225,16 +225,16 @@
     "end_no": "Back to menu"
   },
   "foot": {
-    "copy": "© 2026 Markish — Technology studio",
+    "copy": "© 2026 Markish Tech — Technology studio",
     "meta": "Built with clean code · Buenos Aires"
   },
   "seo": {
     "home": {
-      "title": "Markish — Modern websites, technical studio",
+      "title": "Web Development | Markish Tech",
       "description": "We design, develop and optimize fast, accessible and responsive websites from Buenos Aires. Free audit.",
-      "og_title": "Markish — Modern websites that grow your business",
+      "og_title": "Markish Tech — Modern websites that grow your business",
       "og_description": "Technical studio in Buenos Aires. Lighthouse 100, WCAG AA, measured performance.",
-      "og_image_alt": "Markish — Technical studio"
+      "og_image_alt": "Markish Tech — Technical studio"
     }
   },
   "a11y": {

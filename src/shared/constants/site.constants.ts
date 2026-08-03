@@ -1,10 +1,10 @@
 export const SITE_URL = "https://www.markishtech.com.ar";
 
-export const SITE_NAME = "Markish";
+export const SITE_NAME = "Markish Tech";
 
 export const ORGANIZATION = {
-  name: "Markish",
-  legalName: "Markish",
+  name: "Markish Tech",
+  legalName: "Markish Tech",
   url: SITE_URL,
   email: "markishtech@gmail.com",
   city: "Buenos Aires",

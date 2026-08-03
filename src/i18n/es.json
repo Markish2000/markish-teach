@@ -205,9 +205,9 @@
     ]
   },
   "chat": {
-    "title": "Asistente Markish",
+    "title": "Asistente Markish Tech",
     "status": "En línea",
-    "greet": "Hola, soy el asistente de Markish. ¿Qué necesitás mejorar?",
+    "greet": "Hola, soy el asistente de Markish Tech. ¿Qué necesitás mejorar?",
     "restart": "Reiniciar conversación",
     "foot": "Asistente guiado · sin IA",
     "open_label": "Abrir asistente",
@@ -225,16 +225,16 @@
     "end_no": "Volver al menú"
   },
   "foot": {
-    "copy": "© 2026 Markish — Estudio de tecnología",
+    "copy": "© 2026 Markish Tech — Estudio de tecnología",
     "meta": "Hecho con código limpio · Buenos Aires"
   },
   "seo": {
     "home": {
-      "title": "Markish — Estudio técnico de webs modernas",
+      "title": "Desarrollo Web | Markish Tech",
       "description": "Diseñamos, desarrollamos y optimizamos webs rápidas, accesibles y responsive desde Buenos Aires. Auditoría gratuita.",
-      "og_title": "Markish — Webs modernas que hacen crecer tu negocio",
+      "og_title": "Markish Tech — Webs modernas que hacen crecer tu negocio",
       "og_description": "Estudio técnico de Buenos Aires. Lighthouse 100, WCAG AA, performance medida y comprobada.",
-      "og_image_alt": "Markish — Estudio técnico"
+      "og_image_alt": "Markish Tech — Estudio técnico"
     }
   },
   "a11y": {
