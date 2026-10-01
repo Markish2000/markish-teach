@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import nodemailer from "nodemailer";
+import { buildContactEmailHtml } from "@shared/contact-email";
 import { z } from "zod";
 
 export const prerender = false;
@@ -56,6 +57,7 @@ const sendViaGmail = async (
       replyTo: `"${payload.name.replace(/["\r\n]/g, "")}" <${payload.email}>`,
       subject: `Markish Tech · nuevo contacto — ${payload.name.replace(/[\r\n]/g, " ")}`,
       text,
+      html: buildContactEmailHtml(payload),
     });
     return true;
   } catch (error) {

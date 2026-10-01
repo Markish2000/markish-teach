@@ -90,7 +90,6 @@ export interface CaseItem {
 export interface CasesTranslations {
   readonly eyebrow: string;
   readonly title: string;
-  readonly meta: string;
   readonly items: ReadonlyArray<CaseItem>;
 }
 
