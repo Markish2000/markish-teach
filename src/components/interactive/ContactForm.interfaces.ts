@@ -1,8 +1,8 @@
 export interface ContactFormLabels {
   readonly name: string;
   readonly email: string;
-  readonly company: string;
   readonly service: string;
+  readonly service_placeholder: string;
   readonly message: string;
   readonly submit: string;
   readonly sending: string;
@@ -22,7 +22,6 @@ export interface ContactFormProps {
 export interface ContactFormPayload {
   readonly name: string;
   readonly email: string;
-  readonly company: string;
   readonly service: string;
   readonly message: string;
 }

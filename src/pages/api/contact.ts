@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import nodemailer from "nodemailer";
 import { z } from "zod";
 
 export const prerender = false;
@@ -6,7 +7,6 @@ export const prerender = false;
 const payloadSchema = z.object({
   name: z.string().min(1).max(120),
   email: z.email().min(1).max(160),
-  company: z.string().max(160).optional().default(""),
   service: z.string().min(1).max(120),
   message: z.string().min(8).max(4000),
 });
@@ -29,38 +29,39 @@ const jsonResponse = (status: number, body: Record<string, unknown>): Response =
     headers: { "Content-Type": "application/json" },
   });
 
-const sendViaWeb3Forms = async (
-  accessKey: string,
+const sendViaGmail = async (
+  user: string,
+  appPassword: string,
   payload: z.infer<typeof payloadSchema>
 ): Promise<boolean> => {
-  const subject = `Markish Tech · nuevo contacto — ${payload.name}`;
-  const message = [
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: { user, pass: appPassword },
+  });
+
+  const text = [
+    `Nombre: ${payload.name}`,
+    `Email: ${payload.email}`,
     `Servicio: ${payload.service}`,
-    `Empresa: ${payload.company || "—"}`,
     "",
     payload.message,
   ].join("\n");
 
-  const response = await fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      access_key: accessKey,
-      subject,
-      from_name: payload.name,
-      name: payload.name,
-      email: payload.email,
-      company: payload.company || "—",
-      service: payload.service,
-      message,
-    }),
-  });
-  if (!response.ok) return false;
-  const result = (await response.json().catch(() => null)) as { success?: boolean } | null;
-  return result?.success === true;
+  try {
+    await transporter.sendMail({
+      from: `"Markish Tech Web" <${user}>`,
+      to: user,
+      replyTo: `"${payload.name.replace(/["\r\n]/g, "")}" <${payload.email}>`,
+      subject: `Markish Tech · nuevo contacto — ${payload.name.replace(/[\r\n]/g, " ")}`,
+      text,
+    });
+    return true;
+  } catch (error) {
+    console.error("[contact] gmail smtp failed:", error);
+    return false;
+  }
 };
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
@@ -78,14 +79,15 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     return jsonResponse(400, { error: "validation", issues: parsed.error.issues });
   }
 
-  const accessKey = import.meta.env["WEB3FORMS_ACCESS_KEY"];
+  const gmailUser = String(import.meta.env["GMAIL_USER"] ?? "");
+  const gmailAppPassword = String(import.meta.env["GMAIL_APP_PASSWORD"] ?? "").replace(/\s+/g, "");
 
-  if (!accessKey || String(accessKey).length === 0) {
-    console.info("[contact] WEB3FORMS_ACCESS_KEY missing — payload received in dev mode:", parsed.data);
+  if (!gmailUser || !gmailAppPassword) {
+    console.info("[contact] GMAIL_USER / GMAIL_APP_PASSWORD missing — payload received in dev mode:", parsed.data);
     return jsonResponse(200, { ok: true, mode: "dev" });
   }
 
-  const sent = await sendViaWeb3Forms(String(accessKey), parsed.data);
+  const sent = await sendViaGmail(gmailUser, gmailAppPassword, parsed.data);
   if (!sent) {
     return jsonResponse(502, { error: "send_failed" });
   }

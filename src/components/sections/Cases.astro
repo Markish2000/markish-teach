@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 import { getTranslations } from "@i18n";
 import SectionHead from "@shared/components/sections/SectionHead.astro";
 import arenaPreview from "@assets/markish-arena-preview.png";
-import bernuyPreview from "@assets/bernuy-preview.png";
+import forjaPreview from "@assets/forja-preview.png";
 
 interface Props {
   readonly locale: Locale;
@@ -16,7 +16,7 @@ interface Props {
  */
 const RASTER_PREVIEWS: Record<string, ImageMetadata> = {
   "/markish-arena-preview.png": arenaPreview,
-  "/bernuy-preview.png": bernuyPreview,
+  "/forja-preview.png": forjaPreview,
 };
 
 /** Ratio de los logos SVG (`viewBox="0 0 1200 630"`), fijo para evitar CLS. */

@@ -47,22 +47,52 @@ const minMessage = labels.error_min.replace("{min}", String(messageMin));
     </div>
 
     <div class="field">
-      <label for="contact-company">{labels.company}</label>
-      <input id="contact-company" name="company" type="text" autocomplete="organization" />
-    </div>
-
-    <div class="field">
-      <label for="contact-service">{labels.service}</label>
-      <select
-        id="contact-service"
-        name="service"
-        aria-describedby="contact-service-error"
-      >
-        <option value="">-</option>
-        {labels.service_opts.map((option) => (
-          <option value={option}>{option}</option>
-        ))}
-      </select>
+      <label id="contact-service-label" for="contact-service">{labels.service}</label>
+      <div class="select" data-select data-placeholder={labels.service_placeholder}>
+        <button
+          type="button"
+          id="contact-service"
+          class="select-trigger"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-controls="contact-service-list"
+          aria-labelledby="contact-service-label contact-service-value"
+          aria-describedby="contact-service-error"
+          data-select-trigger
+        >
+          <span id="contact-service-value" class="select-value is-placeholder" data-select-value>
+            {labels.service_placeholder}
+          </span>
+          <svg class="select-chevron" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M4 6l4 4 4-4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <input type="hidden" name="service" value="" />
+        <ul id="contact-service-list" class="select-list" role="listbox" tabindex="-1" hidden data-select-list>
+          {labels.service_opts.map((option) => (
+            <li class="select-option" role="option" aria-selected="false" tabindex="-1" data-value={option}>
+              <span>{option}</span>
+              <svg class="select-check" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
+                <path
+                  d="M3 8.5l3.5 3.5L13 5"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </li>
+          ))}
+        </ul>
+      </div>
       <span id="contact-service-error" role="alert" class="field-error" data-field-error="service" hidden></span>
     </div>
 
@@ -133,6 +163,10 @@ const minMessage = labels.error_min.replace("{min}", String(messageMin));
     if (field instanceof HTMLElement) {
       field.setAttribute("aria-invalid", message ? "true" : "false");
     }
+    const trigger = field instanceof HTMLInputElement && field.type === "hidden"
+      ? field.parentElement?.querySelector<HTMLElement>("[data-select-trigger]")
+      : null;
+    trigger?.setAttribute("aria-invalid", message ? "true" : "false");
     if (!error) return;
     error.textContent = message;
     error.hidden = message.length === 0;
@@ -193,6 +227,89 @@ const minMessage = labels.error_min.replace("{min}", String(messageMin));
     }
   };
 
+  const initSelect = (root: HTMLElement): void => {
+    const trigger = root.querySelector<HTMLButtonElement>("[data-select-trigger]");
+    const list = root.querySelector<HTMLElement>("[data-select-list]");
+    const valueEl = root.querySelector<HTMLElement>("[data-select-value]");
+    const hidden = root.querySelector<HTMLInputElement>("input[type='hidden']");
+    if (!trigger || !list || !valueEl || !hidden) return;
+    const placeholder = root.dataset["placeholder"] ?? "";
+    const options = Array.from(list.querySelectorAll<HTMLElement>("[role='option']"));
+
+    const isOpen = (): boolean => !list.hidden;
+
+    const close = (refocus: boolean): void => {
+      list.hidden = true;
+      trigger.setAttribute("aria-expanded", "false");
+      if (refocus) trigger.focus();
+    };
+
+    const open = (): void => {
+      list.hidden = false;
+      trigger.setAttribute("aria-expanded", "true");
+      (options.find((o) => o.getAttribute("aria-selected") === "true") ?? options[0])?.focus();
+    };
+
+    const select = (option: HTMLElement): void => {
+      const value = option.dataset["value"] ?? "";
+      hidden.value = value;
+      valueEl.textContent = value;
+      valueEl.classList.remove("is-placeholder");
+      options.forEach((o) => o.setAttribute("aria-selected", String(o === option)));
+      hidden.dispatchEvent(new Event("input", { bubbles: true }));
+      close(true);
+    };
+
+    const clear = (): void => {
+      hidden.value = "";
+      valueEl.textContent = placeholder;
+      valueEl.classList.add("is-placeholder");
+      options.forEach((o) => o.setAttribute("aria-selected", "false"));
+    };
+
+    trigger.addEventListener("click", () => (isOpen() ? close(false) : open()));
+    trigger.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+        event.preventDefault();
+        open();
+      }
+    });
+
+    options.forEach((option, index) => {
+      option.addEventListener("click", () => select(option));
+      option.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          options[(index + 1) % options.length]?.focus();
+        } else if (event.key === "ArrowUp") {
+          event.preventDefault();
+          options[(index - 1 + options.length) % options.length]?.focus();
+        } else if (event.key === "Home") {
+          event.preventDefault();
+          options[0]?.focus();
+        } else if (event.key === "End") {
+          event.preventDefault();
+          options[options.length - 1]?.focus();
+        } else if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          select(option);
+        } else if (event.key === "Escape") {
+          event.preventDefault();
+          close(true);
+        } else if (event.key === "Tab") {
+          close(false);
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (isOpen() && event.target instanceof Node && !root.contains(event.target)) close(false);
+    });
+    root.closest("form")?.addEventListener("reset", clear);
+  };
+
+  document.querySelectorAll<HTMLElement>("[data-select]").forEach(initSelect);
+
   document.querySelectorAll<HTMLFormElement>("[data-contact-form]").forEach((form) => {
     const formError = form.querySelector<HTMLElement>("[data-form-error]");
 
@@ -215,7 +332,6 @@ const minMessage = labels.error_min.replace("{min}", String(messageMin));
       const data = {
         name: getValue(form, "name"),
         email: getValue(form, "email"),
-        company: getValue(form, "company"),
         service: getValue(form, "service"),
         message: getValue(form, "message"),
       };

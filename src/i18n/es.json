@@ -88,7 +88,7 @@
           "Enfoque multi-tenant para que cada organización opere de forma independiente."
         ],
         "cta": "Ver caso",
-        "href": "https://markisharena.vercel.app/",
+        "href": "https://www.markisharena.com.ar/",
         "imageSrc": "/markish-arena-preview.png",
         "imageAlt": "Vista previa de Markish Arena: heat en vivo, leaderboard en tiempo real y scorecard firmada por el juez.",
         "preview": "Leaderboard en vivo · En desarrollo"
@@ -115,23 +115,23 @@
         "imageAlt": "Vista previa de Markish Box, plataforma para la gestión de boxes y centros de entrenamiento."
       },
       {
-        "industry": "Perfumería / Landing premium",
-        "ttl": "BERNUY",
+        "industry": "Eventos / Fitness funcional",
+        "ttl": "FORJA Challenge",
         "badge": "Finalizado",
-        "desc": "Landing premium para una marca de perfumería de autor, enfocada en presentar la identidad visual de BERNUY, sus fragancias y su propuesta de valor mediante una experiencia elegante, responsive y optimizada.",
+        "desc": "Sitio web oficial de FORJA Challenge 2027, competencia de fitness funcional con fase clasificatoria online y final presencial. Presenta el evento, las categorías, los parámetros, el Open, la final y los sponsors.",
         "highlights": [
-          "Landing premium de marca.",
-          "Presentación de fragancias destacadas.",
-          "Secciones de identidad, colección y propuesta de valor.",
-          "Pirámides olfativas por fragancia.",
-          "Diseño responsive para desktop, tablet y mobile.",
-          "Formulario de contacto o consulta."
+          "Sitio web oficial del evento.",
+          "Etapas de la competencia: inscripciones, Open online y Gran Final.",
+          "Categorías Beginners, Scaled, Advanced, RX y Masters.",
+          "Parámetros de pesos y movimientos por categoría.",
+          "Sección de sponsors y sede de la final.",
+          "Diseño responsive para desktop, tablet y mobile."
         ],
         "cta": "Ver caso",
-        "href": "https://bernuy.com.ar/",
-        "imageSrc": "/bernuy-preview.png",
-        "imageAlt": "Vista previa de BERNUY: landing premium de perfumería de autor con fragancias destacadas y pirámides olfativas.",
-        "preview": "Landing premium · Fase 01"
+        "href": "https://www.forjachallenge.com.ar/",
+        "imageSrc": "/forja-preview.png",
+        "imageAlt": "Vista previa de FORJA Challenge: sitio de competencia de fitness funcional con un martillo sobre un yunque.",
+        "preview": "Sitio de evento · FORJA Challenge"
       },
       { "industry": "Servicios profesionales", "ttl": "Caso 03", "badge": "Coming soon" }
     ]
@@ -186,8 +186,8 @@
     "meta": "Respuesta en 24h",
     "name": "Nombre",
     "email": "Email",
-    "company": "Empresa",
     "service": "¿Qué necesitás?",
+    "service_placeholder": "Elegí una opción",
     "message": "Contanos brevemente",
     "submit": "Enviar mensaje",
     "sending": "Enviando…",
@@ -199,7 +199,7 @@
     "service_opts": ["Web nueva", "Rediseño", "Performance / SEO", "Accesibilidad", "Automatizaciones", "Solo conversar"],
     "info": [
       { "lbl": "Email", "val": "markishtech@gmail.com" },
-      { "lbl": "WhatsApp", "val": "+54 9 11 0000 0000" },
+      { "lbl": "WhatsApp", "val": "+54 9 11 5164 9895" },
       { "lbl": "Ubicación", "val": "Buenos Aires · Remoto global" },
       { "lbl": "Horario", "val": "Lun–Vie · 9 a 18h ART" }
     ]

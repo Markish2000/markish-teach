@@ -10,7 +10,6 @@ const buildSchema = (labels: ContactFormLabels): z.ZodType<ContactFormPayload> =
   z.object({
     name: z.string().min(1, labels.error_required),
     email: z.email(labels.error_email).min(1, labels.error_required),
-    company: z.string().default(""),
     service: z.string().min(1, labels.error_required),
     message: z.string().min(8, labels.error_min.replace("{min}", "8")),
   });
@@ -25,7 +24,7 @@ export const ContactForm: FC<ContactFormProps> = ({ labels, endpoint }) => {
     formState: { errors },
     reset,
   } = useForm<ContactFormPayload>({
-    defaultValues: { name: "", email: "", company: "", service: "", message: "" },
+    defaultValues: { name: "", email: "", service: "", message: "" },
     mode: "onBlur",
   });
 
@@ -107,11 +106,6 @@ export const ContactForm: FC<ContactFormProps> = ({ labels, endpoint }) => {
             </span>
           )}
         </div>
-      </div>
-
-      <div className="field">
-        <label htmlFor="contact-company">{labels.company}</label>
-        <input id="contact-company" type="text" autoComplete="organization" {...register("company")} />
       </div>
 
       <div className="field">

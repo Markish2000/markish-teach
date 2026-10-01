@@ -152,8 +152,8 @@ export interface ContactTranslations {
   readonly meta: string;
   readonly name: string;
   readonly email: string;
-  readonly company: string;
   readonly service: string;
+  readonly service_placeholder: string;
   readonly message: string;
   readonly submit: string;
   readonly sending: string;
