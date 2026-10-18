@@ -34,7 +34,7 @@ Para auditar otro entorno (preview de Vercel o producción): `BASE_URL=https://.
 | `a11y` | axe WCAG 2.2 AA en todas las páginas, tema oscuro y claro |
 | `performance` | Ningún layout forzado desde JavaScript (el "[Violation] Forced reflow" de la consola) al cargar ni en la primera interacción, a 390, 628 y 1440 px. Usa una traza de rendimiento de Chrome |
 
-`/api/contact` es una función serverless que no existe en el servidor local: los tests la simulan con `page.route`. Si el build incluye Vercel Web Analytics (`VERCEL_WEB_ANALYTICS=true`), el servidor local responde un script vacío en `/_vercel/insights/script.js`.
+`/api/contact` es una función serverless que no existe en el servidor local: los tests la simulan con `page.route`. Vercel Web Analytics solo existe en Vercel: el servidor local responde un script vacío en `/_vercel/insights/script.js`.
 
 ## Revisión manual pendiente
 

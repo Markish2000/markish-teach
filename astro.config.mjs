@@ -12,11 +12,11 @@ export default defineConfig({
   trailingSlash: "never",
   // Todo se prerenderiza; solo `/api/contact` corre on-demand (`prerender = false`).
   output: "static",
-  // Vercel Web Analytics (first-party, cookieless). The script only exists once
-  // Analytics is enabled for the project in the Vercel dashboard; until then it
-  // 404s and logs console errors. So it is opt-in: enable it in the dashboard,
-  // set VERCEL_WEB_ANALYTICS=true in the project env vars, then redeploy.
-  adapter: vercel({ webAnalytics: { enabled: process.env["VERCEL_WEB_ANALYTICS"] === "true" } }),
+  // Vercel Web Analytics (first-party, cookieless). Same script as the
+  // @vercel/analytics <Analytics /> component. It requires Analytics to be enabled
+  // for the project in the Vercel dashboard (enabled 2026-10-18); if it is ever
+  // disabled, set this to false or /_vercel/insights/script.js will 404.
+  adapter: vercel({ webAnalytics: { enabled: true } }),
   build: { format: "directory", inlineStylesheets: "always" },
   devToolbar: { enabled: false },
   // 301 real a nivel adapter en vez del meta-refresh que generaba `src/pages/index.astro`.

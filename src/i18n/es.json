@@ -445,7 +445,7 @@
         {
           "title": "Analítica y cookies",
           "body": [
-            "Este sitio no usa cookies. Para conocer cuántas personas lo visitan podemos usar Vercel Web Analytics, que registra datos agregados (por ejemplo, páginas vistas, sitio de origen, país y tipo de dispositivo) sin cookies y sin identificar a las personas.",
+            "Este sitio no usa cookies. Para conocer cuántas personas lo visitan usamos Vercel Web Analytics, que registra datos agregados (por ejemplo, páginas vistas, sitio de origen, país y tipo de dispositivo) sin cookies y sin identificar a las personas.",
             "Tu preferencia de tema claro u oscuro se guarda en el almacenamiento local de tu navegador y no se envía a ningún servidor."
           ]
         },
