@@ -73,13 +73,14 @@ const scrollToTop = (): void => {
   window.scrollTo({ top: 0, behavior });
 };
 
-/** Clicking the brand logo glides to the top instead of reloading the page. */
+/** On the home page, clicking the brand logo glides to the top instead of reloading. */
 const bindBrandToTop = (): void => {
   document.addEventListener("click", (event) => {
     if (event.defaultPrevented) return;
     const target = event.target;
     if (!(target instanceof Element)) return;
-    if (!target.closest(".brand")) return;
+    const brand = target.closest<HTMLAnchorElement>("a.brand");
+    if (!brand || brand.pathname !== window.location.pathname) return;
     event.preventDefault();
     scrollToTop();
     if (window.history && window.location.hash) {
@@ -102,6 +103,10 @@ const bindAnchorLinks = (instance: Lenis): void => {
     if (!(dest instanceof HTMLElement)) return;
     event.preventDefault();
     instance.scrollTo(dest, { offset: -headerOffset() });
+    // Keep native semantics: update the URL and move keyboard focus to the target.
+    window.history.pushState(null, "", hash);
+    if (!dest.matches("a, button, input, select, textarea, [tabindex]")) dest.setAttribute("tabindex", "-1");
+    dest.focus({ preventScroll: true });
   });
 };
 

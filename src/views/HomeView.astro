@@ -1,0 +1,43 @@
+---
+import type { Locale } from "@shared/types";
+import { sectionAlternates } from "@shared/constants";
+import { NODE_ID } from "@shared/helpers";
+import { getTranslations } from "@i18n";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/sections/Hero.astro";
+import Services from "@components/sections/Services.astro";
+import Problems from "@components/sections/Problems.astro";
+import Cases from "@components/sections/Cases.astro";
+import Process from "@components/sections/Process.astro";
+import Tech from "@components/sections/Tech.astro";
+import Quality from "@components/sections/Quality.astro";
+import Cta from "@components/sections/Cta.astro";
+import Contact from "@components/sections/Contact.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const seo = getTranslations(locale).seo.home;
+---
+
+<BaseLayout
+  locale={locale}
+  title={seo.title}
+  description={seo.description}
+  alternates={sectionAlternates("home")}
+  pageNode={{ about: { "@id": NODE_ID.organization } }}
+>
+  <Hero locale={locale} />
+  <div class="container-mk">
+    <Services locale={locale} />
+    <Problems locale={locale} />
+    <Cases locale={locale} />
+    <Process locale={locale} />
+    <Tech locale={locale} />
+    <Quality locale={locale} />
+    <Cta locale={locale} />
+    <Contact locale={locale} />
+  </div>
+</BaseLayout>

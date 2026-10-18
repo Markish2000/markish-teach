@@ -1,0 +1,91 @@
+locale: es
+key: seo-performance
+slug: seo-tecnico-y-performance
+order: 3
+name: SEO técnico y performance web
+title: SEO técnico y optimización de performance web | Markish Tech
+description: Auditoría y optimización de SEO técnico y Core Web Vitals (LCP, INP, CLS). Indexación, datos estructurados, velocidad de carga y migraciones sin perder tráfico.
+h1: SEO técnico y optimización de performance web
+summary: >-
+  Markish Tech audita y corrige los aspectos técnicos que hacen que un sitio cargue lento o no
+  aparezca en Google: indexación, canonical, sitemap, hreflang, datos estructurados y Core Web
+  Vitals (LCP, INP y CLS). Medimos antes y después con Lighthouse y Search Console, y entregamos
+  cada cambio documentado. No prometemos posiciones: corregimos lo que impide competir.
+card: Indexación, datos estructurados y Core Web Vitals. Medimos con Lighthouse y Search Console antes y después de cada cambio.
+serviceType: SEO técnico y optimización de performance web
+problems:
+  - Páginas importantes que no aparecen en Google o aparecen con el título equivocado.
+  - Sitio lento en celulares, con imágenes pesadas o mucho JavaScript.
+  - Contenido duplicado, canonical mal configurados o idiomas mezclados.
+  - Una migración o rediseño que hizo caer el tráfico orgánico.
+audience:
+  - Empresas con sitio propio que no reciben consultas desde buscadores.
+  - Sitios con varios idiomas o países que necesitan hreflang correcto.
+  - Equipos que van a rediseñar o migrar su web y quieren proteger el posicionamiento.
+  - Productos digitales cuyo sitio público debe cargar rápido en conexiones móviles.
+deliverables:
+  - title: Auditoría técnica
+    text: Informe priorizado de indexación, metadatos, enlaces, datos estructurados, performance y accesibilidad, con evidencia de cada hallazgo.
+  - title: Indexación y rastreo
+    text: robots.txt, sitemap XML, canonical, redirecciones, códigos de estado y páginas huérfanas.
+  - title: Datos estructurados
+    text: JSON-LD de Organization, WebSite, Service, BreadcrumbList y los tipos que correspondan al contenido real.
+  - title: SEO internacional
+    text: URLs por idioma, hreflang recíproco y x-default, canonical propios y metadatos traducidos.
+  - title: Core Web Vitals
+    text: Optimización de LCP, INP y CLS con imágenes responsive, fuentes optimizadas, menos JavaScript y caché.
+  - title: Medición continua
+    text: Pruebas automáticas que detectan regresiones de SEO y performance antes de publicar.
+method:
+  - title: Medición inicial
+    text: Lighthouse en mobile y desktop, revisión del HTML entregado y datos de Search Console si nos das acceso.
+  - title: Priorización
+    text: Ordenamos los problemas por impacto y esfuerzo.
+  - title: Implementación
+    text: Corregimos en el código y documentamos cada cambio.
+  - title: Verificación
+    text: Volvemos a medir con las mismas condiciones y comparamos.
+  - title: Seguimiento
+    text: Revisamos Search Console en las semanas siguientes para confirmar indexación.
+tech:
+  - Lighthouse
+  - Google Search Console
+  - Bing Webmaster Tools
+  - Schema.org (JSON-LD)
+  - Playwright
+  - Astro
+  - Next.js
+whenYes:
+  - Tenés tráfico o contenido de valor que no está rindiendo en buscadores.
+  - Vas a migrar o rediseñar y no querés perder posicionamiento.
+  - Tu sitio es lento en mobile y eso afecta las consultas.
+whenNo:
+  - "Esperás resultados inmediatos de posicionamiento: el SEO técnico elimina barreras, pero el contenido y la autoridad llevan tiempo."
+  - El sitio no tiene contenido propio todavía; primero hay que crearlo.
+  - Buscás comprar enlaces o técnicas que violen las políticas de Google.
+projects: []
+related:
+  - web-development
+  - accessibility
+faqs:
+  - q: ¿Qué son las Core Web Vitals?
+    a: >-
+      Son tres métricas de Google sobre la experiencia real de carga: LCP (cuánto tarda en verse el
+      contenido principal, idealmente 2,5 s o menos), INP (qué tan rápido responde la página a una
+      interacción, idealmente 200 ms o menos) y CLS (cuánto se mueve el contenido mientras carga,
+      idealmente 0,1 o menos).
+  - q: ¿Cómo se moderniza un sitio sin perder posicionamiento SEO?
+    a: >-
+      Haciendo un inventario de URLs con tráfico y enlaces, manteniendo las mismas URLs o redirigiendo
+      cada una con 301 a su equivalente, conservando títulos y contenidos que funcionan, migrando datos
+      estructurados y verificando en Search Console después de publicar. El error más común es cambiar
+      todas las URLs sin redirecciones.
+  - q: ¿Garantizan el primer puesto en Google?
+    a: >-
+      No. Nadie puede garantizarlo de forma honesta. Lo que sí garantizamos es corregir los problemas
+      técnicos medibles que impiden que tu sitio compita, y mostrarte la evidencia antes y después.
+  - q: ¿Un Lighthouse 100 asegura buen posicionamiento?
+    a: >-
+      No. Lighthouse mide en laboratorio y es una guía útil, pero Google usa datos de usuarios reales y
+      muchos otros factores, sobre todo la relevancia del contenido. Un buen puntaje elimina obstáculos
+      técnicos; no reemplaza un contenido útil.

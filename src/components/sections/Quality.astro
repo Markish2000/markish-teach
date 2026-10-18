@@ -18,11 +18,11 @@ const circumference = 2 * Math.PI * radius;
     <SectionHead id="quality" eyebrow={t.eyebrow} title={t.title} meta={t.meta} />
     <p class="lede reveal" style="margin-bottom: 40px;">{t.desc}</p>
     <div class="quality-grid">
-      <div class="scores reveal-group">
+      <ul class="scores reveal-group">
         {t.scores.map((score) => {
           const dash = (circumference * score.num) / 100;
           return (
-            <div class="score-card">
+            <li class="score-card">
               <span class="lbl">{score.lbl}</span>
               <div class="score-ring">
                 <svg viewBox="0 0 80 80" aria-hidden="true">
@@ -41,16 +41,16 @@ const circumference = 2 * Math.PI * radius;
                 </svg>
                 <div>
                   <div class="num">{score.num}</div>
-                  <div class="grade">{score.grade}</div>
+                  <div class="grade">{t.target}</div>
                 </div>
               </div>
-            </div>
+            </li>
           );
         })}
-      </div>
-      <div class="checklist glass reveal-group" style="padding: 12px 24px;">
+      </ul>
+      <ul class="checklist glass reveal-group" style="padding: 12px 24px;">
         {t.checks.map((check) => (
-          <div class="check-row">
+          <li class="check-row">
             <span class="ck" aria-hidden="true">
               <svg width="14" height="14" viewBox="0 0 14 14">
                 <path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
@@ -58,9 +58,9 @@ const circumference = 2 * Math.PI * radius;
             </span>
             <span class="ttl">{check.ttl}</span>
             <span class="meta">{check.meta}</span>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </div>
 </section>

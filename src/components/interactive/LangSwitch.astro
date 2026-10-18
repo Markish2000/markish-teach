@@ -1,34 +1,34 @@
 ---
 import { LOCALES } from "@shared/types";
 import type { Locale } from "@shared/types";
-import type { LangSwitchProps } from "./LangSwitch.interfaces";
+import { LANG_TAG } from "@shared/helpers";
+import { localePath, type Alternates } from "@shared/constants";
+import { getTranslations } from "@i18n";
 
-type Props = LangSwitchProps;
+interface Props {
+  readonly locale: Locale;
+  /** Equivalent page in each locale; falls back to that locale's home. */
+  readonly alternates: Alternates;
+}
 
-const { current, path } = Astro.props;
-
-const buildAlternateUrl = (currentPath: string, target: Locale): string => {
-  const segments = currentPath.split("/").filter(Boolean);
-  if (segments.length === 0) return `/${target}`;
-  const first = segments[0] ?? "";
-  if ((LOCALES as readonly string[]).includes(first)) {
-    segments[0] = target;
-  } else {
-    segments.unshift(target);
-  }
-  return `/${segments.join("/")}`;
-};
+const { locale, alternates } = Astro.props;
+const t = getTranslations(locale);
 ---
 
-<div class="lang-switch" role="group" aria-label="Language">
-  {LOCALES.map((locale) => (
-    <a
-      href={buildAlternateUrl(path, locale)}
-      class:list={[locale === current && "is-active"]}
-      aria-current={locale === current ? "true" : undefined}
-      lang={locale}
-    >
-      {locale}
-    </a>
-  ))}
+<div class="lang-switch" role="group" aria-label={t.a11y.lang_group}>
+  {LOCALES.map((l) => {
+    const isCurrent = l === locale;
+    const target = getTranslations(l);
+    return (
+      <a
+        href={alternates[l] ?? localePath(l, "home")}
+        class:list={[isCurrent && "is-active"]}
+        aria-current={isCurrent ? "page" : undefined}
+        hreflang={LANG_TAG[l]}
+        lang={LANG_TAG[l]}
+      >
+        {l}<span class="sr-only"> · {target.lang_name}</span>
+      </a>
+    );
+  })}
 </div>

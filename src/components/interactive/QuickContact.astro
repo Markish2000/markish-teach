@@ -1,0 +1,113 @@
+---
+import type { Locale } from "@shared/types";
+import { CONTACT, localePath } from "@shared/constants";
+import { getTranslations } from "@i18n";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const q = t.quick;
+---
+
+<div data-quick-contact>
+  <button
+    type="button"
+    class="chat-fab"
+    data-quick-fab
+    aria-label={q.open_label}
+    aria-expanded="false"
+    aria-controls="quick-contact-panel"
+  >
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true">
+      <path
+        d="M21 12a8 8 0 0 1-12.4 6.7L3 20l1.3-5.5A8 8 0 1 1 21 12z"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linejoin="round"></path>
+    </svg>
+  </button>
+
+  <div
+    id="quick-contact-panel"
+    class="chat-panel"
+    data-quick-panel
+    role="dialog"
+    aria-labelledby="quick-contact-title"
+    hidden
+  >
+    <div class="chat-head">
+      <h2 id="quick-contact-title" class="ttl">{q.title}</h2>
+      <button type="button" class="close" data-quick-close aria-label={q.close_label}>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="quick-body">
+      <p>{q.desc}</p>
+      <a class="quick-link" href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer">
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+            <path d="M21 12a8 8 0 0 1-12.4 6.7L3 20l1.3-5.5A8 8 0 1 1 21 12z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span>
+          <strong>{q.whatsapp}</strong>
+          <span class="hint">{CONTACT.whatsappDisplay} <span class="sr-only">{t.a11y.new_tab}</span></span>
+        </span>
+      </a>
+      <a class="quick-link" href={`mailto:${CONTACT.email}`}>
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+            <path d="M4 6h16v12H4z M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span>
+          <strong>{q.email}</strong>
+          <span class="hint">{CONTACT.email}</span>
+        </span>
+      </a>
+      <a class="quick-link" href={`${localePath(locale, "contact")}#contact-form`} data-quick-close-link>
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+            <path d="M5 4h14v16H5z M8 9h8 M8 13h8 M8 17h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+          </svg>
+        </span>
+        <span>
+          <strong>{q.form}</strong>
+          <span class="hint">{q.form_hint}</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const fab = document.querySelector<HTMLButtonElement>("[data-quick-fab]");
+  const panel = document.querySelector<HTMLElement>("[data-quick-panel]");
+
+  if (fab && panel) {
+    const setOpen = (open: boolean, restoreFocus = true): void => {
+      panel.hidden = !open;
+      fab.setAttribute("aria-expanded", String(open));
+      if (open) panel.querySelector<HTMLElement>("a, button")?.focus();
+      else if (restoreFocus) fab.focus();
+    };
+
+    fab.addEventListener("click", () => setOpen(fab.getAttribute("aria-expanded") !== "true"));
+    panel.querySelector("[data-quick-close]")?.addEventListener("click", () => setOpen(false));
+    panel.querySelector("[data-quick-close-link]")?.addEventListener("click", () => setOpen(false, false));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !panel.hidden) setOpen(false);
+    });
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (panel.hidden || !(target instanceof Node)) return;
+      if (!panel.contains(target) && !fab.contains(target)) setOpen(false, false);
+    });
+    window.addEventListener("markish:open-quick-contact", () => setOpen(true));
+  }
+</script>

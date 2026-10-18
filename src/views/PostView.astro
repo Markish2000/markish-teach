@@ -1,0 +1,61 @@
+---
+import { render } from "astro:content";
+import { localePath } from "@shared/constants";
+import { NODE_ID, absoluteUrl } from "@shared/helpers";
+import { getTranslations } from "@i18n";
+import { postPath, type Post } from "@/lib/content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/page/PageHero.astro";
+import CtaBand from "@components/page/CtaBand.astro";
+
+interface Props {
+  readonly post: Post;
+}
+
+const { post } = Astro.props;
+const d = post.data;
+const t = getTranslations(d.locale);
+const path = postPath(post);
+const canonical = absoluteUrl(path);
+const { Content } = await render(post);
+const published = d.pubDate?.toISOString();
+const modified = (d.updatedDate ?? d.pubDate)?.toISOString();
+---
+
+<BaseLayout
+  locale={d.locale}
+  title={d.title}
+  description={d.description}
+  alternates={{ [d.locale]: path }}
+  ogType="article"
+  breadcrumbs={[
+    { name: t.nav.home, path: localePath(d.locale, "home") },
+    { name: "Blog", path },
+  ]}
+  pageNode={{ mainEntity: { "@id": `${canonical}#article` } }}
+  nodes={[
+    {
+      "@type": "BlogPosting",
+      "@id": `${canonical}#article`,
+      headline: d.title,
+      description: d.description,
+      url: canonical,
+      inLanguage: d.locale === "es" ? "es-AR" : "en-US",
+      ...(published ? { datePublished: published } : {}),
+      ...(modified ? { dateModified: modified } : {}),
+      author: { "@id": NODE_ID.founder },
+      publisher: { "@id": NODE_ID.organization },
+      mainEntityOfPage: { "@id": `${canonical}#webpage` },
+    },
+  ]}
+>
+  <article>
+    <PageHero eyebrow="Blog" title={d.title} lead={d.description}>
+      {published && <p class="muted"><time datetime={published}>{d.pubDate?.toLocaleDateString(d.locale === "es" ? "es-AR" : "en-US", { dateStyle: "long" })}</time></p>}
+    </PageHero>
+    <div class="container-mk page-body prose-page">
+      <Content />
+    </div>
+  </article>
+  <CtaBand locale={d.locale} title={t.page.service.cta_title} desc={t.page.service.cta_desc} />
+</BaseLayout>

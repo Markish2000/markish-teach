@@ -1,15 +1,22 @@
 ---
-import type { ContactFormProps } from "./ContactForm.interfaces";
+import type { Locale } from "@shared/types";
+import { format, getTranslations } from "@i18n";
 
-type Props = ContactFormProps;
+interface Props {
+  readonly locale: Locale;
+  readonly privacyHref: string;
+  readonly endpoint?: string;
+}
 
-const { labels, endpoint } = Astro.props;
+const { locale, privacyHref, endpoint = "/api/contact" } = Astro.props;
+const labels = getTranslations(locale).contact;
 const messageMin = 8;
-const minMessage = labels.error_min.replace("{min}", String(messageMin));
+const minMessage = format(labels.error_min, { min: messageMin });
 ---
 
 <div class="contact-form-shell" data-contact-shell>
   <form
+    id="contact-form"
     class="contact-form"
     data-contact-form
     data-endpoint={endpoint}
@@ -107,6 +114,11 @@ const minMessage = labels.error_min.replace("{min}", String(messageMin));
       <span id="contact-message-error" role="alert" class="field-error" data-field-error="message" hidden></span>
     </div>
 
+    <div class="hp-field" aria-hidden="true">
+      <label for="contact-website">{labels.honeypot}</label>
+      <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
     <button
       type="submit"
       class="btn btn-primary"
@@ -126,12 +138,16 @@ const minMessage = labels.error_min.replace("{min}", String(messageMin));
       </svg>
     </button>
 
+    <p class="form-privacy">
+      {labels.privacy_note} <a href={privacyHref}>{labels.privacy_link}</a>
+    </p>
+
     <div role="alert" class="field-error form-error" data-form-error hidden>
       {labels.error_generic}
     </div>
   </form>
 
-  <div class="contact-success" role="status" aria-live="polite" data-contact-success hidden>
+  <div class="contact-success" role="status" tabindex="-1" data-contact-success hidden>
     <span class="check-medallion" aria-hidden="true">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
         <path
@@ -334,6 +350,7 @@ const minMessage = labels.error_min.replace("{min}", String(messageMin));
         email: getValue(form, "email"),
         service: getValue(form, "service"),
         message: getValue(form, "message"),
+        website: getValue(form, "website"),
       };
 
       setSubmitting(form, true);
@@ -350,7 +367,10 @@ const minMessage = labels.error_min.replace("{min}", String(messageMin));
         const success = shell?.querySelector<HTMLElement>("[data-contact-success]");
         form.reset();
         form.hidden = true;
-        if (success) success.hidden = false;
+        if (success) {
+          success.hidden = false;
+          success.focus();
+        }
       } catch {
         if (formError) {
           formError.textContent = getText(form, "errorGeneric");

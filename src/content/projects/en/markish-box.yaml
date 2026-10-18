@@ -1,0 +1,62 @@
+locale: en
+key: markish-box
+slug: markish-box
+order: 3
+name: Markish Box
+relation: own
+status: in-development
+url: https://www.markishbox.com.ar/
+industry: B2B SaaS · Gym management
+title: "Markish Box: gym management platform | Case study"
+description: Markish Box, a Markish Tech product in development, is a white-label web and mobile platform to manage functional training gyms and fitness brands.
+summary: >-
+  Markish Box is Markish Tech's own product, currently in development: a white-label web and
+  mobile platform to manage functional training gyms and fitness brands with one or many
+  locations. It brings members, memberships, class bookings, check-in, athletic progress and
+  payments together in one system.
+image: ../../../assets/markish-box-preview.png
+imageAlt: Markish Box public page with the headline "Tu box, de fierro. Tu gestión, blindada." and buttons to request a demo.
+year: 2026
+problem: >-
+  Functional training gyms usually combine several tools for bookings, payments, attendance and
+  member tracking, and many of them don't support rules specific to the industry such as class
+  capacity, waitlists or multiple locations under one brand.
+goal: >-
+  Offer a single system, branded for each gym, that works the same on the web and in the mobile
+  app for owners, admins, coaches and athletes.
+solution: >-
+  We are building a monorepo with a NestJS API on PostgreSQL, a Next.js web application, an
+  Expo/React Native mobile app and an Astro marketing site. Business rules live in a shared domain
+  package so the web, mobile and API apply exactly the same validations.
+features:
+  - Brands, locations, plans and per-brand enabled modules.
+  - Class bookings validated for capacity, membership and schedule, with a waitlist.
+  - Member check-in and attendance tracking.
+  - Progress tracking and personal records.
+  - White label resolved on the server from subdomain or custom domain.
+  - Feature parity between the web application and the mobile app.
+stack:
+  - area: Web
+    items: [Next.js, React, TypeScript, TanStack Query, Tailwind CSS]
+  - area: Mobile
+    items: [Expo, React Native, Expo Router]
+  - area: Backend
+    items: [NestJS, Prisma, PostgreSQL, Redis, BullMQ]
+  - area: Marketing site
+    items: [Astro]
+architecture:
+  - Monorepo with web, mobile, API and landing apps, plus shared packages for domain, design tokens and i18n.
+  - Business rules (states, permissions, booking validations) are defined once in the domain package.
+  - Multi-tenant with isolation per brand and location, and role-based access control.
+  - End-to-end tests against the API to verify isolation between brands, permissions and data privacy.
+challenges:
+  - title: One source of rules for web, mobile and API
+    text: The same validations must apply in three different clients. A shared domain package avoids implementing the same rule twice.
+  - title: Concurrent bookings
+    text: When many people book the same class at once, capacity can't be exceeded. Validations run on the server and are tested with simultaneous booking scenarios.
+  - title: White label from the first render
+    text: Each gym sees its own branding from the first load, with no flicker, because identity is resolved on the server.
+results: []
+services:
+  - custom-software
+  - automation

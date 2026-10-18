@@ -1,5 +1,6 @@
 ---
 import type { Locale } from "@shared/types";
+import { localePath, type Alternates } from "@shared/constants";
 import { getTranslations } from "@i18n";
 import Brand from "@shared/components/brand/Brand.astro";
 import Button from "@shared/components/primitives/Button.astro";
@@ -7,55 +8,45 @@ import LangSwitch from "@components/interactive/LangSwitch.astro";
 import ThemeToggle from "@components/interactive/ThemeToggle.astro";
 import MobileMenu from "@components/interactive/MobileMenu.astro";
 
+type NavKey = "services" | "projects" | "about" | "faq" | "contact";
+
 interface Props {
   readonly locale: Locale;
+  readonly alternates: Alternates;
+  readonly current?: NavKey | undefined;
 }
 
-const { locale } = Astro.props;
-const translations = getTranslations(locale);
-const path = Astro.url.pathname;
+const { locale, alternates, current } = Astro.props;
+const t = getTranslations(locale);
 
-const navLinks = [
-  { label: translations.nav.services, href: "#services" },
-  { label: translations.nav.problems, href: "#problems" },
-  { label: translations.nav.work, href: "#work" },
-  { label: translations.nav.cases, href: "#cases" },
-  { label: translations.nav.process, href: "#process" },
-  { label: translations.nav.tech, href: "#tech" },
-  { label: translations.nav.quality, href: "#quality" },
-  { label: translations.nav.contact, href: "#contact" },
-];
+const navLinks = (["services", "projects", "about", "faq", "contact"] as const).map((key) => ({
+  label: key === "faq" ? t.nav.faq_short : t.nav[key],
+  href: localePath(locale, key),
+  current: key === current,
+}));
+const contactHref = localePath(locale, "contact");
 ---
 
-<header role="banner" class="nav" id="site-header">
-  <Brand variant="lockup" />
-  <nav class="nav-links" aria-label="Primary">
+<header class="nav" id="site-header">
+  <Brand variant="lockup" href={localePath(locale, "home")} label={t.a11y.home_link} />
+  <nav class="nav-links" aria-label={t.a11y.primary_nav}>
     {navLinks.map((link) => (
-      <a href={link.href}>{link.label}</a>
+      <a href={link.href} aria-current={link.current ? "page" : undefined}>{link.label}</a>
     ))}
   </nav>
   <div class="nav-tools">
-    <LangSwitch current={locale} path={path} />
-    <ThemeToggle toggleLabel={translations.a11y.toggle_theme} />
-    <Button variant="primary" href="#contact" label={translations.nav.cta} />
-    <MobileMenu
-      locale={locale}
-      path={path}
-      links={navLinks}
-      ctaLabel={translations.nav.cta}
-      ctaHref="#contact"
-      openLabel={translations.a11y.open_menu}
-      closeLabel={translations.a11y.close_menu}
-      toggleThemeLabel={translations.a11y.toggle_theme}
-    />
+    <LangSwitch locale={locale} alternates={alternates} />
+    <ThemeToggle locale={locale} />
+    <Button variant="primary" href={contactHref} label={t.nav.cta} className="nav-cta" />
+    <MobileMenu locale={locale} alternates={alternates} links={navLinks} ctaHref={contactHref} />
   </div>
 </header>
 
 <script is:inline>
   (function () {
-    const header = document.getElementById("site-header");
+    var header = document.getElementById("site-header");
     if (!header) return;
-    const onScroll = () => {
+    var onScroll = function () {
       header.classList.toggle("is-scrolled", window.scrollY > 30);
     };
     onScroll();
@@ -63,37 +54,25 @@ const navLinks = [
   })();
 
   (function () {
-    var storageKey = "mk-theme";
-    var getTheme = function () {
-      try {
-        var stored = localStorage.getItem(storageKey);
-        return stored === "light" ? "light" : "dark";
-      } catch (e) {
-        return "dark";
-      }
-    };
-    var setPressedState = function (theme) {
+    var root = document.documentElement;
+    var syncLabels = function () {
+      var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
       document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
-        button.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+        button.setAttribute("aria-label", button.getAttribute("data-label-" + next) || "");
       });
     };
-    var applyTheme = function (theme) {
-      document.documentElement.setAttribute("data-theme", theme);
-      setPressedState(theme);
-      try {
-        localStorage.setItem(storageKey, theme);
-      } catch (e) {
-        /* Ignore unavailable storage. */
-      }
-    };
-
-    setPressedState(getTheme());
+    syncLabels();
     document.addEventListener("click", function (event) {
       var target = event.target;
-      if (!(target instanceof Element)) return;
-      if (!target.closest("[data-theme-toggle]")) return;
-      var next = getTheme() === "dark" ? "light" : "dark";
-      applyTheme(next);
+      if (!(target instanceof Element) || !target.closest("[data-theme-toggle]")) return;
+      var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      try {
+        localStorage.setItem("mk-theme", next);
+      } catch (e) {
+        /* Storage unavailable: the choice lasts for this page only. */
+      }
+      syncLabels();
     });
   })();
 
@@ -102,87 +81,62 @@ const navLinks = [
     var menu = document.querySelector("[data-mobile-menu]");
     if (!(trigger instanceof HTMLElement) || !(menu instanceof HTMLElement)) return;
 
-    var firstLink = menu.querySelector("a");
-    var openLabel = trigger.dataset["openLabel"] || "";
-    var closeLabel = trigger.dataset["closeLabel"] || openLabel;
-    var pointerStart = null;
-    var ignoreNextClick = false;
-
-    var focusWithoutScroll = function (element) {
-      try {
-        element.focus({ preventScroll: true });
-      } catch (e) {
-        element.focus();
-      }
+    var outside = [document.getElementById("main"), document.querySelector("footer"), document.querySelector("[data-quick-contact]")];
+    var focusable = function () {
+      return Array.prototype.slice.call(
+        menu.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+      );
+    };
+    var isOpen = function () {
+      return menu.classList.contains("is-open");
     };
 
     var setOpen = function (open) {
       menu.classList.toggle("is-open", open);
-      menu.setAttribute("aria-hidden", open ? "false" : "true");
+      menu.toggleAttribute("inert", !open);
       trigger.setAttribute("aria-expanded", open ? "true" : "false");
-      trigger.setAttribute("aria-label", open ? closeLabel : openLabel);
+      outside.forEach(function (el) {
+        if (el) el.toggleAttribute("inert", open);
+      });
       document.body.style.overflow = open ? "hidden" : "";
-      if (open && firstLink instanceof HTMLElement) focusWithoutScroll(firstLink);
-      if (!open && menu.contains(document.activeElement)) focusWithoutScroll(trigger);
+      if (open) {
+        var first = focusable()[0];
+        if (first) first.focus({ preventScroll: true });
+      } else if (menu.contains(document.activeElement) || document.activeElement === document.body) {
+        trigger.focus({ preventScroll: true });
+      }
     };
 
-    trigger.addEventListener(
-      "pointerdown",
-      function (event) {
-        pointerStart = {
-          x: event.clientX,
-          y: event.clientY,
-          scrollY: window.scrollY,
-        };
-        ignoreNextClick = false;
-      },
-      { passive: true }
-    );
-    trigger.addEventListener(
-      "pointermove",
-      function (event) {
-        if (!pointerStart) return;
-        var moved = Math.abs(event.clientX - pointerStart.x) + Math.abs(event.clientY - pointerStart.y);
-        var scrolled = Math.abs(window.scrollY - pointerStart.scrollY);
-        if (moved > 10 || scrolled > 4) ignoreNextClick = true;
-      },
-      { passive: true }
-    );
-    trigger.addEventListener(
-      "pointerup",
-      function () {
-        pointerStart = null;
-      },
-      { passive: true }
-    );
-    trigger.addEventListener(
-      "pointercancel",
-      function () {
-        pointerStart = null;
-        ignoreNextClick = false;
-      },
-      { passive: true }
-    );
-    trigger.addEventListener("click", function (event) {
-      if (ignoreNextClick && event.detail !== 0) {
-        event.preventDefault();
-        ignoreNextClick = false;
-        return;
-      }
-      ignoreNextClick = false;
-      setOpen(!menu.classList.contains("is-open"));
+    trigger.addEventListener("click", function () {
+      setOpen(!isOpen());
     });
     menu.addEventListener("click", function (event) {
       var target = event.target;
-      if (!(target instanceof Element)) return;
-      if (target.closest("[data-mobile-menu-close], [data-mobile-menu-link]")) {
+      if (target instanceof Element && target.closest("[data-mobile-menu-close], [data-mobile-menu-link]")) {
         setOpen(false);
       }
     });
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && menu.classList.contains("is-open")) {
+      if (!isOpen()) return;
+      if (event.key === "Escape") {
         setOpen(false);
+        return;
       }
+      if (event.key !== "Tab") return;
+      var items = focusable();
+      if (items.length === 0) return;
+      var first = items[0];
+      var last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+    window.matchMedia("(min-width: 1025px)").addEventListener("change", function (e) {
+      if (e.matches && isOpen()) setOpen(false);
     });
   })();
 </script>

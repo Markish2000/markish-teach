@@ -1,116 +1,36 @@
 ---
 import type { Locale } from "@shared/types";
-import { Image } from "astro:assets";
+import { localePath } from "@shared/constants";
 import { getTranslations } from "@i18n";
+import { getProjects, type Project } from "@/lib/content";
 import SectionHead from "@shared/components/sections/SectionHead.astro";
-import arenaPreview from "@assets/markish-arena-preview.png";
-import forjaPreview from "@assets/forja-preview.png";
+import ProjectCard from "@components/page/ProjectCard.astro";
 
 interface Props {
   readonly locale: Locale;
+  /** Pre-filtered list (projects page); defaults to every project. */
+  readonly projects?: ReadonlyArray<Project>;
+  readonly showHead?: boolean;
+  readonly headingLevel?: "h2" | "h3";
 }
 
-/**
- * Los previews rasterizados pasan por `astro:assets` (webp + dimensiones intrínsecas).
- * Las rutas del i18n son la clave: los SVG no entran acá y se sirven tal cual.
- */
-const RASTER_PREVIEWS: Record<string, ImageMetadata> = {
-  "/markish-arena-preview.png": arenaPreview,
-  "/forja-preview.png": forjaPreview,
-};
-
-/** Ratio de los logos SVG (`viewBox="0 0 1200 630"`), fijo para evitar CLS. */
-const SVG_PREVIEW_SIZE = { width: 1200, height: 630 } as const;
-
-const { locale } = Astro.props;
-const t = getTranslations(locale).cases;
+const { locale, showHead = true, headingLevel = "h3" } = Astro.props;
+const t = getTranslations(locale).work;
+const projects = Astro.props.projects ?? (await getProjects(locale));
 ---
 
-<section id="cases" aria-labelledby="cases-title">
+<section id="work" class="cases" aria-labelledby={showHead ? "work-title" : undefined}>
   <div class="container-mk">
-    <SectionHead id="cases" eyebrow={t.eyebrow} title={t.title} />
+    {showHead && <SectionHead id="work" eyebrow={t.eyebrow} title={t.title} meta={t.meta} />}
     <div class="cases-grid reveal-group">
-      {t.items.map((item) => {
-        const rasterPreview = item.imageSrc ? RASTER_PREVIEWS[item.imageSrc] : undefined;
-        return (
-        <article class="case-card">
-          <div class="head">
-            <div>
-              <div class="industry">{item.industry}</div>
-              <div class="ttl" style="margin-top: 4px;">{item.ttl}</div>
-            </div>
-            <span class="badge">{item.badge}</span>
-          </div>
-
-          <div
-            class:list={["preview", item.imageFit === "contain" && "is-contain"]}
-            role={item.imageAlt ? "img" : undefined}
-            aria-label={item.imageAlt}
-          >
-            {item.imageSrc &&
-              (rasterPreview ? (
-                <Image
-                  class:list={["preview-img", item.imageSrcLight && "is-dark"]}
-                  src={rasterPreview}
-                  alt={item.imageAlt ?? ""}
-                  widths={[480, 800, 1200]}
-                  sizes="(min-width: 1100px) 33vw, (min-width: 760px) 50vw, 100vw"
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : (
-                <img
-                  class:list={["preview-img", item.imageSrcLight && "is-dark"]}
-                  src={item.imageSrc}
-                  alt={item.imageAlt}
-                  width={SVG_PREVIEW_SIZE.width}
-                  height={SVG_PREVIEW_SIZE.height}
-                  loading="lazy"
-                  decoding="async"
-                />
-              ))}
-            {item.imageSrcLight && (
-              <img
-                class="preview-img is-light"
-                src={item.imageSrcLight}
-                alt={item.imageAlt}
-                width={SVG_PREVIEW_SIZE.width}
-                height={SVG_PREVIEW_SIZE.height}
-                loading="lazy"
-                decoding="async"
-              />
-            )}
-            {!item.imageSrc && <span class="placeholder-text">{item.preview ?? "Coming soon"}</span>}
-          </div>
-
-          {item.desc && <p class="case-desc">{item.desc}</p>}
-
-          {item.highlights && (
-            <ul class="case-highlights">
-              {item.highlights.map((point) => (
-                <li>{point}</li>
-              ))}
-            </ul>
-          )}
-
-          {item.cta && item.href && (
-            <a
-              class="case-cta"
-              href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              aria-label={`${item.cta}: ${item.ttl}`}
-              title={item.ttl}
-            >
-              {item.cta}
-              <span aria-hidden="true">&rarr;</span>
-            </a>
-          )}
-
-          {!item.href && item.note && <span class="case-note">{item.note}</span>}
-        </article>
-        );
-      })}
+      {projects.map((project) => (
+        <ProjectCard project={project} headingLevel={headingLevel} />
+      ))}
     </div>
+    {showHead && (
+      <p class="section-more">
+        <a href={localePath(locale, "projects")}>{t.all} <span aria-hidden="true">→</span></a>
+      </p>
+    )}
   </div>
 </section>

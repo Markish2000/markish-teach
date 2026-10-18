@@ -1,0 +1,174 @@
+locale: es
+groups:
+  - title: Sobre Markish Tech
+    items:
+      - id: que-es-markish-tech
+        q: ¿Qué es Markish Tech?
+        a: >-
+          Markish Tech es un estudio de desarrollo de software con base en Buenos Aires, Argentina,
+          fundado por Marcos Hernán Parella. Desarrolla sitios web, aplicaciones web, plataformas
+          SaaS y automatizaciones a medida, con foco en performance, SEO técnico y accesibilidad.
+          Entre sus trabajos están Markish Arena y Markish Box (productos propios) y el sitio oficial
+          de FORJA Challenge (proyecto para cliente).
+        links:
+          - label: Sobre nosotros
+            to: about
+          - label: Proyectos
+            to: projects
+      - id: software-empresarial
+        q: ¿Markish Tech desarrolla software empresarial?
+        a: >-
+          Sí. Desarrollamos sistemas de gestión, paneles de administración y plataformas SaaS
+          multi-tenant con roles y permisos, integraciones con otras herramientas y tareas
+          automáticas. Markish Arena y Markish Box son ejemplos de plataformas de este tipo
+          construidas por nosotros.
+        links:
+          - label: Software y plataformas SaaS a medida
+            to: service
+            key: custom-software
+      - id: tecnologias
+        q: ¿Qué tecnologías utiliza Markish Tech?
+        a: >-
+          En frontend trabajamos con Astro, Next.js, React, TypeScript y Tailwind CSS; en backend con
+          NestJS, PostgreSQL, Prisma, Redis, BullMQ y Socket.IO; en mobile con React Native y Expo.
+          Publicamos en Vercel y medimos calidad con Lighthouse, axe-core y Playwright. Elegimos la
+          tecnología según el proyecto, no al revés.
+      - id: clientes-fuera-de-argentina
+        q: ¿Trabajan con clientes fuera de Argentina?
+        a: >-
+          Sí. Trabajamos de forma remota, en español e inglés. El horario de atención es de lunes a
+          viernes de 9 a 18 h de Argentina (UTC−3).
+        links:
+          - label: Contacto
+            to: contact
+  - title: Costos y plazos
+    items:
+      - id: costo-pagina-web
+        q: ¿Cuánto cuesta desarrollar una página web en Argentina?
+        a: >-
+          Depende principalmente de cuatro factores: la cantidad y complejidad de páginas, si el
+          diseño es a medida, las integraciones necesarias (formularios, pagos, CRM, idiomas) y quién
+          produce el contenido. Una landing de una sola página no cuesta lo mismo que un sitio
+          institucional bilingüe con varias secciones. En Markish Tech cotizamos cada proyecto después
+          de una primera conversación, con una propuesta por escrito que detalla alcance y etapas. No
+          publicamos precios fijos porque terminarían siendo engañosos para la mayoría de los casos.
+        links:
+          - label: Desarrollo web a medida
+            to: service
+            key: web-development
+          - label: Pedir presupuesto
+            to: contact
+      - id: plazo-web-profesional
+        q: ¿Cuánto demora desarrollar una web profesional?
+        a: >-
+          El plazo depende del alcance, de que el contenido (textos, imágenes) esté listo y de la
+          velocidad de las revisiones. Lo que más suele demorar un proyecto no es la programación sino
+          esperar contenido o aprobaciones. Por eso definimos al inicio qué entrega cada etapa y quién
+          es responsable de cada insumo.
+      - id: costo-mantenimiento
+        q: ¿Cuánto cuesta mantener una aplicación web?
+        a: >-
+          El mantenimiento tiene costos fijos y variables. Los fijos son el hosting, el dominio y los
+          servicios externos que use la aplicación (base de datos, email, almacenamiento). Los
+          variables son las actualizaciones de seguridad y dependencias, el monitoreo de errores y las
+          mejoras o funcionalidades nuevas. Un sitio estático simple tiene costos de infraestructura
+          muy bajos; una plataforma con base de datos, usuarios y tareas en segundo plano requiere más.
+  - title: Tecnología
+    items:
+      - id: astro-react-nextjs
+        q: ¿Qué diferencias hay entre Astro, React y Next.js?
+        a: >-
+          React es una biblioteca para construir interfaces interactivas. Next.js es un framework
+          basado en React que suma rutas, renderizado en el servidor y lógica de backend: es ideal
+          para aplicaciones con usuarios, sesiones y mucha interacción. Astro es un framework
+          orientado a contenido que genera HTML estático y solo envía JavaScript a las partes que lo
+          necesitan, por eso suele ser más rápido para sitios institucionales, blogs y landings.
+          Ejemplos reales nuestros: este sitio está hecho con Astro y Markish Arena con Next.js.
+        links:
+          - label: Desarrollo web a medida
+            to: service
+            key: web-development
+      - id: apis-externas
+        q: ¿Se puede conectar una aplicación con APIs externas?
+        a: >-
+          Sí, siempre que el servicio externo ofrezca una API o webhooks. Es habitual integrar envío de
+          emails, almacenamiento de archivos, notificaciones push, inicio de sesión con Google o Apple
+          y sistemas propios de la empresa. Antes de diseñar la integración revisamos la
+          documentación, la autenticación y los límites de uso del servicio.
+        links:
+          - label: Automatización de procesos e integraciones
+            to: service
+            key: automation
+      - id: plataforma-escalable
+        q: ¿Cómo se desarrolla una plataforma escalable?
+        a: >-
+          Separando responsabilidades desde el inicio: una API que concentra las reglas de negocio,
+          una base de datos bien modelada, colas para el trabajo pesado o diferido, caché donde hace
+          falta, aislamiento de datos si hay varios clientes (multi-tenant) y monitoreo de errores.
+          Escalar no es solo agregar servidores: es que el código y los datos permitan crecer sin
+          reescribir todo.
+        links:
+          - label: Software y plataformas SaaS a medida
+            to: service
+            key: custom-software
+  - title: Software a medida
+    items:
+      - id: software-a-medida
+        q: ¿Qué es el desarrollo de software a medida?
+        a: >-
+          Es construir un sistema pensado para las reglas, los usuarios y los procesos de un negocio
+          en particular, en lugar de adaptar el negocio a una herramienta genérica. El código y los
+          datos son tuyos y el sistema puede evolucionar con la empresa. Conviene cuando las
+          herramientas existentes no cubren reglas importantes del negocio; si una herramienta ya
+          resuelve casi todo, suele ser más barato configurarla.
+        links:
+          - label: Software y plataformas SaaS a medida
+            to: service
+            key: custom-software
+      - id: empresa-saas
+        q: ¿Qué empresa puede desarrollar una aplicación SaaS?
+        a: >-
+          Conviene buscar un equipo que ya haya construido y operado un SaaS: que sepa resolver
+          multi-tenancy, roles y permisos, facturación o planes, y que pueda mostrar productos
+          funcionando. Markish Tech desarrolló Markish Arena, un SaaS multi-tenant para competencias
+          de fitness en producción, y está desarrollando Markish Box, una plataforma web y mobile de
+          marca blanca.
+        links:
+          - label: Caso Markish Arena
+            to: project
+            key: markish-arena
+          - label: Caso Markish Box
+            to: project
+            key: markish-box
+      - id: freelance-o-empresa
+        q: ¿Cuándo conviene contratar un desarrollador freelance o una empresa?
+        a: >-
+          Un freelance suele alcanzar para tareas acotadas y bien definidas: una landing, un ajuste o
+          una integración puntual. Un estudio o empresa conviene cuando el proyecto combina diseño,
+          frontend, backend, infraestructura y mantenimiento, o cuando necesitás continuidad y
+          documentación. En cualquier caso, pedí ver proyectos reales, código o casos verificables.
+  - title: SEO y performance
+    items:
+      - id: modernizar-sin-perder-seo
+        q: ¿Cómo modernizar un sitio sin perder posicionamiento SEO?
+        a: >-
+          Antes de cambiar nada hay que hacer un inventario de las URLs que reciben tráfico y enlaces.
+          Después, mantener esas URLs o redirigir cada una con una redirección 301 a su equivalente,
+          conservar los títulos y contenidos que funcionan, migrar los datos estructurados y verificar
+          la indexación en Google Search Console después de publicar. El error más común es cambiar
+          todas las URLs sin redirecciones.
+        links:
+          - label: SEO técnico y performance
+            to: service
+            key: seo-performance
+      - id: core-web-vitals
+        q: ¿Qué son las Core Web Vitals y qué valores son buenos?
+        a: >-
+          Son tres métricas de Google sobre la experiencia real de carga. LCP mide cuánto tarda en
+          verse el contenido principal (bueno: 2,5 s o menos). INP mide qué tan rápido responde la
+          página a una interacción (bueno: 200 ms o menos). CLS mide cuánto se mueve el contenido
+          mientras carga (bueno: 0,1 o menos).
+        links:
+          - label: SEO técnico y performance
+            to: service
+            key: seo-performance

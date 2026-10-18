@@ -1,0 +1,111 @@
+---
+import type { Locale } from "@shared/types";
+import { CONTACT, FOUNDER, localePath, sectionAlternates } from "@shared/constants";
+import { NODE_ID } from "@shared/helpers";
+import { getTranslations } from "@i18n";
+import { getProjects, getServices, projectPath, servicePath } from "@/lib/content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/page/PageHero.astro";
+import CtaBand from "@components/page/CtaBand.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const a = t.page.about;
+const services = await getServices(locale);
+const projects = await getProjects(locale);
+const linkedin = FOUNDER.sameAs[0];
+---
+
+<BaseLayout
+  locale={locale}
+  title={t.seo.about.title}
+  description={t.seo.about.description}
+  alternates={sectionAlternates("about")}
+  pageType="AboutPage"
+  navCurrent="about"
+  breadcrumbs={[
+    { name: t.nav.home, path: localePath(locale, "home") },
+    { name: t.nav.about, path: localePath(locale, "about") },
+  ]}
+  pageNode={{ mainEntity: { "@id": NODE_ID.organization }, about: { "@id": NODE_ID.organization } }}
+>
+  <PageHero eyebrow={a.eyebrow} title={a.h1} lead={a.lead} />
+
+  <div class="container-mk page-body prose-page">
+    <section class="page-section" aria-labelledby="what-title">
+      <h2 id="what-title">{a.what_title}</h2>
+      {a.what.map((p) => <p>{p}</p>)}
+    </section>
+
+    <section class="page-section" aria-labelledby="who-title">
+      <h2 id="who-title">{a.who_title}</h2>
+      {a.who.map((p) => <p>{p}</p>)}
+      {linkedin && (
+        <p>
+          <a href={linkedin} target="_blank" rel="noopener noreferrer">
+            {a.who_link}<span class="sr-only"> {t.a11y.new_tab}</span>
+          </a>
+        </p>
+      )}
+    </section>
+
+    <section class="page-section" aria-labelledby="build-title">
+      <h2 id="build-title">{a.services_title}</h2>
+      <ul class="related-list">
+        {services.map((s) => (
+          <li><a href={servicePath(s)}>{s.data.name}</a><p>{s.data.card}</p></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="page-section" aria-labelledby="experience-title">
+      <h2 id="experience-title">{a.experience_title}</h2>
+      <p>{a.experience_intro}</p>
+      <ul class="related-list">
+        {projects.map((p) => (
+          <li>
+            <a href={projectPath(p)}>{p.data.name}</a>
+            <p>{t.work.relation[p.data.relation]} · {t.work.status[p.data.status]}</p>
+          </li>
+        ))}
+        <li><span class="related-static">markishtech.com.ar</span><p>{a.this_site}</p></li>
+      </ul>
+    </section>
+
+    <section class="page-section" aria-labelledby="principles-title">
+      <h2 id="principles-title">{a.principles_title}</h2>
+      <div class="feature-grid">
+        {a.principles.map((item) => (
+          <article class="feature-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="page-section" aria-labelledby="stack-title">
+      <h2 id="stack-title">{a.tech_title}</h2>
+      <ul class="tag-list">{t.tech.items.map((item) => <li>{item}</li>)}</ul>
+    </section>
+
+    <section class="page-section" aria-labelledby="about-contact-title">
+      <h2 id="about-contact-title">{a.contact_title}</h2>
+      <ul class="plain-list">
+        <li><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
+        <li>
+          <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer">
+            WhatsApp {CONTACT.whatsappDisplay}<span class="sr-only"> {t.a11y.new_tab}</span>
+          </a>
+        </li>
+        <li>{t.contact.info.location_val}</li>
+      </ul>
+    </section>
+  </div>
+
+  <CtaBand locale={locale} title={t.page.service.cta_title} desc={t.page.service.cta_desc} />
+</BaseLayout>

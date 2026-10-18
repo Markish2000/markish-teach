@@ -1,188 +1,250 @@
 {
+  "lang_name": "Español",
   "nav": {
+    "home": "Inicio",
     "services": "Servicios",
-    "problems": "Problemas",
-    "work": "Trabajo",
-    "cases": "Casos",
-    "process": "Proceso",
-    "tech": "Stack",
-    "quality": "Calidad",
+    "projects": "Proyectos",
+    "about": "Sobre nosotros",
+    "faq": "Preguntas frecuentes",
+    "faq_short": "FAQ",
     "contact": "Contacto",
-    "cta": "Auditoría gratuita"
+    "privacy": "Privacidad",
+    "cta": "Contanos tu proyecto"
+  },
+  "a11y": {
+    "skip_to_content": "Saltar al contenido",
+    "primary_nav": "Navegación principal",
+    "footer_nav": "Navegación del pie de página",
+    "breadcrumb": "Ruta de navegación",
+    "open_menu": "Abrir menú",
+    "close_menu": "Cerrar menú",
+    "menu_title": "Menú",
+    "theme_to_light": "Activar tema claro",
+    "theme_to_dark": "Activar tema oscuro",
+    "lang_group": "Idioma",
+    "new_tab": "(se abre en una pestaña nueva)",
+    "home_link": "Markish Tech, ir al inicio"
   },
   "hero": {
-    "eyebrow": "Estudio técnico — desde Buenos Aires",
-    "status": "Tomando proyectos · Q2 / Q3 2026",
-    "title_a": "Creamos webs",
-    "title_b": "modernas",
-    "title_c": " que hacen crecer tu negocio.",
-    "subtitle": "Diseñamos, desarrollamos y optimizamos experiencias digitales rápidas, accesibles y responsive — pensadas para convertir visitas en clientes reales.",
-    "cta_primary": "Solicitar auditoría gratuita",
+    "eyebrow": "Estudio de desarrollo de software · Buenos Aires, Argentina",
+    "title_a": "Desarrollo web y software",
+    "title_b": "a medida",
+    "title_c": " para negocios que quieren crecer.",
+    "subtitle": "Diseñamos y desarrollamos sitios web, aplicaciones y plataformas SaaS rápidas, accesibles y fáciles de encontrar en Google. Del primer boceto al deploy, con el mismo estándar técnico.",
+    "cta_primary": "Contanos tu proyecto",
     "cta_secondary": "Ver proyectos",
-    "stat1_num": "100",
-    "stat1_label": "Lighthouse target",
-    "stat2_num": "<1.5",
-    "stat2_label": "Tiempo de carga (s)",
-    "stat3_num": "WCAG",
-    "stat3_label": "AA mínimo"
+    "facts": [
+      {
+        "num": "2",
+        "label": "plataformas SaaS propias"
+      },
+      {
+        "num": "AA",
+        "label": "WCAG 2.2 como estándar"
+      },
+      {
+        "num": "ES/EN",
+        "label": "trabajo en español e inglés"
+      }
+    ],
+    "hud": [
+      {
+        "label": "SEO técnico",
+        "value": "Schema · sitemap"
+      },
+      {
+        "label": "Core Web Vitals",
+        "value": "LCP · INP · CLS"
+      },
+      {
+        "label": "Accesibilidad",
+        "value": "WCAG 2.2 AA"
+      },
+      {
+        "label": "Responsive",
+        "value": "320 → 4K"
+      },
+      {
+        "label": "Integraciones",
+        "value": "APIs · webhooks"
+      }
+    ],
+    "coords": "34°36'S · 58°22'W · BUENOS AIRES"
   },
   "services": {
     "eyebrow": "Servicios",
-    "title": "Todo lo que tu web necesita,\nbajo un mismo estándar técnico.",
-    "meta": "07 capacidades",
-    "items": [
-      { "tag": "FEATURED", "title": "Desarrollo web a medida", "desc": "Sitios y aplicaciones construidos desde cero, con código limpio y arquitectura escalable. Sin templates, sin atajos.", "foot": "React · Next.js · Astro" },
-      { "tag": "01", "title": "Rediseño de sitios", "desc": "Modernizamos webs existentes sin perder posicionamiento ni contenido.", "foot": "Migración progresiva" },
-      { "tag": "02", "title": "Performance", "desc": "Carga sub-segundo, Core Web Vitals en verde, imágenes y JS optimizados.", "foot": "Lighthouse 95+" },
-      { "tag": "03", "title": "SEO técnico", "desc": "Estructura, schema, sitemap, metadatos y velocidad — la base que Google necesita.", "foot": "Search Console" },
-      { "tag": "04", "title": "Accesibilidad", "desc": "Contraste, foco, lectores de pantalla y navegación por teclado. WCAG AA.", "foot": "axe · WAVE" },
-      { "tag": "05", "title": "Automatizaciones", "desc": "Conectamos tu web con tus herramientas: CRM, email, pagos, agendas.", "foot": "n8n · Zapier · APIs" },
-      { "tag": "06", "title": "Soluciones digitales", "desc": "Para PyMEs que necesitan ordenar procesos sin sumar fricción al equipo.", "foot": "Consultoría incluida" }
-    ]
+    "title": "Qué hacemos, explicado sin vueltas.",
+    "meta": "5 servicios",
+    "more": "Ver servicio",
+    "all": "Ver todos los servicios"
   },
   "problems": {
     "eyebrow": "Problemas que resolvemos",
     "title": "Si te suena familiar, hablemos.",
     "meta": "Desafíos comunes",
     "items": [
-      { "ttl": "Tu web carga lento", "desc": "Pierde clientes antes de que vean tu propuesta." },
-      { "ttl": "No aparecés en Google", "desc": "SEO técnico ausente o mal implementado." },
-      { "ttl": "El diseño se ve viejo", "desc": "Tu marca creció, tu sitio quedó atrás." },
-      { "ttl": "No funciona en mobile", "desc": "El 70% de tu tráfico se va frustrado." },
-      { "ttl": "Tasa de conversión baja", "desc": "Tráfico hay, pero no convierten." },
-      { "ttl": "Procesos manuales", "desc": "Tu equipo pierde horas en tareas repetitivas." }
+      {
+        "ttl": "Tu web carga lento",
+        "desc": "Las personas se van antes de ver tu propuesta.",
+        "service": "seo-performance"
+      },
+      {
+        "ttl": "No aparecés en Google",
+        "desc": "Falta SEO técnico o está mal implementado.",
+        "service": "seo-performance"
+      },
+      {
+        "ttl": "El sitio quedó viejo",
+        "desc": "Tu negocio creció y la web no lo acompaña.",
+        "service": "web-development"
+      },
+      {
+        "ttl": "No funciona bien en mobile",
+        "desc": "Textos cortados, botones chicos y formularios difíciles.",
+        "service": "web-development"
+      },
+      {
+        "ttl": "Procesos en planillas",
+        "desc": "Tu equipo pierde horas en tareas que un sistema puede resolver.",
+        "service": "custom-software"
+      },
+      {
+        "ttl": "Personas que no pueden usar tu web",
+        "desc": "Problemas de contraste, teclado o lectores de pantalla.",
+        "service": "accessibility"
+      }
     ]
   },
-  "ba": {
-    "eyebrow": "Antes y después",
-    "title": "Mismo negocio, otro nivel\nde resultados.",
-    "meta": "Comparativa real",
-    "desc": "Arrastrá el control para ver el impacto en performance, SEO y conversión.",
-    "tag_left": "Antes",
-    "tag_right": "Después",
-    "stats": [
-      { "lbl": "Performance", "from": "42", "to": "98", "delta": "+56" },
-      { "lbl": "SEO", "from": "61", "to": "100", "delta": "+39" },
-      { "lbl": "Carga (s)", "from": "4.8", "to": "1.2", "delta": "−75%" },
-      { "lbl": "Conversión", "from": "1.4%", "to": "4.7%", "delta": "×3.4" }
-    ]
-  },
-  "cases": {
-    "eyebrow": "Casos",
-    "title": "Proyectos destacados.",
-    "items": [
-      {
-        "industry": "SaaS B2B / Fitness Tech",
-        "ttl": "Markish Arena",
-        "badge": "Finalizado",
-        "desc": "Plataforma SaaS para organizar, administrar y puntuar competencias de fitness funcional. Permite gestionar atletas, categorías, eventos, workouts, jueces, resultados y rankings en tiempo real.",
-        "highlights": [
-          "Gestión de organizaciones y competencias.",
-          "Administración de atletas, categorías y equipos.",
-          "Creación de workouts con modalidades como AMRAP, For Time, EMOM y RM.",
-          "Sistema de scoring adaptable según el tipo de entrenamiento.",
-          "Leaderboard para visualizar posiciones y resultados.",
-          "Roles y permisos para administradores, jueces y participantes.",
-          "Catálogos técnicos configurables de movimientos, materiales y categorías.",
-          "Enfoque multi-tenant para que cada organización opere de forma independiente."
-        ],
-        "cta": "Ver caso",
-        "href": "https://www.markisharena.com.ar/",
-        "imageSrc": "/markish-arena-preview.png",
-        "imageAlt": "Vista previa de Markish Arena: heat en vivo, leaderboard en tiempo real y scorecard firmada por el juez.",
-        "preview": "Leaderboard en vivo · En desarrollo"
-      },
-      {
-        "industry": "SaaS B2B / Fitness Management",
-        "ttl": "Markish Box",
-        "badge": "Próximamente",
-        "desc": "Plataforma integral para la gestión de boxes y centros de entrenamiento funcional. Permitirá administrar alumnos, membresías, clases, reservas, asistencia y progreso desde un único ecosistema digital.",
-        "highlights": [
-          "Gestión de alumnos, entrenadores, sucursales y membresías.",
-          "Reservas de clases con control de cupos y listas de espera.",
-          "Check-in de alumnos mediante reservas confirmadas.",
-          "Seguimiento de asistencia, progreso y récords personales.",
-          "Control de vencimientos, renovaciones y pagos.",
-          "Notificaciones y recordatorios automáticos.",
-          "Plataforma white-label adaptable a la identidad de cada box.",
-          "Panel administrativo y experiencia mobile para alumnos."
-        ],
-        "note": "Próximamente",
-        "imageSrc": "/markish-box-logo-dark.svg",
-        "imageSrcLight": "/markish-box-logo-light.svg",
-        "imageFit": "contain",
-        "imageAlt": "Vista previa de Markish Box, plataforma para la gestión de boxes y centros de entrenamiento."
-      },
-      {
-        "industry": "Eventos / Fitness funcional",
-        "ttl": "FORJA Challenge",
-        "badge": "Finalizado",
-        "desc": "Sitio web oficial de FORJA Challenge 2027, competencia de fitness funcional con fase clasificatoria online y final presencial. Presenta el evento, las categorías, los parámetros, el Open, la final y los sponsors.",
-        "highlights": [
-          "Sitio web oficial del evento.",
-          "Etapas de la competencia: inscripciones, Open online y Gran Final.",
-          "Categorías Beginners, Scaled, Advanced, RX y Masters.",
-          "Parámetros de pesos y movimientos por categoría.",
-          "Sección de sponsors y sede de la final.",
-          "Diseño responsive para desktop, tablet y mobile."
-        ],
-        "cta": "Ver caso",
-        "href": "https://www.forjachallenge.com.ar/",
-        "imageSrc": "/forja-preview.png",
-        "imageAlt": "Vista previa de FORJA Challenge: sitio de competencia de fitness funcional con un martillo sobre un yunque.",
-        "preview": "Sitio de evento · FORJA Challenge"
-      },
-      { "industry": "Servicios profesionales", "ttl": "Caso 03", "badge": "Coming soon" }
-    ]
+  "work": {
+    "eyebrow": "Proyectos",
+    "title": "Trabajo real, publicado y verificable.",
+    "meta": "Casos de estudio",
+    "relation": {
+      "own": "Producto propio",
+      "client": "Proyecto para cliente"
+    },
+    "status": {
+      "live": "En producción",
+      "in-development": "En desarrollo"
+    },
+    "case": "Ver caso de estudio",
+    "site": "Visitar sitio",
+    "all": "Ver todos los proyectos"
   },
   "process": {
     "eyebrow": "Proceso",
     "title": "Cinco etapas. Cero sorpresas.",
     "meta": "Cómo trabajamos",
     "steps": [
-      { "tag": "01 / Discovery", "ttl": "Investigación", "desc": "Auditoría técnica, objetivos de negocio y análisis competitivo." },
-      { "tag": "02 / Strategy", "ttl": "Estrategia", "desc": "Arquitectura de información, roadmap y métricas de éxito." },
-      { "tag": "03 / Design", "ttl": "Diseño", "desc": "Wireframes, sistema visual y prototipo interactivo." },
-      { "tag": "04 / Build", "ttl": "Desarrollo", "desc": "Código limpio, CI/CD, testing y revisión continua." },
-      { "tag": "05 / Launch", "ttl": "Lanzamiento", "desc": "Deploy, monitoreo, optimización iterativa y soporte." }
+      {
+        "tag": "01 / Descubrimiento",
+        "ttl": "Investigación",
+        "desc": "Objetivos de negocio, usuarios, competencia y estado técnico actual."
+      },
+      {
+        "tag": "02 / Estrategia",
+        "ttl": "Estrategia",
+        "desc": "Alcance, arquitectura de información, prioridades y métricas de éxito."
+      },
+      {
+        "tag": "03 / Diseño",
+        "ttl": "Diseño",
+        "desc": "Wireframes, sistema visual y prototipo para validar antes de construir."
+      },
+      {
+        "tag": "04 / Desarrollo",
+        "ttl": "Desarrollo",
+        "desc": "Código tipado, revisiones y pruebas automáticas en cada entrega."
+      },
+      {
+        "tag": "05 / Lanzamiento",
+        "ttl": "Lanzamiento",
+        "desc": "Deploy, medición con Lighthouse y axe, monitoreo y mejoras."
+      }
     ]
   },
   "tech": {
     "eyebrow": "Stack",
-    "title": "Herramientas elegidas con criterio.",
-    "items": ["Next.js 15", "React 19", "Astro", "TypeScript", "Tailwind", "Three.js", "Framer Motion", "Vercel", "Cloudflare", "Supabase", "PostgreSQL", "n8n", "Stripe", "Sanity"]
+    "title": "Tecnologías que usamos en proyectos reales.",
+    "items": [
+      "Astro",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "NestJS",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "Socket.IO",
+      "React Native",
+      "Three.js",
+      "GSAP",
+      "Vercel"
+    ]
   },
   "quality": {
     "eyebrow": "Estándares de calidad",
-    "title": "No entregamos hasta que\nlas cuatro métricas estén en verde.",
-    "meta": "Lighthouse · WCAG",
-    "desc": "Cada proyecto se mide. Cada métrica se documenta. Cada release se audita.",
+    "title": "Cada entrega se mide con\nlas mismas cuatro métricas.",
+    "meta": "Lighthouse · axe · WCAG",
+    "desc": "Medimos performance, accesibilidad, buenas prácticas y SEO con Lighthouse en mobile y desktop, y revisamos accesibilidad con axe y pruebas manuales de teclado.",
+    "target": "Objetivo",
     "scores": [
-      { "lbl": "Performance", "num": 100, "grade": "A+" },
-      { "lbl": "Accessibility", "num": 100, "grade": "WCAG AA" },
-      { "lbl": "Best Practices", "num": 100, "grade": "A+" },
-      { "lbl": "SEO", "num": 100, "grade": "A+" }
+      {
+        "lbl": "Performance",
+        "num": 100
+      },
+      {
+        "lbl": "Accesibilidad",
+        "num": 100
+      },
+      {
+        "lbl": "Buenas prácticas",
+        "num": 100
+      },
+      {
+        "lbl": "SEO",
+        "num": 100
+      }
     ],
     "checks": [
-      { "ttl": "Mobile-first responsive", "meta": "Todos los breakpoints" },
-      { "ttl": "Core Web Vitals en verde", "meta": "LCP · INP · CLS" },
-      { "ttl": "WCAG 2.2 AA mínimo", "meta": "Contraste · Foco · ARIA" },
-      { "ttl": "Schema y SEO técnico", "meta": "JSON-LD · sitemap" },
-      { "ttl": "Carga progresiva e imágenes optimizadas", "meta": "AVIF · WebP · CDN" },
-      { "ttl": "Arquitectura escalable y código limpio", "meta": "TypeScript · tests" }
+      {
+        "ttl": "Diseño responsive desde mobile",
+        "meta": "320 px en adelante"
+      },
+      {
+        "ttl": "Core Web Vitals en verde",
+        "meta": "LCP · INP · CLS"
+      },
+      {
+        "ttl": "WCAG 2.2 AA",
+        "meta": "Contraste · foco · ARIA"
+      },
+      {
+        "ttl": "Datos estructurados y SEO técnico",
+        "meta": "JSON-LD · sitemap"
+      },
+      {
+        "ttl": "Imágenes optimizadas y carga diferida",
+        "meta": "AVIF · WebP"
+      },
+      {
+        "ttl": "Código tipado y pruebas automáticas",
+        "meta": "TypeScript · Playwright"
+      }
     ]
   },
   "cta": {
     "eyebrow": "Auditoría gratuita",
-    "title": "Te decimos exactamente\nqué mejorar en tu web.",
-    "desc": "Análisis técnico de performance, SEO y accesibilidad. Sin compromiso, sin venta forzada — un informe claro con prioridades reales.",
-    "btn1": "Solicitar auditoría",
-    "btn2": "Hablar con el bot"
+    "title": "Te decimos qué mejorar\nen tu web.",
+    "desc": "Revisamos performance, SEO técnico y accesibilidad de tu sitio y te enviamos prioridades concretas. Sin costo y sin compromiso.",
+    "btn1": "Pedir auditoría",
+    "btn2": "Escribir por WhatsApp"
   },
   "contact": {
     "eyebrow": "Contacto",
     "title": "Empecemos a hablar.",
-    "meta": "Respuesta en 24h",
+    "meta": "Respuesta en 24 h hábiles",
     "name": "Nombre",
     "email": "Email",
     "service": "¿Qué necesitás?",
@@ -190,57 +252,257 @@
     "message": "Contanos brevemente",
     "submit": "Enviar mensaje",
     "sending": "Enviando…",
-    "sent": "Gracias — te respondemos en menos de 24h.",
-    "error_generic": "Ocurrió un error. Intentá de nuevo en unos minutos.",
+    "sent": "¡Gracias! Recibimos tu mensaje y te respondemos dentro de las próximas 24 h hábiles.",
+    "error_generic": "No pudimos enviar el mensaje. Probá de nuevo en unos minutos o escribinos por WhatsApp o email.",
     "error_required": "Este campo es obligatorio.",
-    "error_email": "Email inválido.",
-    "error_min": "Mínimo {min} caracteres.",
-    "service_opts": ["Web nueva", "Rediseño", "Performance / SEO", "Accesibilidad", "Automatizaciones", "Solo conversar"],
-    "info": [
-      { "lbl": "Email", "val": "markishtech@gmail.com" },
-      { "lbl": "WhatsApp", "val": "+54 9 11 5164 9895" },
-      { "lbl": "Ubicación", "val": "Buenos Aires · Remoto global" },
-      { "lbl": "Horario", "val": "Lun–Vie · 9 a 18h ART" }
-    ]
-  },
-  "chat": {
-    "title": "Asistente Markish Tech",
-    "status": "En línea",
-    "greet": "Hola, soy el asistente de Markish Tech. ¿Qué necesitás mejorar?",
-    "restart": "Reiniciar conversación",
-    "foot": "Asistente guiado · sin IA",
-    "open_label": "Abrir asistente",
-    "close_label": "Cerrar asistente",
-    "options": [
-      { "id": "new", "label": "Quiero una web nueva", "reply": "Perfecto. Construimos sitios desde cero, con diseño y código a medida. Te paso un brief breve y coordinamos una llamada." },
-      { "id": "improve", "label": "Quiero mejorar mi web actual", "reply": "Buenísimo. Hacemos auditoría técnica + plan de mejora priorizado. Sin tocar tu sitio actual hasta tener todo claro." },
-      { "id": "optimize", "label": "Optimizar SEO, performance o accesibilidad", "reply": "Tres áreas en las que medimos antes y después. Te mando un reporte con métricas y propuestas concretas." },
-      { "id": "automate", "label": "Automatizar procesos", "reply": "Conectamos formularios, CRM, pagos, emails y agendas. Vos dejás de hacer trabajo repetitivo y tu equipo se enfoca en vender." },
-      { "id": "audit", "label": "Quiero una auditoría gratuita", "reply": "Genial. Necesito tu URL y un email — en 48h te llega el informe técnico, sin costo." },
-      { "id": "wa", "label": "Hablar por WhatsApp", "reply": "Esto es un demo de chat — en producción te llevaría directo a WhatsApp. Para tomar contacto real, escribí desde el formulario." }
+    "error_email": "Ingresá un email válido, por ejemplo nombre@empresa.com.",
+    "error_min": "Escribí al menos {min} caracteres.",
+    "honeypot": "No completes este campo",
+    "privacy_note": "Usamos tus datos solo para responder tu consulta.",
+    "privacy_link": "Política de privacidad",
+    "service_opts": [
+      "Sitio web nuevo",
+      "Rediseño de sitio",
+      "Software o plataforma a medida",
+      "SEO técnico y performance",
+      "Accesibilidad web",
+      "Automatización de procesos",
+      "Solo conversar"
     ],
-    "end": "¿Querés que te contactemos?",
-    "end_yes": "Sí, dejar mis datos",
-    "end_no": "Volver al menú"
+    "channels_title": "Otros canales",
+    "info": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "location": "Ubicación",
+      "location_val": "Buenos Aires, Argentina · trabajo remoto",
+      "hours": "Horario",
+      "hours_val": "Lunes a viernes · 9 a 18 h (ART)"
+    }
   },
-  "foot": {
-    "copy": "© 2026 Markish Tech — Estudio de tecnología",
-    "meta": "Hecho con código limpio · Buenos Aires"
+  "quick": {
+    "open_label": "Abrir contacto rápido",
+    "close_label": "Cerrar contacto rápido",
+    "title": "Contacto rápido",
+    "desc": "Elegí el canal que te quede más cómodo. Respondemos en 24 h hábiles.",
+    "whatsapp": "WhatsApp",
+    "whatsapp_hint": "Mensaje directo",
+    "email": "Email",
+    "form": "Formulario",
+    "form_hint": "Contanos tu proyecto"
+  },
+  "footer": {
+    "tagline": "Estudio de desarrollo web y software a medida en Buenos Aires, Argentina.",
+    "nav_title": "Sitio",
+    "services_title": "Servicios",
+    "contact_title": "Contacto",
+    "copy": "© {year} Markish Tech",
+    "made": "Hecho en Buenos Aires con Astro."
+  },
+  "page": {
+    "service": {
+      "problems": "Qué problemas resuelve",
+      "audience": "Para quién es",
+      "deliverables": "Qué incluye",
+      "method": "Cómo lo implementamos",
+      "tech": "Tecnologías",
+      "when_yes": "Cuándo conviene",
+      "when_no": "Cuándo no conviene",
+      "projects": "Proyectos relacionados",
+      "faq": "Preguntas frecuentes",
+      "related": "Otros servicios",
+      "cta_title": "¿Querés saber si este servicio aplica a tu caso?",
+      "cta_desc": "Contanos qué necesitás y te respondemos con una propuesta inicial y los próximos pasos."
+    },
+    "project": {
+      "relation": "Relación con Markish Tech",
+      "status": "Estado",
+      "year": "Año",
+      "industry": "Industria",
+      "site": "Sitio",
+      "problem": "Problema",
+      "goal": "Objetivo",
+      "solution": "Solución",
+      "features": "Funcionalidades principales",
+      "stack": "Stack tecnológico",
+      "architecture": "Arquitectura",
+      "challenges": "Desafíos técnicos",
+      "results": "Resultados",
+      "results_pending": "Todavía no publicamos métricas de este proyecto: solo mostramos resultados que podamos verificar.",
+      "services": "Servicios aplicados",
+      "other": "Otros proyectos",
+      "cta_title": "¿Tenés un proyecto parecido?",
+      "cta_desc": "Te contamos cómo lo encararíamos, con qué tecnologías y en qué etapas."
+    },
+    "services_index": {
+      "h1": "Servicios de desarrollo web y software a medida",
+      "lead": "Cinco servicios con un mismo estándar técnico: código tipado, performance medida, SEO técnico y accesibilidad desde el inicio. Cada página explica qué resuelve, para quién es, cómo trabajamos y cuándo no conviene.",
+      "compare_title": "¿Cuál necesito?",
+      "compare": [
+        {
+          "q": "Necesito una web institucional, landing o sitio de producto.",
+          "service": "web-development"
+        },
+        {
+          "q": "Necesito un sistema, panel de gestión o plataforma SaaS.",
+          "service": "custom-software"
+        },
+        {
+          "q": "Ya tengo web pero carga lento o no aparece en Google.",
+          "service": "seo-performance"
+        },
+        {
+          "q": "Necesito que mi web sea usable por cualquier persona.",
+          "service": "accessibility"
+        },
+        {
+          "q": "Pierdo tiempo en tareas manuales entre herramientas.",
+          "service": "automation"
+        }
+      ]
+    },
+    "projects_index": {
+      "h1": "Proyectos y casos de estudio",
+      "lead": "Productos propios y proyectos para clientes, con su problema, solución, stack y estado real. Solo publicamos trabajo verificable.",
+      "live_title": "Publicados",
+      "dev_title": "En desarrollo"
+    },
+    "not_found": {
+      "eyebrow": "Error 404",
+      "h1": "Esta página no existe.",
+      "lead": "Puede que el enlace esté roto o que la página se haya movido. Estas secciones te pueden servir:",
+      "en_hint": "Looking for the English site?"
+    },
+    "about": {
+      "eyebrow": "Sobre nosotros",
+      "h1": "Sobre Markish Tech",
+      "lead": "Markish Tech es un estudio de desarrollo de software de Buenos Aires, Argentina. Diseñamos y desarrollamos sitios web, aplicaciones y plataformas SaaS a medida, con el mismo estándar técnico de punta a punta.",
+      "what_title": "Qué es Markish Tech",
+      "what": [
+        "Markish Tech es un estudio de desarrollo de software. Trabajamos en todo el recorrido de un producto digital: investigación, diseño, desarrollo de frontend y backend, publicación y mejora continua.",
+        "Además de desarrollar para clientes, construimos productos propios. Eso nos obliga a resolver los mismos problemas que nuestros clientes: escalar, mantener el código, medir la performance y sostener un producto en producción."
+      ],
+      "who_title": "Quién está detrás",
+      "who": [
+        "Markish Tech fue fundado por Marcos Hernán Parella, desarrollador de software, que diseña y desarrolla los productos y proyectos del estudio, desde la arquitectura y el backend hasta la interfaz."
+      ],
+      "who_link": "Perfil de LinkedIn de Marcos Hernán Parella",
+      "services_title": "Qué desarrollamos",
+      "experience_title": "Experiencia demostrable",
+      "experience_intro": "Estos son proyectos reales, publicados y verificables:",
+      "this_site": "Este sitio, desarrollado con Astro, con pruebas automáticas de SEO, accesibilidad y performance.",
+      "principles_title": "Cómo trabajamos",
+      "principles": [
+        {
+          "title": "Medimos antes de prometer",
+          "text": "Usamos Lighthouse, axe y Search Console para medir el punto de partida y el resultado. No publicamos cifras que no podamos respaldar."
+        },
+        {
+          "title": "Código propio y documentado",
+          "text": "Escribimos código tipado con TypeScript, sin plantillas pesadas, y lo dejamos documentado para que se pueda mantener."
+        },
+        {
+          "title": "Accesibilidad y SEO desde el inicio",
+          "text": "La estructura semántica, la accesibilidad y el SEO técnico forman parte del desarrollo, no son un agregado al final."
+        },
+        {
+          "title": "Entregas que se pueden probar",
+          "text": "Avanzamos por etapas con entregas parciales que podés revisar antes de seguir."
+        }
+      ],
+      "tech_title": "Tecnologías",
+      "contact_title": "Contacto"
+    },
+    "privacy": {
+      "eyebrow": "Legal",
+      "h1": "Política de privacidad",
+      "updated": "Última actualización: 18 de octubre de 2026",
+      "sections": [
+        {
+          "title": "Quién es responsable de tus datos",
+          "body": [
+            "Markish Tech, estudio de desarrollo de software de Buenos Aires, Argentina, fundado por Marcos Hernán Parella. Podés escribirnos por cualquier consulta sobre tus datos a {email}."
+          ]
+        },
+        {
+          "title": "Qué datos recolectamos",
+          "body": [
+            "Cuando completás el formulario de contacto recibimos tu nombre, tu email, el tipo de servicio que elegiste y el mensaje que escribiste. No pedimos datos sensibles.",
+            "Si nos escribís por WhatsApp o email, recibimos los datos que vos nos envíes por ese medio."
+          ]
+        },
+        {
+          "title": "Para qué los usamos",
+          "body": [
+            "Usamos tus datos solo para responder tu consulta y, si nos lo pedís, preparar una propuesta. No los usamos para enviarte publicidad y no los vendemos ni los cedemos a terceros para sus propios fines."
+          ]
+        },
+        {
+          "title": "Cómo se procesan",
+          "body": [
+            "El formulario envía tu consulta por email a la casilla de Markish Tech mediante el servicio de correo de Google (Gmail). El sitio está alojado en Vercel. Estos proveedores procesan los datos solo para prestar esos servicios."
+          ]
+        },
+        {
+          "title": "Analítica y cookies",
+          "body": [
+            "Este sitio no usa cookies. Para conocer cuántas personas lo visitan usamos Vercel Web Analytics, que registra datos agregados (por ejemplo, páginas vistas, sitio de origen, país y tipo de dispositivo) sin cookies y sin identificar a las personas.",
+            "Tu preferencia de tema claro u oscuro se guarda en el almacenamiento local de tu navegador y no se envía a ningún servidor."
+          ]
+        },
+        {
+          "title": "Cuánto tiempo los conservamos",
+          "body": [
+            "Conservamos los mensajes mientras sean necesarios para responder tu consulta y gestionar una eventual relación comercial. Podés pedir que los borremos en cualquier momento."
+          ]
+        },
+        {
+          "title": "Tus derechos",
+          "body": [
+            "Podés solicitar el acceso, la rectificación, la actualización o la supresión de tus datos escribiendo a {email}. Respondemos dentro de los plazos que establece la Ley 25.326 de Protección de los Datos Personales.",
+            "La Agencia de Acceso a la Información Pública, en su carácter de Órgano de Control de la Ley N.º 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales."
+          ]
+        },
+        {
+          "title": "Cambios en esta política",
+          "body": [
+            "Si cambiamos la forma en que tratamos tus datos, actualizaremos esta página y su fecha de última actualización."
+          ]
+        }
+      ]
+    }
   },
   "seo": {
     "home": {
-      "title": "Desarrollo Web | Markish Tech",
-      "description": "Diseñamos, desarrollamos y optimizamos webs rápidas, accesibles y responsive desde Buenos Aires. Auditoría gratuita.",
-      "og_title": "Markish Tech — Webs modernas que hacen crecer tu negocio",
-      "og_description": "Estudio técnico de Buenos Aires. Lighthouse 100, WCAG AA, performance medida y comprobada.",
-      "og_image_alt": "Markish Tech — Estudio técnico"
+      "title": "Desarrollo web y software a medida en Argentina | Markish Tech",
+      "description": "Markish Tech es un estudio de Buenos Aires que desarrolla sitios web, aplicaciones y plataformas SaaS a medida: rápidas, accesibles y optimizadas para SEO."
+    },
+    "services": {
+      "title": "Servicios de desarrollo web y software | Markish Tech",
+      "description": "Desarrollo web, software y SaaS a medida, SEO técnico y performance, accesibilidad web y automatización de procesos. Qué incluye cada servicio y cuándo conviene."
+    },
+    "projects": {
+      "title": "Proyectos y casos de estudio | Markish Tech",
+      "description": "Casos de estudio de Markish Tech: Markish Arena, Markish Box y FORJA Challenge. Problema, solución, stack tecnológico y estado real de cada proyecto."
+    },
+    "about": {
+      "title": "Sobre Markish Tech: quiénes somos y cómo trabajamos",
+      "description": "Markish Tech es un estudio de desarrollo de software fundado por Marcos Hernán Parella en Buenos Aires. Qué hacemos, cómo trabajamos y con qué tecnologías."
+    },
+    "faq": {
+      "title": "Preguntas frecuentes sobre desarrollo web y software",
+      "description": "Respuestas claras sobre costos, plazos, tecnologías (Astro, React, Next.js), software a medida, SEO, mantenimiento e integraciones con APIs."
+    },
+    "contact": {
+      "title": "Contacto: pedí presupuesto o una auditoría | Markish Tech",
+      "description": "Contanos tu proyecto por formulario, WhatsApp o email. Respondemos en 24 h hábiles desde Buenos Aires, Argentina. Auditoría técnica inicial sin costo."
+    },
+    "privacy": {
+      "title": "Política de privacidad | Markish Tech",
+      "description": "Qué datos recolecta markishtech.com.ar, para qué los usamos, con quién se comparten y cómo ejercer tus derechos de acceso, rectificación y supresión."
+    },
+    "not_found": {
+      "title": "Página no encontrada | Markish Tech",
+      "description": "La página que buscás no existe o se movió. Volvé al inicio de Markish Tech o explorá nuestros servicios y proyectos."
     }
-  },
-  "a11y": {
-    "skip_to_content": "Saltar al contenido",
-    "open_menu": "Abrir menú",
-    "close_menu": "Cerrar menú",
-    "toggle_theme": "Cambiar tema",
-    "before_after_label": "Comparativa antes y después"
   }
 }

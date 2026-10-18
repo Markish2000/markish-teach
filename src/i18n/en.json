@@ -1,246 +1,508 @@
 {
+  "lang_name": "English",
   "nav": {
+    "home": "Home",
     "services": "Services",
-    "problems": "Problems",
-    "work": "Work",
-    "cases": "Cases",
-    "process": "Process",
-    "tech": "Stack",
-    "quality": "Quality",
+    "projects": "Projects",
+    "about": "About",
+    "faq": "FAQ",
+    "faq_short": "FAQ",
     "contact": "Contact",
-    "cta": "Free audit"
+    "privacy": "Privacy",
+    "cta": "Tell us about your project"
+  },
+  "a11y": {
+    "skip_to_content": "Skip to content",
+    "primary_nav": "Main navigation",
+    "footer_nav": "Footer navigation",
+    "breadcrumb": "Breadcrumb",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "menu_title": "Menu",
+    "theme_to_light": "Switch to light theme",
+    "theme_to_dark": "Switch to dark theme",
+    "lang_group": "Language",
+    "new_tab": "(opens in a new tab)",
+    "home_link": "Markish Tech, go to home page"
   },
   "hero": {
-    "eyebrow": "Technical studio — from Buenos Aires",
-    "status": "Booking projects · Q2 / Q3 2026",
-    "title_a": "We build",
-    "title_b": "modern",
-    "title_c": " websites that grow your business.",
-    "subtitle": "We design, develop and optimize fast, accessible and responsive digital experiences — engineered to turn visitors into real customers.",
-    "cta_primary": "Request a free audit",
-    "cta_secondary": "View projects",
-    "stat1_num": "100",
-    "stat1_label": "Lighthouse target",
-    "stat2_num": "<1.5",
-    "stat2_label": "Load time (s)",
-    "stat3_num": "WCAG",
-    "stat3_label": "AA minimum"
+    "eyebrow": "Software development studio · Buenos Aires, Argentina",
+    "title_a": "Custom web development",
+    "title_b": "and software",
+    "title_c": " for businesses that want to grow.",
+    "subtitle": "We design and build websites, web applications and SaaS platforms that are fast, accessible and easy to find on Google. From the first sketch to deployment, with the same technical standard.",
+    "cta_primary": "Tell us about your project",
+    "cta_secondary": "See projects",
+    "facts": [
+      {
+        "num": "2",
+        "label": "SaaS platforms of our own"
+      },
+      {
+        "num": "AA",
+        "label": "WCAG 2.2 as our baseline"
+      },
+      {
+        "num": "ES/EN",
+        "label": "we work in Spanish and English"
+      }
+    ],
+    "hud": [
+      {
+        "label": "Technical SEO",
+        "value": "Schema · sitemap"
+      },
+      {
+        "label": "Core Web Vitals",
+        "value": "LCP · INP · CLS"
+      },
+      {
+        "label": "Accessibility",
+        "value": "WCAG 2.2 AA"
+      },
+      {
+        "label": "Responsive",
+        "value": "320 → 4K"
+      },
+      {
+        "label": "Integrations",
+        "value": "APIs · webhooks"
+      }
+    ],
+    "coords": "34°36'S · 58°22'W · BUENOS AIRES"
   },
   "services": {
     "eyebrow": "Services",
-    "title": "Everything your site needs,\nunder one technical standard.",
-    "meta": "07 capabilities",
-    "items": [
-      { "tag": "FEATURED", "title": "Custom web development", "desc": "Sites and apps built from scratch with clean code and scalable architecture. No templates, no shortcuts.", "foot": "React · Next.js · Astro" },
-      { "tag": "01", "title": "Website redesign", "desc": "We modernize existing sites without losing rankings or content.", "foot": "Progressive migration" },
-      { "tag": "02", "title": "Performance", "desc": "Sub-second loads, green Core Web Vitals, optimized assets.", "foot": "Lighthouse 95+" },
-      { "tag": "03", "title": "Technical SEO", "desc": "Structure, schema, sitemaps, metadata and speed — the base Google needs.", "foot": "Search Console" },
-      { "tag": "04", "title": "Accessibility", "desc": "Contrast, focus, screen readers and keyboard nav. WCAG AA.", "foot": "axe · WAVE" },
-      { "tag": "05", "title": "Automations", "desc": "We connect your site to your tools: CRM, email, payments, calendars.", "foot": "n8n · Zapier · APIs" },
-      { "tag": "06", "title": "Digital solutions", "desc": "For SMBs that need to streamline processes without adding friction.", "foot": "Consulting included" }
-    ]
+    "title": "What we do, explained plainly.",
+    "meta": "5 services",
+    "more": "View service",
+    "all": "View all services"
   },
   "problems": {
     "eyebrow": "Problems we solve",
     "title": "If this sounds familiar, let's talk.",
     "meta": "Common challenges",
     "items": [
-      { "ttl": "Your site loads slowly", "desc": "Visitors leave before seeing what you offer." },
-      { "ttl": "You're invisible on Google", "desc": "Technical SEO is missing or broken." },
-      { "ttl": "Your design feels dated", "desc": "Your brand grew. Your site didn't." },
-      { "ttl": "It breaks on mobile", "desc": "70% of your traffic walks away." },
-      { "ttl": "Low conversion rate", "desc": "Traffic comes in, but doesn't convert." },
-      { "ttl": "Manual processes", "desc": "Your team spends hours on repetitive tasks." }
+      {
+        "ttl": "Your site loads slowly",
+        "desc": "People leave before they see what you offer.",
+        "service": "seo-performance"
+      },
+      {
+        "ttl": "You don't show up on Google",
+        "desc": "Technical SEO is missing or poorly implemented.",
+        "service": "seo-performance"
+      },
+      {
+        "ttl": "The site looks outdated",
+        "desc": "Your business grew and the website didn't keep up.",
+        "service": "web-development"
+      },
+      {
+        "ttl": "It doesn't work well on mobile",
+        "desc": "Cut-off text, tiny buttons and hard-to-use forms.",
+        "service": "web-development"
+      },
+      {
+        "ttl": "Processes run on spreadsheets",
+        "desc": "Your team loses hours on work a system could handle.",
+        "service": "custom-software"
+      },
+      {
+        "ttl": "Some people can't use your site",
+        "desc": "Contrast, keyboard or screen reader problems.",
+        "service": "accessibility"
+      }
     ]
   },
-  "ba": {
-    "eyebrow": "Before & after",
-    "title": "Same business,\na different result.",
-    "meta": "Real comparison",
-    "desc": "Drag the slider to see the impact on performance, SEO and conversion.",
-    "tag_left": "Before",
-    "tag_right": "After",
-    "stats": [
-      { "lbl": "Performance", "from": "42", "to": "98", "delta": "+56" },
-      { "lbl": "SEO", "from": "61", "to": "100", "delta": "+39" },
-      { "lbl": "Load (s)", "from": "4.8", "to": "1.2", "delta": "−75%" },
-      { "lbl": "Conversion", "from": "1.4%", "to": "4.7%", "delta": "×3.4" }
-    ]
-  },
-  "cases": {
-    "eyebrow": "Cases",
-    "title": "Featured projects.",
-    "items": [
-      {
-        "industry": "B2B SaaS / Fitness Tech",
-        "ttl": "Markish Arena",
-        "badge": "Completed",
-        "desc": "A SaaS platform to run, manage and score functional fitness competitions. Manage athletes, categories, events, workouts, judges, results and real-time rankings.",
-        "highlights": [
-          "Organization and competition management.",
-          "Athlete, category and team administration.",
-          "Workout creation with formats like AMRAP, For Time, EMOM and RM.",
-          "Adaptable scoring system based on the workout type.",
-          "Leaderboard to track standings and results.",
-          "Roles and permissions for admins, judges and participants.",
-          "Configurable technical catalogs for movements, materials and categories.",
-          "Multi-tenant approach so each organization operates independently."
-        ],
-        "cta": "View case",
-        "href": "https://www.markisharena.com.ar/",
-        "imageSrc": "/markish-arena-preview.png",
-        "imageAlt": "Markish Arena preview: live heat, real-time leaderboard and a judge-signed scorecard.",
-        "preview": "Live leaderboard · In development"
-      },
-      {
-        "industry": "B2B SaaS / Fitness Management",
-        "ttl": "Markish Box",
-        "badge": "Coming soon",
-        "desc": "An all-in-one platform for managing functional fitness boxes and training centers. It will allow businesses to manage members, memberships, classes, bookings, attendance and progress from a single digital ecosystem.",
-        "highlights": [
-          "Management of members, coaches, locations and memberships.",
-          "Class bookings with capacity control and waiting lists.",
-          "Member check-in through confirmed bookings.",
-          "Attendance, progress and personal record tracking.",
-          "Membership expiration, renewal and payment management.",
-          "Automated notifications and reminders.",
-          "White-label platform adapted to each box's identity.",
-          "Administrative dashboard and mobile experience for members."
-        ],
-        "note": "Coming soon",
-        "imageSrc": "/markish-box-logo-dark.svg",
-        "imageSrcLight": "/markish-box-logo-light.svg",
-        "imageFit": "contain",
-        "imageAlt": "Preview of Markish Box, a management platform for functional fitness boxes and training centers."
-      },
-      {
-        "industry": "Events / Functional fitness",
-        "ttl": "FORJA Challenge",
-        "badge": "Completed",
-        "desc": "Official website for FORJA Challenge 2027, a functional fitness competition with an online qualifying phase and an in-person final. It presents the event, categories, standards, the Open, the final and sponsors.",
-        "highlights": [
-          "Official event website.",
-          "Competition stages: registration, online Open and Grand Final.",
-          "Beginners, Scaled, Advanced, RX and Masters categories.",
-          "Weight and movement standards per category.",
-          "Sponsors section and final venue.",
-          "Responsive design for desktop, tablet and mobile."
-        ],
-        "cta": "View case",
-        "href": "https://www.forjachallenge.com.ar/",
-        "imageSrc": "/forja-preview.png",
-        "imageAlt": "FORJA Challenge preview: functional fitness competition site with a hammer over an anvil.",
-        "preview": "Event site · FORJA Challenge"
-      },
-      { "industry": "Professional services", "ttl": "Case 03", "badge": "Coming soon" }
-    ]
+  "work": {
+    "eyebrow": "Projects",
+    "title": "Real work, published and verifiable.",
+    "meta": "Case studies",
+    "relation": {
+      "own": "Our own product",
+      "client": "Client project"
+    },
+    "status": {
+      "live": "Live",
+      "in-development": "In development"
+    },
+    "case": "Read the case study",
+    "site": "Visit site",
+    "all": "View all projects"
   },
   "process": {
     "eyebrow": "Process",
-    "title": "Five stages. Zero surprises.",
+    "title": "Five stages. No surprises.",
     "meta": "How we work",
     "steps": [
-      { "tag": "01 / Discovery", "ttl": "Research", "desc": "Technical audit, business goals and competitive analysis." },
-      { "tag": "02 / Strategy", "ttl": "Strategy", "desc": "Information architecture, roadmap and success metrics." },
-      { "tag": "03 / Design", "ttl": "Design", "desc": "Wireframes, visual system and interactive prototype." },
-      { "tag": "04 / Build", "ttl": "Build", "desc": "Clean code, CI/CD, testing and continuous review." },
-      { "tag": "05 / Launch", "ttl": "Launch", "desc": "Deploy, monitoring, iterative tuning and support." }
+      {
+        "tag": "01 / Discovery",
+        "ttl": "Research",
+        "desc": "Business goals, users, competitors and current technical state."
+      },
+      {
+        "tag": "02 / Strategy",
+        "ttl": "Strategy",
+        "desc": "Scope, information architecture, priorities and success metrics."
+      },
+      {
+        "tag": "03 / Design",
+        "ttl": "Design",
+        "desc": "Wireframes, visual system and a prototype to validate before building."
+      },
+      {
+        "tag": "04 / Build",
+        "ttl": "Development",
+        "desc": "Typed code, reviews and automated tests on every delivery."
+      },
+      {
+        "tag": "05 / Launch",
+        "ttl": "Launch",
+        "desc": "Deployment, Lighthouse and axe measurements, monitoring and improvements."
+      }
     ]
   },
   "tech": {
     "eyebrow": "Stack",
-    "title": "Tools chosen on purpose.",
-    "items": ["Next.js 15", "React 19", "Astro", "TypeScript", "Tailwind", "Three.js", "Framer Motion", "Vercel", "Cloudflare", "Supabase", "PostgreSQL", "n8n", "Stripe", "Sanity"]
+    "title": "Technologies we use in real projects.",
+    "items": [
+      "Astro",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "NestJS",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "Socket.IO",
+      "React Native",
+      "Three.js",
+      "GSAP",
+      "Vercel"
+    ]
   },
   "quality": {
     "eyebrow": "Quality standards",
-    "title": "We don't ship until\nall four metrics are green.",
-    "meta": "Lighthouse · WCAG",
-    "desc": "Every project is measured. Every metric documented. Every release audited.",
+    "title": "Every delivery is measured\nwith the same four metrics.",
+    "meta": "Lighthouse · axe · WCAG",
+    "desc": "We measure performance, accessibility, best practices and SEO with Lighthouse on mobile and desktop, and review accessibility with axe plus manual keyboard testing.",
+    "target": "Target",
     "scores": [
-      { "lbl": "Performance", "num": 100, "grade": "A+" },
-      { "lbl": "Accessibility", "num": 100, "grade": "WCAG AA" },
-      { "lbl": "Best Practices", "num": 100, "grade": "A+" },
-      { "lbl": "SEO", "num": 100, "grade": "A+" }
+      {
+        "lbl": "Performance",
+        "num": 100
+      },
+      {
+        "lbl": "Accessibility",
+        "num": 100
+      },
+      {
+        "lbl": "Best practices",
+        "num": 100
+      },
+      {
+        "lbl": "SEO",
+        "num": 100
+      }
     ],
     "checks": [
-      { "ttl": "Mobile-first responsive", "meta": "Every breakpoint" },
-      { "ttl": "Green Core Web Vitals", "meta": "LCP · INP · CLS" },
-      { "ttl": "WCAG 2.2 AA minimum", "meta": "Contrast · Focus · ARIA" },
-      { "ttl": "Schema & technical SEO", "meta": "JSON-LD · sitemap" },
-      { "ttl": "Progressive loading & optimized media", "meta": "AVIF · WebP · CDN" },
-      { "ttl": "Scalable architecture & clean code", "meta": "TypeScript · tests" }
+      {
+        "ttl": "Mobile-first responsive design",
+        "meta": "From 320 px up"
+      },
+      {
+        "ttl": "Core Web Vitals in the green",
+        "meta": "LCP · INP · CLS"
+      },
+      {
+        "ttl": "WCAG 2.2 AA",
+        "meta": "Contrast · focus · ARIA"
+      },
+      {
+        "ttl": "Structured data and technical SEO",
+        "meta": "JSON-LD · sitemap"
+      },
+      {
+        "ttl": "Optimized images and lazy loading",
+        "meta": "AVIF · WebP"
+      },
+      {
+        "ttl": "Typed code and automated tests",
+        "meta": "TypeScript · Playwright"
+      }
     ]
   },
   "cta": {
     "eyebrow": "Free audit",
-    "title": "We'll tell you exactly\nwhat to improve.",
-    "desc": "A technical analysis of performance, SEO and accessibility. No commitment, no hard sell — just a clear report with real priorities.",
-    "btn1": "Request audit",
-    "btn2": "Talk to the bot"
+    "title": "We'll tell you what to improve\non your website.",
+    "desc": "We review your site's performance, technical SEO and accessibility and send you concrete priorities. Free and with no commitment.",
+    "btn1": "Request an audit",
+    "btn2": "Message us on WhatsApp"
   },
   "contact": {
     "eyebrow": "Contact",
     "title": "Let's start talking.",
-    "meta": "Reply within 24h",
+    "meta": "Reply within 1 business day",
     "name": "Name",
     "email": "Email",
     "service": "What do you need?",
-    "service_placeholder": "Pick an option",
+    "service_placeholder": "Choose an option",
     "message": "Tell us briefly",
     "submit": "Send message",
     "sending": "Sending…",
-    "sent": "Thank you — we reply within 24 hours.",
-    "error_generic": "Something went wrong. Please try again in a moment.",
+    "sent": "Thank you! We got your message and will reply within 1 business day.",
+    "error_generic": "We couldn't send your message. Please try again in a few minutes or reach us on WhatsApp or by email.",
     "error_required": "This field is required.",
-    "error_email": "Invalid email.",
-    "error_min": "Minimum {min} characters.",
-    "service_opts": ["New website", "Redesign", "Performance / SEO", "Accessibility", "Automations", "Just chat"],
-    "info": [
-      { "lbl": "Email", "val": "markishtech@gmail.com" },
-      { "lbl": "WhatsApp", "val": "+54 9 11 5164 9895" },
-      { "lbl": "Location", "val": "Buenos Aires · Remote global" },
-      { "lbl": "Hours", "val": "Mon–Fri · 9–18 ART" }
-    ]
-  },
-  "chat": {
-    "title": "Markish Tech Assistant",
-    "status": "Online",
-    "greet": "Hi, I'm the Markish Tech assistant. What do you need to improve?",
-    "restart": "Restart conversation",
-    "foot": "Guided assistant · no AI",
-    "open_label": "Open assistant",
-    "close_label": "Close assistant",
-    "options": [
-      { "id": "new", "label": "I want a new website", "reply": "Perfect. We build sites from scratch with custom design and code. I'll send a brief and we book a call." },
-      { "id": "improve", "label": "I want to improve my current site", "reply": "Great. We do a technical audit + prioritized improvement plan. We don't touch your site until everything's clear." },
-      { "id": "optimize", "label": "Optimize SEO, performance or accessibility", "reply": "Three areas where we measure before and after. You get a report with metrics and concrete proposals." },
-      { "id": "automate", "label": "Automate processes", "reply": "We connect forms, CRM, payments, emails and calendars. You stop doing repetitive work and your team focuses on selling." },
-      { "id": "audit", "label": "I want a free audit", "reply": "Awesome. I need your URL and an email — within 48h you get the technical report, free of charge." },
-      { "id": "wa", "label": "Talk on WhatsApp", "reply": "This is a chat demo — in production this would take you straight to WhatsApp. To get in touch for real, use the form." }
+    "error_email": "Enter a valid email, for example name@company.com.",
+    "error_min": "Write at least {min} characters.",
+    "honeypot": "Leave this field empty",
+    "privacy_note": "We only use your details to reply to your inquiry.",
+    "privacy_link": "Privacy policy",
+    "service_opts": [
+      "New website",
+      "Website redesign",
+      "Custom software or platform",
+      "Technical SEO and performance",
+      "Web accessibility",
+      "Process automation",
+      "Just a conversation"
     ],
-    "end": "Want us to contact you?",
-    "end_yes": "Yes, leave my info",
-    "end_no": "Back to menu"
+    "channels_title": "Other channels",
+    "info": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "location": "Location",
+      "location_val": "Buenos Aires, Argentina · remote work",
+      "hours": "Hours",
+      "hours_val": "Monday to Friday · 9 am to 6 pm (ART, UTC−3)"
+    }
   },
-  "foot": {
-    "copy": "© 2026 Markish Tech — Technology studio",
-    "meta": "Built with clean code · Buenos Aires"
+  "quick": {
+    "open_label": "Open quick contact",
+    "close_label": "Close quick contact",
+    "title": "Quick contact",
+    "desc": "Pick the channel that suits you best. We reply within 1 business day.",
+    "whatsapp": "WhatsApp",
+    "whatsapp_hint": "Direct message",
+    "email": "Email",
+    "form": "Contact form",
+    "form_hint": "Tell us about your project"
+  },
+  "footer": {
+    "tagline": "Custom web development and software studio in Buenos Aires, Argentina.",
+    "nav_title": "Site",
+    "services_title": "Services",
+    "contact_title": "Contact",
+    "copy": "© {year} Markish Tech",
+    "made": "Made in Buenos Aires with Astro."
+  },
+  "page": {
+    "service": {
+      "problems": "Problems it solves",
+      "audience": "Who it's for",
+      "deliverables": "What's included",
+      "method": "How we implement it",
+      "tech": "Technologies",
+      "when_yes": "When it makes sense",
+      "when_no": "When it doesn't",
+      "projects": "Related projects",
+      "faq": "Frequently asked questions",
+      "related": "Other services",
+      "cta_title": "Want to know if this service fits your case?",
+      "cta_desc": "Tell us what you need and we'll reply with an initial proposal and next steps."
+    },
+    "project": {
+      "relation": "Relationship with Markish Tech",
+      "status": "Status",
+      "year": "Year",
+      "industry": "Industry",
+      "site": "Website",
+      "problem": "Problem",
+      "goal": "Goal",
+      "solution": "Solution",
+      "features": "Main features",
+      "stack": "Tech stack",
+      "architecture": "Architecture",
+      "challenges": "Technical challenges",
+      "results": "Results",
+      "results_pending": "We haven't published metrics for this project yet: we only show results we can verify.",
+      "services": "Services applied",
+      "other": "Other projects",
+      "cta_title": "Have a similar project?",
+      "cta_desc": "We'll explain how we would approach it, with which technologies and in which stages."
+    },
+    "services_index": {
+      "h1": "Custom web development and software services",
+      "lead": "Five services with one technical standard: typed code, measured performance, technical SEO and accessibility from day one. Each page explains what it solves, who it's for, how we work and when it isn't a good fit.",
+      "compare_title": "Which one do I need?",
+      "compare": [
+        {
+          "q": "I need a company website, landing page or product site.",
+          "service": "web-development"
+        },
+        {
+          "q": "I need a system, admin panel or SaaS platform.",
+          "service": "custom-software"
+        },
+        {
+          "q": "I already have a site but it's slow or doesn't rank on Google.",
+          "service": "seo-performance"
+        },
+        {
+          "q": "I need my site to be usable by everyone.",
+          "service": "accessibility"
+        },
+        {
+          "q": "I lose time on manual work between tools.",
+          "service": "automation"
+        }
+      ]
+    },
+    "projects_index": {
+      "h1": "Projects and case studies",
+      "lead": "Our own products and client projects, with their problem, solution, stack and real status. We only publish verifiable work.",
+      "live_title": "Live",
+      "dev_title": "In development"
+    },
+    "not_found": {
+      "eyebrow": "Error 404",
+      "h1": "This page doesn't exist.",
+      "lead": "The link may be broken or the page may have moved. These sections may help:",
+      "en_hint": "¿Buscás el sitio en español?"
+    },
+    "about": {
+      "eyebrow": "About",
+      "h1": "About Markish Tech",
+      "lead": "Markish Tech is a software development studio from Buenos Aires, Argentina. We design and build custom websites, web applications and SaaS platforms with the same technical standard from start to finish.",
+      "what_title": "What Markish Tech is",
+      "what": [
+        "Markish Tech is a software development studio. We work across the whole journey of a digital product: research, design, frontend and backend development, launch and continuous improvement.",
+        "Besides building for clients, we build our own products. That forces us to solve the same problems our clients face: scaling, maintaining code, measuring performance and keeping a product running in production."
+      ],
+      "who_title": "Who is behind it",
+      "who": [
+        "Markish Tech was founded by Marcos Hernán Parella, a software developer who designs and builds the studio's products and projects, from architecture and backend to the interface."
+      ],
+      "who_link": "Marcos Hernán Parella on LinkedIn",
+      "services_title": "What we build",
+      "experience_title": "Verifiable experience",
+      "experience_intro": "These are real, published and verifiable projects:",
+      "this_site": "This website, built with Astro, with automated SEO, accessibility and performance tests.",
+      "principles_title": "How we work",
+      "principles": [
+        {
+          "title": "We measure before we promise",
+          "text": "We use Lighthouse, axe and Search Console to measure the starting point and the result. We don't publish numbers we can't back up."
+        },
+        {
+          "title": "Hand-written, documented code",
+          "text": "We write typed TypeScript code, without heavy templates, and document it so it can be maintained."
+        },
+        {
+          "title": "Accessibility and SEO from the start",
+          "text": "Semantic structure, accessibility and technical SEO are part of development, not an add-on at the end."
+        },
+        {
+          "title": "Deliveries you can test",
+          "text": "We work in stages with partial deliveries you can review before moving on."
+        }
+      ],
+      "tech_title": "Technologies",
+      "contact_title": "Contact"
+    },
+    "privacy": {
+      "eyebrow": "Legal",
+      "h1": "Privacy policy",
+      "updated": "Last updated: October 18, 2026",
+      "sections": [
+        {
+          "title": "Who is responsible for your data",
+          "body": [
+            "Markish Tech, a software development studio in Buenos Aires, Argentina, founded by Marcos Hernán Parella. You can write to us about your data at {email}."
+          ]
+        },
+        {
+          "title": "What data we collect",
+          "body": [
+            "When you fill in the contact form we receive your name, your email, the type of service you chose and the message you wrote. We don't ask for sensitive data.",
+            "If you write to us on WhatsApp or by email, we receive the data you send through that channel."
+          ]
+        },
+        {
+          "title": "What we use it for",
+          "body": [
+            "We only use your data to reply to your inquiry and, if you ask us to, prepare a proposal. We don't use it to send you advertising and we don't sell it or hand it to third parties for their own purposes."
+          ]
+        },
+        {
+          "title": "How it is processed",
+          "body": [
+            "The form sends your inquiry by email to Markish Tech's inbox through Google's email service (Gmail). The site is hosted on Vercel. These providers process data only to deliver those services."
+          ]
+        },
+        {
+          "title": "Analytics and cookies",
+          "body": [
+            "This site doesn't use cookies. To know how many people visit it we use Vercel Web Analytics, which records aggregated data (for example page views, referring site, country and device type) without cookies and without identifying people.",
+            "Your light or dark theme preference is stored in your browser's local storage and is never sent to a server."
+          ]
+        },
+        {
+          "title": "How long we keep it",
+          "body": [
+            "We keep messages as long as needed to reply to your inquiry and manage any resulting business relationship. You can ask us to delete them at any time."
+          ]
+        },
+        {
+          "title": "Your rights",
+          "body": [
+            "You can request access to, correction, update or deletion of your data by writing to {email}. We reply within the timeframes set by Argentina's Personal Data Protection Law No. 25,326.",
+            "The Agency for Access to Public Information, as the supervisory authority of Law No. 25,326, has the power to handle complaints and claims filed by anyone whose rights are affected by non-compliance with personal data protection rules."
+          ]
+        },
+        {
+          "title": "Changes to this policy",
+          "body": [
+            "If we change how we handle your data, we will update this page and its last-updated date."
+          ]
+        }
+      ]
+    }
   },
   "seo": {
     "home": {
-      "title": "Web Development | Markish Tech",
-      "description": "We design, develop and optimize fast, accessible and responsive websites from Buenos Aires. Free audit.",
-      "og_title": "Markish Tech — Modern websites that grow your business",
-      "og_description": "Technical studio in Buenos Aires. Lighthouse 100, WCAG AA, measured performance.",
-      "og_image_alt": "Markish Tech — Technical studio"
+      "title": "Custom Web Development & Software in Argentina | Markish Tech",
+      "description": "Markish Tech is a Buenos Aires studio that builds custom websites, web applications and SaaS platforms: fast, accessible and optimized for search."
+    },
+    "services": {
+      "title": "Web Development & Software Services | Markish Tech",
+      "description": "Custom web development, software and SaaS, technical SEO and performance, web accessibility and process automation. What each service includes and when it fits."
+    },
+    "projects": {
+      "title": "Projects and Case Studies | Markish Tech",
+      "description": "Markish Tech case studies: Markish Arena, Markish Box and FORJA Challenge. Problem, solution, tech stack and the real status of each project."
+    },
+    "about": {
+      "title": "About Markish Tech: who we are and how we work",
+      "description": "Markish Tech is a software development studio founded by Marcos Hernán Parella in Buenos Aires. What we do, how we work and which technologies we use."
+    },
+    "faq": {
+      "title": "Web Development and Software FAQ | Markish Tech",
+      "description": "Clear answers about costs, timelines, technologies (Astro, React, Next.js), custom software, SEO, maintenance and integrations with external APIs."
+    },
+    "contact": {
+      "title": "Contact: request a quote or an audit | Markish Tech",
+      "description": "Tell us about your project via form, WhatsApp or email. We reply within 1 business day from Buenos Aires, Argentina. Free initial technical audit."
+    },
+    "privacy": {
+      "title": "Privacy Policy | Markish Tech",
+      "description": "Which data markishtech.com.ar collects, what we use it for, who it is shared with and how to exercise your rights of access, rectification and deletion."
+    },
+    "not_found": {
+      "title": "Page not found | Markish Tech",
+      "description": "The page you are looking for doesn't exist or has moved. Go back to the Markish Tech home page or explore our services and projects."
     }
-  },
-  "a11y": {
-    "skip_to_content": "Skip to content",
-    "open_menu": "Open menu",
-    "close_menu": "Close menu",
-    "toggle_theme": "Toggle theme",
-    "before_after_label": "Before and after comparison"
   }
 }

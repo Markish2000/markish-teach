@@ -10,6 +10,8 @@ const payloadSchema = z.object({
   email: z.email().min(1).max(160),
   service: z.string().min(1).max(120),
   message: z.string().min(8).max(4000),
+  /** Honeypot: hidden from people, filled in by naive bots. */
+  website: z.string().max(200).optional(),
 });
 
 const RATE_LIMIT_WINDOW_MS = 60_000;
@@ -81,12 +83,23 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     return jsonResponse(400, { error: "validation", issues: parsed.error.issues });
   }
 
+  if (parsed.data.website) {
+    // Pretend success so bots don't learn the field is a trap.
+    return jsonResponse(200, { ok: true });
+  }
+
   const gmailUser = String(import.meta.env["GMAIL_USER"] ?? "");
   const gmailAppPassword = String(import.meta.env["GMAIL_APP_PASSWORD"] ?? "").replace(/\s+/g, "");
 
   if (!gmailUser || !gmailAppPassword) {
-    console.info("[contact] GMAIL_USER / GMAIL_APP_PASSWORD missing — payload received in dev mode:", parsed.data);
-    return jsonResponse(200, { ok: true, mode: "dev" });
+    if (import.meta.env.DEV) {
+      console.info("[contact] SMTP credentials missing — dev mode, payload:", parsed.data);
+      return jsonResponse(200, { ok: true, mode: "dev" });
+    }
+    // Never report success when the message cannot be delivered: the visitor
+    // would believe they were contacted and the lead would be lost.
+    console.error("[contact] GMAIL_USER / GMAIL_APP_PASSWORD are not configured");
+    return jsonResponse(503, { error: "not_configured" });
   }
 
   const sent = await sendViaGmail(gmailUser, gmailAppPassword, parsed.data);

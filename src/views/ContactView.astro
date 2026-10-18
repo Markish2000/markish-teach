@@ -1,0 +1,33 @@
+---
+import type { Locale } from "@shared/types";
+import { localePath, sectionAlternates } from "@shared/constants";
+import { NODE_ID } from "@shared/helpers";
+import { getTranslations } from "@i18n";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/page/PageHero.astro";
+import Contact from "@components/sections/Contact.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  title={t.seo.contact.title}
+  description={t.seo.contact.description}
+  alternates={sectionAlternates("contact")}
+  pageType="ContactPage"
+  navCurrent="contact"
+  breadcrumbs={[
+    { name: t.nav.home, path: localePath(locale, "home") },
+    { name: t.nav.contact, path: localePath(locale, "contact") },
+  ]}
+  pageNode={{ about: { "@id": NODE_ID.organization } }}
+>
+  <PageHero eyebrow={t.contact.meta} title={t.contact.title} lead={t.cta.desc} />
+  <Contact locale={locale} showHead={false} />
+</BaseLayout>

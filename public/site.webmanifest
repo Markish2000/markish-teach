@@ -1,17 +1,19 @@
 {
-  "name": "Markish Tech — Estudio técnico de webs modernas",
+  "name": "Markish Tech — Desarrollo web y software a medida",
   "short_name": "Markish Tech",
-  "description": "Diseñamos, desarrollamos y optimizamos webs rápidas, accesibles y responsive desde Buenos Aires.",
+  "description": "Estudio de desarrollo de sitios web, aplicaciones y plataformas SaaS a medida en Buenos Aires, Argentina.",
   "id": "/es",
-  "lang": "es",
+  "lang": "es-AR",
   "dir": "ltr",
   "start_url": "/es",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
   "theme_color": "#05070b",
   "background_color": "#05070b",
-  "categories": ["business", "productivity"],
+  "categories": [
+    "business",
+    "productivity"
+  ],
   "icons": [
     {
       "src": "/icons/icon-192.png",

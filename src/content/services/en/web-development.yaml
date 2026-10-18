@@ -1,0 +1,91 @@
+locale: en
+key: web-development
+slug: web-development
+order: 1
+name: Custom web development
+title: Custom Professional Website Development | Markish Tech
+description: Custom company websites, landing pages and product sites built with Astro or Next.js. Fast, accessible and ready for search engines from day one.
+h1: Custom professional website development
+summary: >-
+  Markish Tech designs and builds custom websites —company sites, landing pages, product and
+  event sites— with Astro or Next.js. Every site ships with responsive design, technical SEO,
+  structured data and WCAG 2.2 AA accessibility, and is measured with Lighthouse before it goes
+  live. We also redesign existing sites without losing the rankings they have earned.
+card: Company sites, landing pages and product sites with Astro or Next.js, no templates and technical SEO from the start.
+serviceType: Web development
+problems:
+  - The current site is slow, looks outdated or doesn't work well on phones.
+  - The site is built on a template that is hard to change and loads code it doesn't use.
+  - There is no clear way for people to request a quote or get in touch.
+  - Content isn't structured so that Google and AI assistants can understand it.
+audience:
+  - Companies and professionals who need a website that builds trust.
+  - Digital products and startups that need a product site or a launch landing page.
+  - Event organizers who need to publish stages, categories, rules and sponsors.
+  - Teams with an existing site who want to redesign it without losing rankings.
+deliverables:
+  - title: Responsive design
+    text: Interface designed mobile-first, tested from 320 px wide up to large screens, in light and dark themes when needed.
+  - title: Hand-written code
+    text: Custom components in Astro or Next.js with TypeScript, no visual builders or heavy templates.
+  - title: Technical SEO baseline
+    text: Unique titles and descriptions, clean URLs, canonical tags, sitemap, robots.txt, hreflang for multilingual sites and JSON-LD structured data.
+  - title: Measured performance
+    text: AVIF/WebP images with responsive sizes, optimized fonts and minimal JavaScript. Measured with Lighthouse on mobile and desktop.
+  - title: Accessibility
+    text: Semantic HTML, sufficient contrast, visible focus, keyboard navigation and forms with announced errors.
+  - title: Forms and contact
+    text: Forms validated on client and server, direct WhatsApp and email links and a privacy notice.
+method:
+  - title: Discovery
+    text: We define goals, audience, required pages and how the site's success will be measured.
+  - title: Architecture and content
+    text: We map the site and structure each page around what people actually search for.
+  - title: Design
+    text: Wireframes and visual design aligned with the brand, validated before coding.
+  - title: Development and testing
+    text: We build the site and run automated checks for links, metadata, accessibility and performance.
+  - title: Launch
+    text: Deployment on Vercel, sitemap submitted to Search Console and a documented final measurement.
+tech:
+  - Astro
+  - Next.js
+  - React
+  - TypeScript
+  - Tailwind CSS
+  - GSAP
+  - Vercel
+whenYes:
+  - You need the site to load fast and rank in search engines.
+  - Your brand needs its own design that doesn't look like a template.
+  - You will maintain the site over time and want clean, documented code.
+whenNo:
+  - You only need a test page for a few days; a visual builder may be enough.
+  - You want to edit the whole design yourself without technical knowledge and without a custom CMS.
+  - Your main need is an online store with a large catalog; evaluate an e-commerce platform first.
+projects:
+  - forja-challenge
+related:
+  - seo-performance
+  - accessibility
+  - custom-software
+faqs:
+  - q: What's the difference between a custom site and a template?
+    a: >-
+      A template ships generic design and code meant for many cases, so it usually loads more than
+      needed and is hard to adapt. A custom site is built for your pages and content: it loads only
+      what it uses, respects your brand and can be extended without fighting someone else's code.
+  - q: Do you use Astro or Next.js?
+    a: >-
+      It depends on the project. For mostly content sites (company sites, landing pages, event sites)
+      Astro delivers static HTML with very little JavaScript, which helps speed and SEO. When the site
+      needs heavy interaction, user sessions or server logic, Next.js is usually the better choice.
+      This site is built with Astro and FORJA Challenge with Next.js.
+  - q: Can you redesign my site without losing my Google rankings?
+    a: >-
+      Yes. Before changing anything we list the URLs that receive traffic, keep each one or redirect
+      it with a 301, preserve titles and content that work, and verify in Search Console after launch.
+  - q: Will the site work on phones?
+    a: >-
+      Yes. We design mobile-first and automatically test that there is no horizontal overflow at
+      320, 768 and 1280 px widths.

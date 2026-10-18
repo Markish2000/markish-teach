@@ -1,0 +1,96 @@
+locale: es
+key: custom-software
+slug: software-a-medida
+order: 2
+name: Software y plataformas SaaS a medida
+title: Desarrollo de software y plataformas SaaS a medida | Markish Tech
+description: Desarrollo de aplicaciones web, paneles de gestión y plataformas SaaS multi-tenant a medida con Next.js, NestJS y PostgreSQL, desde Buenos Aires.
+h1: Desarrollo de software y plataformas SaaS a medida
+summary: >-
+  Markish Tech desarrolla aplicaciones web, sistemas de gestión y plataformas SaaS a medida,
+  desde la base de datos hasta la interfaz. Trabajamos con Next.js y React en el frontend,
+  NestJS, PostgreSQL y Redis en el backend, y arquitecturas multi-tenant cuando cada cliente
+  necesita operar de forma independiente. Es la misma base técnica con la que construimos
+  nuestros productos Markish Arena y Markish Box.
+card: Aplicaciones web, paneles de gestión y SaaS multi-tenant con Next.js, NestJS y PostgreSQL, del modelo de datos a la interfaz.
+serviceType: Desarrollo de software a medida
+problems:
+  - La operación depende de planillas, chats y procesos manuales que no escalan.
+  - Las herramientas genéricas no se adaptan a las reglas de tu negocio.
+  - Tenés una idea de producto digital y necesitás llevarla a una primera versión usable.
+  - Un sistema existente es difícil de mantener o no soporta más usuarios.
+audience:
+  - Empresas que necesitan un sistema interno o un panel de gestión propio.
+  - Emprendedores y startups que quieren lanzar un producto SaaS.
+  - Negocios con varias sedes, marcas o clientes que necesitan separar datos y permisos.
+  - Equipos que necesitan integrar su sistema con otras herramientas mediante APIs.
+deliverables:
+  - title: Análisis y modelo de datos
+    text: Relevamos reglas de negocio, roles y flujos, y los traducimos en un modelo de datos y una arquitectura documentada.
+  - title: Backend y API
+    text: API con NestJS, validación de datos, autenticación, roles y permisos, colas de trabajo y tareas programadas.
+  - title: Frontend web
+    text: Interfaces con Next.js y React, tipadas con TypeScript, accesibles y adaptadas a escritorio y mobile.
+  - title: Multi-tenant y marca blanca
+    text: Cuando aplica, cada organización opera con sus datos, usuarios y marca, sobre la misma plataforma.
+  - title: Tiempo real e internacionalización
+    text: Actualizaciones en vivo con WebSockets y textos traducibles a varios idiomas cuando el producto lo necesita.
+  - title: Calidad y operación
+    text: Pruebas automáticas, monitoreo de errores y documentación para que el sistema se pueda mantener.
+method:
+  - title: Descubrimiento
+    text: Entendemos el problema, quién usa el sistema y qué reglas no se pueden romper.
+  - title: Alcance de la primera versión
+    text: Priorizamos lo indispensable para salir a producción y dejamos el resto planificado.
+  - title: Diseño y prototipo
+    text: Validamos pantallas y flujos con un prototipo antes de escribir el código definitivo.
+  - title: Desarrollo iterativo
+    text: Entregas parciales que se pueden probar, con revisiones y pruebas en cada etapa.
+  - title: Lanzamiento y evolución
+    text: Publicación, monitoreo y mejoras sobre la base del uso real.
+tech:
+  - Next.js
+  - React
+  - TypeScript
+  - NestJS
+  - PostgreSQL
+  - Prisma
+  - Redis y BullMQ
+  - Socket.IO
+  - React Native
+whenYes:
+  - Tus procesos tienen reglas propias que una herramienta estándar no contempla.
+  - Querés ser dueño del producto, del código y de los datos.
+  - El sistema va a crecer en usuarios, sedes o funcionalidades.
+whenNo:
+  - Una herramienta existente ya resuelve el 90 % de lo que necesitás; suele ser más barato configurarla.
+  - Todavía no está claro qué problema resuelve el producto; conviene validar primero con algo más simple.
+  - No hay forma de sostener el mantenimiento del sistema después del lanzamiento.
+projects:
+  - markish-arena
+  - markish-box
+related:
+  - automation
+  - web-development
+  - accessibility
+faqs:
+  - q: ¿Qué es el desarrollo de software a medida?
+    a: >-
+      Es construir un sistema pensado para las reglas, los usuarios y los procesos de un negocio en
+      particular, en lugar de adaptar el negocio a una herramienta genérica. El resultado es un
+      producto propio: el código, los datos y la evolución dependen de vos.
+  - q: ¿Qué significa que una plataforma sea multi-tenant?
+    a: >-
+      Que una misma aplicación atiende a varias organizaciones (tenants) y cada una ve solo sus datos,
+      usuarios y configuración. Es la arquitectura típica de un SaaS. Markish Arena funciona así: cada
+      box o gimnasio opera su competencia de forma independiente con su propia marca.
+  - q: ¿Se puede conectar la aplicación con APIs externas?
+    a: >-
+      Sí. Integramos servicios externos mediante sus APIs o webhooks: envío de emails, almacenamiento
+      de archivos, notificaciones push, inicio de sesión con Google y otros sistemas que expongan una API.
+  - q: ¿Cómo se desarrolla una plataforma escalable?
+    a: >-
+      Separando responsabilidades desde el inicio: una API con reglas de negocio centralizadas, una
+      base de datos bien modelada, colas para el trabajo pesado o diferido, caché donde hace falta y
+      monitoreo para detectar problemas antes que los usuarios. Escalar no es solo sumar servidores:
+      es que el código y los datos permitan crecer sin reescribir todo.

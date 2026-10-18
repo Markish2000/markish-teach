@@ -1,0 +1,81 @@
+locale: es
+key: automation
+slug: automatizacion-de-procesos
+order: 5
+name: Automatización de procesos e integraciones
+title: Automatización de procesos e integraciones con APIs | Markish Tech
+description: "Automatizamos tareas repetitivas e integramos tu web o sistema con otras herramientas mediante APIs y webhooks: emails, notificaciones, reportes y más."
+h1: Automatización de procesos e integraciones con APIs
+summary: >-
+  Markish Tech automatiza tareas repetitivas y conecta tu sitio o sistema con otras herramientas
+  mediante APIs, webhooks, colas de trabajo y tareas programadas: envío de emails y
+  notificaciones, generación de reportes y exportaciones, sincronización de datos y avisos
+  automáticos. Son las mismas técnicas que usamos dentro de nuestras plataformas para que la
+  operación no dependa de tareas manuales.
+card: Emails, notificaciones, reportes y sincronización de datos con APIs, webhooks, colas y tareas programadas.
+serviceType: Automatización de procesos e integraciones
+problems:
+  - Datos que se copian a mano de un sistema a otro.
+  - Recordatorios, avisos o reportes que alguien tiene que acordarse de enviar.
+  - Formularios cuyas respuestas quedan en un email y nadie las procesa.
+  - Herramientas que no se comunican entre sí.
+audience:
+  - Pymes con procesos administrativos repetitivos.
+  - Equipos que ya usan varias herramientas y necesitan conectarlas.
+  - Productos digitales que necesitan tareas automáticas en segundo plano.
+deliverables:
+  - title: Relevamiento de procesos
+    text: Identificamos qué tareas se repiten, cuánto tiempo consumen y cuáles conviene automatizar primero.
+  - title: Integraciones con APIs
+    text: Conexión entre tu sistema y servicios externos mediante sus APIs oficiales o webhooks.
+  - title: Tareas programadas y colas
+    text: Procesos que corren solos en horarios definidos o en segundo plano, con reintentos ante errores.
+  - title: Notificaciones
+    text: Emails transaccionales y notificaciones push o por otros canales según el caso.
+  - title: Reportes y exportaciones
+    text: Generación automática de planillas y documentos a partir de los datos del sistema.
+  - title: Registro y monitoreo
+    text: Cada automatización deja registro para saber qué se ejecutó y detectar fallas.
+method:
+  - title: Mapa del proceso actual
+    text: Documentamos cómo se hace hoy, paso a paso.
+  - title: Diseño de la automatización
+    text: Definimos disparadores, datos, reglas y qué pasa si algo falla.
+  - title: Implementación
+    text: Desarrollamos e integramos con pruebas sobre datos reales o de prueba.
+  - title: Puesta en marcha
+    text: Activación gradual y monitoreo de las primeras ejecuciones.
+tech:
+  - NestJS
+  - BullMQ y Redis
+  - APIs REST
+  - Webhooks
+  - Web Push
+  - ExcelJS
+whenYes:
+  - Una tarea se repite todas las semanas y sigue siempre las mismas reglas.
+  - Errores manuales están generando problemas con clientes o datos.
+  - Tus herramientas exponen APIs para conectarse.
+whenNo:
+  - El proceso todavía cambia todo el tiempo; conviene estabilizarlo antes de automatizarlo.
+  - La herramienta que usás no tiene API ni forma de exportar datos.
+projects:
+  - markish-arena
+  - markish-box
+related:
+  - custom-software
+  - web-development
+faqs:
+  - q: ¿Qué procesos conviene automatizar primero?
+    a: >-
+      Los que se repiten con frecuencia, siguen reglas claras y hoy consumen tiempo o generan errores:
+      avisos y recordatorios, carga de datos entre sistemas, reportes periódicos y respuestas a
+      formularios.
+  - q: ¿Se puede conectar una aplicación con APIs externas?
+    a: >-
+      Sí, siempre que el servicio externo ofrezca una API o webhooks. Revisamos su documentación,
+      límites de uso y autenticación antes de diseñar la integración.
+  - q: ¿Qué pasa si una automatización falla?
+    a: >-
+      La diseñamos para que falle de forma controlada: reintentos automáticos, registro del error y
+      aviso a una persona cuando hace falta intervenir.

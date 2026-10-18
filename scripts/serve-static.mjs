@@ -95,6 +95,16 @@ createServer(async (req, res) => {
     if (!route.continue) break;
   }
 
+  // Vercel injects Web Analytics at the edge; locally serve an empty stand-in so
+  // the page behaves as in production without network errors.
+  if (url.pathname.startsWith("/_vercel/insights/")) {
+    if (url.pathname.endsWith(".js")) {
+      return send(req, res, 200, headers, Buffer.from("/* Vercel Web Analytics (local stub) */"), TYPES[".js"]);
+    }
+    res.writeHead(204, headers);
+    return res.end();
+  }
+
   const file = await resolveFile(url.pathname);
   if (file) {
     const type = TYPES[path.extname(file)] ?? "application/octet-stream";

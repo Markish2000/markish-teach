@@ -1,0 +1,55 @@
+locale: es
+key: forja-challenge
+slug: forja-challenge
+order: 2
+name: FORJA Challenge
+relation: client
+status: live
+url: https://www.forjachallenge.com.ar/
+industry: Eventos · Fitness funcional
+title: "FORJA Challenge: sitio oficial del evento | Caso de estudio"
+description: Caso de estudio del sitio oficial de FORJA Challenge 2027, competencia de fitness funcional. Landing narrativa con Next.js y animaciones guiadas por scroll.
+summary: >-
+  FORJA Challenge es un proyecto para cliente: Markish Tech desarrolló el sitio oficial de la
+  edición 2027 de esta competencia de fitness funcional, con fase clasificatoria online y final
+  presencial. Es una landing de una sola página, narrativa y guiada por scroll, que presenta el
+  evento, sus etapas, categorías, estándares por categoría, sede y sponsors.
+image: ../../../assets/forja-preview.png
+imageAlt: Portada del sitio de FORJA Challenge con un martillo sobre un yunque y la identidad oscura del evento.
+year: 2026
+problem: >-
+  El evento necesitaba un sitio propio que transmitiera su identidad y concentrara la información
+  que los atletas consultan antes de inscribirse: etapas, categorías, estándares de peso y
+  movimientos, sede y sponsors.
+goal: >-
+  Contar la historia del evento de forma inmersiva sin sacrificar la claridad de la información
+  ni la experiencia en celulares.
+solution: >-
+  Desarrollamos una landing de una sola página en Next.js con animaciones sincronizadas con el
+  scroll mediante GSAP y desplazamiento suave con Lenis. El contenido del evento (categorías,
+  sponsors, textos) está separado del código para poder actualizarlo sin tocar los componentes.
+features:
+  - Presentación narrativa del evento, de la apertura a la final.
+  - Etapas de la competencia - inscripciones, Open online y gran final presencial.
+  - Categorías Beginners, Scaled, Advanced, RX y Masters con sus estándares.
+  - Sección de sede y sponsors.
+  - Diseño responsive para mobile, tablet y escritorio.
+stack:
+  - area: Frontend
+    items: [Next.js, React, TypeScript]
+  - area: Animación
+    items: [GSAP, Lenis]
+  - area: Medición
+    items: [Vercel Analytics]
+architecture:
+  - Aplicación Next.js con una carpeta por sección visual de la página.
+  - Datos del evento separados en módulos de configuración editables.
+  - TypeScript estricto, lint y chequeo de tipos sin errores como condición de entrega.
+challenges:
+  - title: Animación sin perder fluidez
+    text: Las escenas guiadas por scroll tienen que verse fluidas también en celulares. Concentramos la lógica de animación en un hook compartido y constantes de scroll reutilizables.
+  - title: Mucha información en una sola página
+    text: Etapas, categorías y estándares tenían que ser fáciles de encontrar dentro de una experiencia narrativa. Cada sección mantiene un encabezado claro y su contenido se edita desde archivos de datos.
+results: []
+services:
+  - web-development

@@ -1,0 +1,40 @@
+---
+import type { Locale } from "@shared/types";
+import { CONTACT, localePath } from "@shared/constants";
+import { getTranslations } from "@i18n";
+import Button from "@shared/components/primitives/Button.astro";
+
+interface Props {
+  readonly locale: Locale;
+  readonly title: string;
+  readonly desc: string;
+  readonly id?: string;
+}
+
+const { locale, title, desc, id = "cta" } = Astro.props;
+const t = getTranslations(locale);
+---
+
+<section class="cta-section" aria-labelledby={`${id}-title`}>
+  <div class="container-mk">
+    <div class="cta-block">
+      <div class="inner">
+        <div>
+          <h2 id={`${id}-title`} style="white-space: pre-line;">{title}</h2>
+          <p class="lede" style="margin-top: 18px;">{desc}</p>
+        </div>
+        <div class="cta-actions">
+          <Button variant="primary" href={localePath(locale, "contact")} label={t.nav.cta} />
+          <Button
+            variant="secondary"
+            href={CONTACT.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            label={t.cta.btn2}
+            srHint={t.a11y.new_tab}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

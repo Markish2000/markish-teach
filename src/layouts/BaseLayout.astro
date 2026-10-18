@@ -1,81 +1,74 @@
 ---
-import type { BaseLayoutProps } from "@shared/interfaces";
-import { getSeo, getSiteJsonLd } from "@shared/helpers";
+import { Font } from "astro:assets";
+import type { PageMeta } from "@shared/interfaces";
+import { getJsonLd, getSeo, LANG_TAG } from "@shared/helpers";
+import { getTranslations } from "@i18n";
 import { THEME_BOOTSTRAP_SCRIPT } from "@scripts/theme-bootstrap";
+import Header from "@components/layout/Header.astro";
+import Footer from "@components/layout/Footer.astro";
+import Breadcrumbs from "@components/layout/Breadcrumbs.astro";
+import QuickContact from "@components/interactive/QuickContact.astro";
 import "@styles/global.css";
+import "@styles/pages.css";
 
-interface Props extends BaseLayoutProps {}
+interface Props extends PageMeta {
+  /** Section of the primary nav to mark with `aria-current="page"`. */
+  readonly navCurrent?: "services" | "projects" | "about" | "faq" | "contact";
+}
 
-const { locale, page } = Astro.props;
-const seo = getSeo({ locale, page });
-const jsonLd = getSiteJsonLd({ locale, page });
-const bodyLang = locale === "es" ? "es-AR" : "en-US";
+const meta = Astro.props;
+const { locale, alternates, breadcrumbs, navCurrent } = meta;
+const seo = getSeo(meta);
+const jsonLd = getJsonLd(meta, seo);
+const t = getTranslations(locale);
 ---
 
 <!doctype html>
-<html lang={bodyLang} data-theme="dark">
+<html lang={LANG_TAG[locale]} data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="generator" content={Astro.generator} />
 
     <title>{seo.title}</title>
     <meta name="description" content={seo.description} />
+    <meta name="robots" content={seo.robots} />
     <link rel="canonical" href={seo.canonical} />
-    <meta name="theme-color" content={seo.themeColor} />
+    {seo.alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
 
-    {seo.alternates.map((alt) => (
-      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
-    ))}
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#05070b" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f3ee" />
+    <meta name="color-scheme" content="dark light" />
 
-    <meta property="og:type" content={seo.openGraph.type} />
-    <meta property="og:title" content={seo.openGraph.title} />
-    <meta property="og:description" content={seo.openGraph.description} />
-    <meta property="og:image" content={seo.openGraph.image} />
-    <meta property="og:image:secure_url" content={seo.openGraph.imageSecureUrl} />
-    <meta property="og:image:alt" content={seo.openGraph.imageAlt} />
-    <meta property="og:image:type" content={seo.openGraph.imageType} />
-    <meta property="og:image:width" content={String(seo.openGraph.imageWidth)} />
-    <meta property="og:image:height" content={String(seo.openGraph.imageHeight)} />
-    <meta property="og:site_name" content={seo.openGraph.siteName} />
-    <meta property="og:locale" content={seo.openGraph.locale} />
-    {seo.openGraph.localeAlternates.map((alt) => (
-      <meta property="og:locale:alternate" content={alt} />
-    ))}
+    <meta property="og:type" content={seo.ogType} />
+    <meta property="og:site_name" content="Markish Tech" />
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
     <meta property="og:url" content={seo.canonical} />
+    <meta property="og:image" content={seo.image.src} />
+    <meta property="og:image:alt" content={seo.image.alt} />
+    <meta property="og:image:type" content={seo.image.type} />
+    <meta property="og:image:width" content={String(seo.image.width)} />
+    <meta property="og:image:height" content={String(seo.image.height)} />
+    <meta property="og:locale" content={seo.ogLocale} />
+    {seo.ogLocaleAlternates.map((alt) => <meta property="og:locale:alternate" content={alt} />)}
 
-    <meta name="twitter:card" content={seo.twitter.card} />
-    <meta name="twitter:title" content={seo.twitter.title} />
-    <meta name="twitter:description" content={seo.twitter.description} />
-    <meta name="twitter:image" content={seo.twitter.image} />
-    <meta name="twitter:image:alt" content={seo.twitter.imageAlt} />
-    {seo.twitter.site && <meta name="twitter:site" content={seo.twitter.site} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
+    <meta name="twitter:image" content={seo.image.src} />
+    <meta name="twitter:image:alt" content={seo.image.alt} />
+    {seo.twitterSite && <meta name="twitter:site" content={seo.twitterSite} />}
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="apple-mobile-web-app-title" content="Markish Tech" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href={locale === "es" ? "/site.webmanifest" : "/site-en.webmanifest"} />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-      />
-    </noscript>
+    <Font cssVariable="--font-grotesk" preload />
+    <Font cssVariable="--font-jetbrains" />
 
     <script is:inline set:html={THEME_BOOTSTRAP_SCRIPT}></script>
-
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline></script>
 
     <noscript>
@@ -89,11 +82,19 @@ const bodyLang = locale === "es" ? "es-AR" : "en-US";
     </noscript>
   </head>
   <body>
+    <a href="#main" class="skip-link">{t.a11y.skip_to_content}</a>
     <div class="scroll-progress" aria-hidden="true"></div>
     <div class="bg-atmosphere" aria-hidden="true"></div>
     <div class="bg-grid" aria-hidden="true"></div>
     <div class="bg-noise" aria-hidden="true"></div>
-    <slot />
+
+    <Header locale={locale} alternates={alternates} current={navCurrent} />
+    <main id="main" tabindex="-1">
+      {breadcrumbs && breadcrumbs.length > 1 && <Breadcrumbs locale={locale} items={breadcrumbs} />}
+      <slot />
+    </main>
+    <Footer locale={locale} />
+    <QuickContact locale={locale} />
 
     <script>
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

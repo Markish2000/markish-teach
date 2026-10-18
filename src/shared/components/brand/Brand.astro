@@ -5,26 +5,22 @@ import lockupLight from "../../../assets/markish-lockup-light.png";
 import lockupDark from "../../../assets/markish-lockup-dark.png";
 
 interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
-  readonly href?: string;
+  readonly href: string;
+  /** Accessible name of the link (the images are decorative). */
+  readonly label: string;
   readonly text?: string;
-  /** `lockup` usa el logo horizontal completo; `mark` el isotipo mas el texto. */
+  /** `lockup` uses the full horizontal logo; `mark` the symbol plus text. */
   readonly variant?: "mark" | "lockup";
-  /** `lazy` para instancias debajo del fold, como el footer. */
+  /** `lazy` for instances below the fold, like the footer. */
   readonly loading?: "eager" | "lazy";
 }
 
-const {
-  href = "/",
-  text = "Markish Tech.",
-  variant = "mark",
-  loading = "eager",
-  ...rest
-} = Astro.props;
+const { href, label, text = "Markish Tech.", variant = "mark", loading = "eager", ...rest } = Astro.props;
 ---
 
 {
   variant === "lockup" ? (
-    <a class="brand brand-lockup" href={href} aria-label="Markish Tech" {...rest}>
+    <a class="brand brand-lockup" href={href} aria-label={label} {...rest}>
       <Image
         class="brand-lockup-img is-light"
         src={lockupLight}
@@ -45,7 +41,7 @@ const {
       />
     </a>
   ) : (
-    <a class="brand" href={href} aria-label="Markish Tech" {...rest}>
+    <a class="brand" href={href} aria-label={label} {...rest}>
       <span class="brand-mark">
         <LogoMark size={32} />
       </span>

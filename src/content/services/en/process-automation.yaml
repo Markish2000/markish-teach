@@ -1,0 +1,79 @@
+locale: en
+key: automation
+slug: process-automation
+order: 5
+name: Process automation and integrations
+title: Process Automation and API Integrations | Markish Tech
+description: "We automate repetitive tasks and connect your site or system with other tools through APIs and webhooks: emails, notifications, reports and more."
+h1: Process automation and API integrations
+summary: >-
+  Markish Tech automates repetitive work and connects your site or system with other tools through
+  APIs, webhooks, job queues and scheduled tasks: email and notification delivery, reports and
+  exports, data synchronization and automatic reminders. They're the same techniques we use inside
+  our own platforms so operations don't depend on manual work.
+card: Emails, notifications, reports and data sync with APIs, webhooks, queues and scheduled tasks.
+serviceType: Process automation and integrations
+problems:
+  - Data copied by hand from one system to another.
+  - Reminders, notices or reports someone has to remember to send.
+  - Form submissions that sit in an inbox and nobody processes.
+  - Tools that don't talk to each other.
+audience:
+  - Small and medium businesses with repetitive admin processes.
+  - Teams that already use several tools and need to connect them.
+  - Digital products that need automatic background tasks.
+deliverables:
+  - title: Process review
+    text: We identify which tasks repeat, how much time they take and which ones to automate first.
+  - title: API integrations
+    text: Connections between your system and external services through their official APIs or webhooks.
+  - title: Scheduled tasks and queues
+    text: Processes that run on their own at set times or in the background, with retries on errors.
+  - title: Notifications
+    text: Transactional email and push notifications or other channels depending on the case.
+  - title: Reports and exports
+    text: Automatic generation of spreadsheets and documents from the system's data.
+  - title: Logging and monitoring
+    text: Every automation leaves a record so you know what ran and can detect failures.
+method:
+  - title: Map the current process
+    text: We document how it's done today, step by step.
+  - title: Design the automation
+    text: We define triggers, data, rules and what happens if something fails.
+  - title: Implementation
+    text: We build and integrate it, testing with real or test data.
+  - title: Go-live
+    text: Gradual activation and monitoring of the first runs.
+tech:
+  - NestJS
+  - BullMQ and Redis
+  - REST APIs
+  - Webhooks
+  - Web Push
+  - ExcelJS
+whenYes:
+  - A task repeats every week and always follows the same rules.
+  - Manual errors are causing problems with customers or data.
+  - Your tools expose APIs to connect to.
+whenNo:
+  - The process still changes all the time; stabilize it before automating it.
+  - The tool you use has no API or way to export data.
+projects:
+  - markish-arena
+  - markish-box
+related:
+  - custom-software
+  - web-development
+faqs:
+  - q: Which processes should be automated first?
+    a: >-
+      The ones that repeat often, follow clear rules and currently consume time or cause errors:
+      notices and reminders, moving data between systems, periodic reports and form responses.
+  - q: Can an application connect to external APIs?
+    a: >-
+      Yes, as long as the external service offers an API or webhooks. We review its documentation,
+      rate limits and authentication before designing the integration.
+  - q: What happens if an automation fails?
+    a: >-
+      We design it to fail in a controlled way: automatic retries, error logging and a notification
+      to a person when someone needs to step in.

@@ -1,0 +1,93 @@
+locale: es
+key: web-development
+slug: desarrollo-web
+order: 1
+name: Desarrollo web a medida
+title: Desarrollo de sitios web profesionales a medida | Markish Tech
+description: Desarrollo de sitios web institucionales, landings y webs de producto a medida, con Astro o Next.js. Rápidos, accesibles y preparados para SEO desde el día uno.
+h1: Desarrollo de sitios web profesionales a medida
+summary: >-
+  Markish Tech diseña y desarrolla sitios web a medida —institucionales, landings, sitios de
+  producto y de eventos— con Astro o Next.js. Cada sitio se entrega con diseño responsive,
+  SEO técnico, datos estructurados y accesibilidad WCAG 2.2 AA, y se mide con Lighthouse antes
+  de publicarse. También rediseñamos sitios existentes sin perder el posicionamiento ganado.
+card: Sitios institucionales, landings y webs de producto con Astro o Next.js, sin plantillas y con SEO técnico desde el inicio.
+serviceType: Desarrollo web
+problems:
+  - El sitio actual es lento, se ve desactualizado o no funciona bien en celulares.
+  - La web está armada sobre una plantilla que es difícil de modificar y carga código que no usa.
+  - No hay forma clara de que una persona pida presupuesto o se contacte.
+  - El contenido no está estructurado para que Google y los asistentes de IA lo entiendan.
+audience:
+  - Empresas y profesionales que necesitan una web institucional que transmita confianza.
+  - Productos digitales y startups que necesitan un sitio de producto o una landing de lanzamiento.
+  - Organizadores de eventos que necesitan publicar etapas, categorías, reglas y sponsors.
+  - Equipos con un sitio existente que quieren rediseñarlo sin perder posicionamiento.
+deliverables:
+  - title: Diseño responsive
+    text: Interfaz diseñada desde mobile, probada desde 320 px de ancho hasta pantallas grandes, en tema claro y oscuro cuando corresponde.
+  - title: Desarrollo con código propio
+    text: Componentes a medida en Astro o Next.js con TypeScript, sin constructores visuales ni plantillas pesadas.
+  - title: SEO técnico de base
+    text: Títulos y descripciones únicos, URLs limpias, canonical, sitemap, robots.txt, hreflang si hay varios idiomas y datos estructurados JSON-LD.
+  - title: Performance medida
+    text: Imágenes en AVIF/WebP con tamaños responsive, fuentes optimizadas y JavaScript mínimo. Medición con Lighthouse en mobile y desktop.
+  - title: Accesibilidad
+    text: HTML semántico, contraste suficiente, foco visible, navegación por teclado y formularios con errores anunciables.
+  - title: Formularios y contacto
+    text: Formularios validados en cliente y servidor, enlaces directos a WhatsApp y email y aviso de privacidad.
+method:
+  - title: Descubrimiento
+    text: Definimos objetivos, público, páginas necesarias y cómo se va a medir el éxito del sitio.
+  - title: Arquitectura y contenido
+    text: Armamos el mapa del sitio y la estructura de cada página pensando en lo que la gente busca.
+  - title: Diseño
+    text: Wireframes y diseño visual alineado a la marca, validados antes de programar.
+  - title: Desarrollo y pruebas
+    text: Programamos el sitio y corremos pruebas automáticas de enlaces, metadatos, accesibilidad y performance.
+  - title: Publicación
+    text: Deploy en Vercel, envío del sitemap a Search Console y medición final documentada.
+tech:
+  - Astro
+  - Next.js
+  - React
+  - TypeScript
+  - Tailwind CSS
+  - GSAP
+  - Vercel
+whenYes:
+  - Necesitás que el sitio cargue rápido y se posicione en buscadores.
+  - Tu marca necesita un diseño propio que no se parezca a una plantilla.
+  - Vas a mantener el sitio en el tiempo y querés código ordenado y documentado.
+whenNo:
+  - Solo necesitás una página de prueba por unos días; un constructor visual puede alcanzar.
+  - Querés editar todo el diseño vos mismo sin conocimientos técnicos y sin un CMS a medida.
+  - Tu necesidad principal es una tienda online con catálogo grande; conviene evaluar primero una plataforma de e-commerce.
+projects:
+  - forja-challenge
+related:
+  - seo-performance
+  - accessibility
+  - custom-software
+faqs:
+  - q: ¿Qué diferencia hay entre un sitio a medida y una plantilla?
+    a: >-
+      Una plantilla trae diseño y código genéricos pensados para muchos casos, por eso suele cargar
+      más de lo necesario y es difícil de adaptar. Un sitio a medida se programa para tus páginas y
+      tu contenido: carga solo lo que usa, respeta tu marca y se puede extender sin pelear con el
+      código de otro.
+  - q: ¿Usan Astro o Next.js?
+    a: >-
+      Depende del proyecto. Para sitios mayormente de contenido (institucionales, landings, sitios de
+      eventos) Astro entrega HTML estático y muy poco JavaScript, lo que facilita la velocidad y el SEO.
+      Cuando el sitio necesita mucha interacción, sesiones de usuario o lógica en el servidor, Next.js
+      suele ser mejor opción. Este mismo sitio está hecho con Astro y FORJA Challenge con Next.js.
+  - q: ¿Pueden rediseñar mi web sin perder el posicionamiento en Google?
+    a: >-
+      Sí. Antes de cambiar nada relevamos las URLs que reciben tráfico, mantenemos o redirigimos cada
+      una con redirecciones 301, conservamos títulos y contenidos que funcionan y verificamos en Search
+      Console después de publicar.
+  - q: ¿El sitio va a funcionar en celulares?
+    a: >-
+      Sí. Diseñamos primero para mobile y probamos automáticamente que no haya desbordes horizontales
+      en anchos de 320, 768 y 1280 px.

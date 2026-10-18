@@ -1,0 +1,68 @@
+---
+import type { Locale } from "@shared/types";
+import { localePath, sectionAlternates } from "@shared/constants";
+import { absoluteUrl } from "@shared/helpers";
+import { getTranslations } from "@i18n";
+import { getProjects, projectPath } from "@/lib/content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/page/PageHero.astro";
+import ProjectCard from "@components/page/ProjectCard.astro";
+import CtaBand from "@components/page/CtaBand.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const page = t.page.projects_index;
+const projects = await getProjects(locale);
+const live = projects.filter((p) => p.data.status === "live");
+const inDevelopment = projects.filter((p) => p.data.status === "in-development");
+---
+
+<BaseLayout
+  locale={locale}
+  title={t.seo.projects.title}
+  description={t.seo.projects.description}
+  alternates={sectionAlternates("projects")}
+  pageType="CollectionPage"
+  navCurrent="projects"
+  breadcrumbs={[
+    { name: t.nav.home, path: localePath(locale, "home") },
+    { name: t.nav.projects, path: localePath(locale, "projects") },
+  ]}
+  pageNode={{
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: projects.map((p, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: absoluteUrl(projectPath(p)),
+        name: p.data.name,
+      })),
+    },
+  }}
+>
+  <PageHero eyebrow={t.work.eyebrow} title={page.h1} lead={page.lead} />
+
+  <div class="container-mk page-body">
+    <section class="page-section" aria-labelledby="live-title">
+      <h2 id="live-title">{page.live_title}</h2>
+      <div class="cases-grid">
+        {live.map((project, index) => <ProjectCard project={project} eager={index === 0} />)}
+      </div>
+    </section>
+
+    {inDevelopment.length > 0 && (
+      <section class="page-section" aria-labelledby="dev-title">
+        <h2 id="dev-title">{page.dev_title}</h2>
+        <div class="cases-grid">
+          {inDevelopment.map((project) => <ProjectCard project={project} />)}
+        </div>
+      </section>
+    )}
+  </div>
+
+  <CtaBand locale={locale} title={t.page.project.cta_title} desc={t.page.project.cta_desc} />
+</BaseLayout>

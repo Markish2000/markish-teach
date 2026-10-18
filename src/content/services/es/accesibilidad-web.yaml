@@ -1,0 +1,85 @@
+locale: es
+key: accessibility
+slug: accesibilidad-web
+order: 4
+name: Accesibilidad web (WCAG 2.2)
+title: Accesibilidad web y auditorías WCAG 2.2 AA | Markish Tech
+description: Auditoría y corrección de accesibilidad web según WCAG 2.2 AA. Contraste, teclado, lectores de pantalla y formularios, con pruebas automáticas y manuales.
+h1: Accesibilidad web según WCAG 2.2 AA
+summary: >-
+  Markish Tech audita y corrige sitios y aplicaciones web para que puedan usarlos personas con
+  discapacidad visual, motriz, auditiva o cognitiva, siguiendo las pautas WCAG 2.2 nivel AA.
+  Combinamos herramientas automáticas como axe y Lighthouse con pruebas manuales de teclado,
+  zoom y lector de pantalla, porque un puntaje automático perfecto no garantiza que un sitio sea
+  accesible.
+card: Contraste, teclado, lectores de pantalla y formularios según WCAG 2.2 AA, con pruebas automáticas y manuales.
+serviceType: Accesibilidad web
+problems:
+  - Textos con poco contraste o que se cortan al ampliar la pantalla.
+  - Menús, modales o formularios que no se pueden usar solo con teclado.
+  - Botones e íconos sin nombre accesible que un lector de pantalla no puede anunciar.
+  - Errores de formulario que solo se indican con color.
+audience:
+  - Organizaciones que quieren que cualquier persona pueda usar su sitio.
+  - Empresas que deben cumplir requisitos de accesibilidad en licitaciones o contratos.
+  - Productos digitales que quieren evitar perder usuarios por barreras de uso.
+  - Equipos que ya desarrollaron un sitio y necesitan una revisión experta.
+deliverables:
+  - title: Auditoría WCAG 2.2 AA
+    text: Revisión con axe, Lighthouse y pruebas manuales, con cada problema vinculado al criterio WCAG que incumple.
+  - title: Corrección en código
+    text: HTML semántico, roles y estados ARIA solo donde hacen falta, nombres accesibles y orden de foco lógico.
+  - title: Teclado y foco
+    text: Foco visible, saltar al contenido, menús y diálogos que atrapan y devuelven el foco correctamente.
+  - title: Contraste y temas
+    text: Verificación de contraste en tema claro y oscuro y soporte de modo de alto contraste.
+  - title: Formularios
+    text: Etiquetas reales, errores descriptivos asociados al campo y mensajes de estado anunciables.
+  - title: Movimiento y zoom
+    text: Respeto de la preferencia de movimiento reducido y diseño que funciona al 200 % y 400 % de zoom.
+method:
+  - title: Relevamiento
+    text: Elegimos páginas y flujos representativos (inicio, formularios, navegación, contenido).
+  - title: Pruebas automáticas
+    text: axe-core y Lighthouse en cada plantilla y en ambos temas.
+  - title: Pruebas manuales
+    text: Navegación completa con teclado, zoom, reflow en 320 px y lector de pantalla.
+  - title: Corrección
+    text: Implementamos los cambios o los documentamos para tu equipo.
+  - title: Regresión
+    text: Dejamos pruebas automáticas para que la accesibilidad no se rompa en el próximo cambio.
+tech:
+  - WCAG 2.2
+  - axe-core
+  - Lighthouse
+  - Playwright
+  - Lectores de pantalla
+  - HTML semántico y WAI-ARIA
+whenYes:
+  - Querés llegar a todas las personas, incluidas las que usan tecnologías de asistencia.
+  - Tenés formularios o procesos críticos (contacto, compra, registro).
+  - Necesitás demostrar cumplimiento con evidencia.
+whenNo:
+  - "Buscás una solución automática de un solo script que prometa accesibilidad total: no existe."
+  - No hay posibilidad de modificar el código o el contenido del sitio.
+projects: []
+related:
+  - web-development
+  - seo-performance
+faqs:
+  - q: ¿Qué es WCAG 2.2 AA?
+    a: >-
+      WCAG (Web Content Accessibility Guidelines) es el estándar internacional del W3C para la
+      accesibilidad web. La versión 2.2 se publicó en 2023 y el nivel AA es el que suelen exigir
+      normativas y contratos: incluye contraste mínimo, uso con teclado, foco visible, textos
+      alternativos y formularios comprensibles, entre otros criterios.
+  - q: ¿Un Lighthouse de 100 en accesibilidad significa que el sitio es accesible?
+    a: >-
+      No. Las herramientas automáticas detectan solo una parte de los problemas. Cosas como el orden
+      lógico del foco, si un texto alternativo describe bien la imagen o si un flujo se entiende con
+      lector de pantalla requieren pruebas manuales.
+  - q: ¿Sirven los widgets o plugins que prometen accesibilidad automática?
+    a: >-
+      En general no resuelven los problemas de fondo, que están en el HTML y el diseño, y a veces
+      interfieren con las tecnologías de asistencia que la persona ya usa. Recomendamos corregir el
+      código.

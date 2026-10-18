@@ -1,0 +1,25 @@
+---
+import type { Locale } from "@shared/types";
+import type { Breadcrumb } from "@shared/interfaces";
+import { getTranslations } from "@i18n";
+
+interface Props {
+  readonly locale: Locale;
+  readonly items: ReadonlyArray<Breadcrumb>;
+}
+
+const { locale, items } = Astro.props;
+const t = getTranslations(locale);
+---
+
+<nav class="breadcrumbs container-mk" aria-label={t.a11y.breadcrumb}>
+  <ol>
+    {items.map((item, index) =>
+      index === items.length - 1 ? (
+        <li><span aria-current="page">{item.name}</span></li>
+      ) : (
+        <li><a href={item.path}>{item.name}</a></li>
+      ),
+    )}
+  </ol>
+</nav>

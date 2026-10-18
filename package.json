@@ -7,10 +7,17 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
+    "build": "astro build && node scripts/vercel-headers.mjs",
+    "preview": "node scripts/serve-static.mjs 4321",
     "check": "astro check",
+    "typecheck": "astro check",
     "astro": "astro",
+    "test": "playwright test",
+    "test:e2e": "playwright test tests/routes.spec.ts tests/links.spec.ts tests/i18n.spec.ts tests/form.spec.ts tests/theme.spec.ts",
+    "test:a11y": "playwright test tests/a11y.spec.ts tests/keyboard.spec.ts",
+    "test:seo": "playwright test tests/seo.spec.ts tests/schema.spec.ts tests/content.spec.ts",
+    "test:lighthouse": "node scripts/lighthouse.mjs --min 100",
+    "validate": "npm run check && npm run build && npm test",
     "postinstall": "patch-package"
   },
   "dependencies": {

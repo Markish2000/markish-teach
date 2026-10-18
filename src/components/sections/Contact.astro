@@ -1,44 +1,50 @@
 ---
 import type { Locale } from "@shared/types";
+import { CONTACT, localePath } from "@shared/constants";
 import { getTranslations } from "@i18n";
 import SectionHead from "@shared/components/sections/SectionHead.astro";
 import ContactForm from "@components/interactive/ContactForm.astro";
 
 interface Props {
   readonly locale: Locale;
+  /** On the contact page the section title is the page h1 instead of an h2. */
+  readonly showHead?: boolean;
 }
 
-const { locale } = Astro.props;
-const t = getTranslations(locale).contact;
-const labels = {
-  name: t.name,
-  email: t.email,
-  service: t.service,
-  service_placeholder: t.service_placeholder,
-  message: t.message,
-  submit: t.submit,
-  sending: t.sending,
-  sent: t.sent,
-  error_generic: t.error_generic,
-  error_required: t.error_required,
-  error_email: t.error_email,
-  error_min: t.error_min,
-  service_opts: t.service_opts,
-};
+const { locale, showHead = true } = Astro.props;
+const t = getTranslations(locale);
+const c = t.contact;
 ---
 
-<section id="contact" aria-labelledby="contact-title">
+<section id="contact" aria-labelledby={showHead ? "contact-title" : "channels-title"}>
   <div class="container-mk">
-    <SectionHead id="contact" eyebrow={t.eyebrow} title={t.title} meta={t.meta} />
+    {showHead && <SectionHead id="contact" eyebrow={c.eyebrow} title={c.title} meta={c.meta} />}
     <div class="contact-grid reveal-group">
-      <ContactForm labels={labels} endpoint="/api/contact" />
-      <aside class="contact-aside">
-        {t.info.map((row) => (
+      <ContactForm locale={locale} privacyHref={localePath(locale, "privacy")} />
+      <aside class="contact-aside" aria-labelledby="channels-title">
+        <h2 id="channels-title" class="contact-aside-title">{c.channels_title}</h2>
+        <dl>
           <div class="row">
-            <span class="lbl">{row.lbl}</span>
-            <span class="val">{row.val}</span>
+            <dt class="lbl">{c.info.email}</dt>
+            <dd class="val"><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></dd>
           </div>
-        ))}
+          <div class="row">
+            <dt class="lbl">{c.info.whatsapp}</dt>
+            <dd class="val">
+              <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer">
+                {CONTACT.whatsappDisplay}<span class="sr-only"> {t.a11y.new_tab}</span>
+              </a>
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="lbl">{c.info.location}</dt>
+            <dd class="val">{c.info.location_val}</dd>
+          </div>
+          <div class="row">
+            <dt class="lbl">{c.info.hours}</dt>
+            <dd class="val">{c.info.hours_val}</dd>
+          </div>
+        </dl>
       </aside>
     </div>
   </div>

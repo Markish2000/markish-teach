@@ -1,6 +1,8 @@
 ---
 import type { Locale } from "@shared/types";
-import { getTranslations } from "@i18n";
+import { CONTACT, FOUNDER, SOCIAL_PROFILES, localePath } from "@shared/constants";
+import { format, getTranslations } from "@i18n";
+import { getServices, servicePath } from "@/lib/content";
 import Brand from "@shared/components/brand/Brand.astro";
 
 interface Props {
@@ -8,15 +10,57 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const t = getTranslations(locale).foot;
+const t = getTranslations(locale);
+const services = await getServices(locale);
+const siteLinks = (["home", "services", "projects", "about", "faq", "contact", "privacy"] as const).map((key) => ({
+  label: t.nav[key],
+  href: localePath(locale, key),
+}));
+const year = new Date().getFullYear();
+const profiles = [...SOCIAL_PROFILES, ...FOUNDER.sameAs];
+const profileLabel = (url: string) => (url.includes("linkedin.com/in/") ? `LinkedIn · ${FOUNDER.name}` : new URL(url).hostname);
 ---
 
-<footer class="site-footer reveal-group" role="contentinfo">
-  <div class="footer-brand">
-    <Brand variant="lockup" loading="lazy" />
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <Brand variant="lockup" href={localePath(locale, "home")} label={t.a11y.home_link} loading="lazy" />
+      <p class="footer-tagline">{t.footer.tagline}</p>
+    </div>
+    <nav class="footer-col" aria-labelledby="footer-site">
+      <h2 id="footer-site" class="footer-title">{t.footer.nav_title}</h2>
+      <ul>
+        {siteLinks.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-labelledby="footer-services">
+      <h2 id="footer-services" class="footer-title">{t.footer.services_title}</h2>
+      <ul>
+        {services.map((s) => <li><a href={servicePath(s)}>{s.data.name}</a></li>)}
+      </ul>
+    </nav>
+    <div class="footer-col">
+      <h2 class="footer-title">{t.footer.contact_title}</h2>
+      <ul>
+        <li><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
+        <li>
+          <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer">
+            WhatsApp {CONTACT.whatsappDisplay}<span class="sr-only"> {t.a11y.new_tab}</span>
+          </a>
+        </li>
+        <li>{t.contact.info.location_val}</li>
+        {profiles.map((url) => (
+          <li>
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              {profileLabel(url)}<span class="sr-only"> {t.a11y.new_tab}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
   <div class="footer-row">
-    <span class="meta">{t.copy}</span>
-    <span class="meta">{t.meta}</span>
+    <span class="meta">{format(t.footer.copy, { year })}</span>
+    <span class="meta">{t.footer.made}</span>
   </div>
 </footer>

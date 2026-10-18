@@ -1,28 +1,38 @@
 import type { Locale } from "@shared/types";
+import type { Alternates } from "@shared/constants";
 
-export interface OpenGraphMeta {
-  readonly title: string;
-  readonly description: string;
-  readonly image: string;
-  readonly imageSecureUrl: string;
-  readonly imageAlt: string;
-  readonly imageType: string;
-  readonly imageWidth: number;
-  readonly imageHeight: number;
-  readonly type: "website" | "article";
-  readonly siteName: string;
-  readonly locale: string;
-  readonly localeAlternates: ReadonlyArray<string>;
+export interface SeoImage {
+  /** Absolute URL or root-relative path. */
+  readonly src: string;
+  readonly width: number;
+  readonly height: number;
+  readonly alt: string;
+  readonly type?: string;
 }
 
-export interface TwitterMeta {
-  readonly card: "summary" | "summary_large_image";
+export interface Breadcrumb {
+  readonly name: string;
+  readonly path: string;
+}
+
+export type PageType = "WebPage" | "CollectionPage" | "AboutPage" | "ContactPage" | "FAQPage";
+
+/** Everything a page tells the layout about itself. */
+export interface PageMeta {
+  readonly locale: Locale;
   readonly title: string;
   readonly description: string;
-  readonly image: string;
-  readonly imageAlt: string;
-  /** Handle `@cuenta`; vacío cuando todavía no hay cuenta de X. */
-  readonly site: string;
+  /** Path of this page in every locale where it exists (must include the current locale). */
+  readonly alternates: Alternates;
+  readonly image?: SeoImage | undefined;
+  readonly ogType?: "website" | "article";
+  readonly pageType?: PageType;
+  readonly breadcrumbs?: ReadonlyArray<Breadcrumb>;
+  /** Extra JSON-LD nodes (Service, SoftwareApplication, ...) appended to the page graph. */
+  readonly nodes?: ReadonlyArray<Record<string, unknown>>;
+  /** Extra properties merged into the WebPage node (e.g. `mainEntity`). */
+  readonly pageNode?: Record<string, unknown>;
+  readonly noindex?: boolean;
 }
 
 export interface HreflangAlternate {
@@ -34,98 +44,11 @@ export interface SeoData {
   readonly title: string;
   readonly description: string;
   readonly canonical: string;
+  readonly robots: string;
   readonly alternates: ReadonlyArray<HreflangAlternate>;
-  readonly openGraph: OpenGraphMeta;
-  readonly twitter: TwitterMeta;
-  readonly themeColor: string;
+  readonly image: Required<SeoImage>;
+  readonly ogType: "website" | "article";
+  readonly ogLocale: string;
+  readonly ogLocaleAlternates: ReadonlyArray<string>;
+  readonly twitterSite: string;
 }
-
-interface JsonLdRef {
-  readonly "@id": string;
-}
-
-export interface PostalAddressJsonLd {
-  readonly "@type": "PostalAddress";
-  readonly addressLocality: string;
-  readonly addressRegion: string;
-  readonly addressCountry: string;
-}
-
-export interface ImageObjectJsonLd {
-  readonly "@type": "ImageObject";
-  readonly "@id": string;
-  readonly url: string;
-  readonly contentUrl: string;
-  readonly width: number;
-  readonly height: number;
-}
-
-export interface OrganizationJsonLd {
-  readonly "@type": "Organization";
-  readonly "@id": string;
-  readonly name: string;
-  readonly legalName: string;
-  readonly url: string;
-  readonly email: string;
-  readonly description: string;
-  readonly logo: ImageObjectJsonLd;
-  readonly image: JsonLdRef;
-  readonly address: PostalAddressJsonLd;
-  readonly areaServed: string;
-  readonly knowsLanguage: ReadonlyArray<string>;
-  readonly sameAs?: ReadonlyArray<string>;
-}
-
-export interface WebSiteJsonLd {
-  readonly "@type": "WebSite";
-  readonly "@id": string;
-  readonly url: string;
-  readonly name: string;
-  readonly description: string;
-  readonly inLanguage: ReadonlyArray<string>;
-  readonly publisher: JsonLdRef;
-}
-
-export interface ProfessionalServiceJsonLd {
-  readonly "@type": "ProfessionalService";
-  readonly "@id": string;
-  readonly name: string;
-  readonly url: string;
-  readonly description: string;
-  readonly email: string;
-  readonly image: JsonLdRef;
-  readonly address: PostalAddressJsonLd;
-  readonly areaServed: string;
-  readonly provider: JsonLdRef;
-  readonly serviceType: ReadonlyArray<string>;
-}
-
-export interface WebPageJsonLd {
-  readonly "@type": "WebPage";
-  readonly "@id": string;
-  readonly url: string;
-  readonly name: string;
-  readonly description: string;
-  readonly inLanguage: string;
-  readonly isPartOf: JsonLdRef;
-  readonly about: JsonLdRef;
-  readonly primaryImageOfPage: JsonLdRef;
-}
-
-export type SiteJsonLdNode =
-  | OrganizationJsonLd
-  | WebSiteJsonLd
-  | ProfessionalServiceJsonLd
-  | WebPageJsonLd;
-
-export interface SiteJsonLd {
-  readonly "@context": "https://schema.org";
-  readonly "@graph": ReadonlyArray<SiteJsonLdNode>;
-}
-
-export interface BaseLayoutProps {
-  readonly locale: Locale;
-  readonly page: SeoPageId;
-}
-
-export type SeoPageId = "home";

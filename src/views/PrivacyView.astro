@@ -1,0 +1,45 @@
+---
+import type { Locale } from "@shared/types";
+import { CONTACT, localePath, sectionAlternates } from "@shared/constants";
+import { getTranslations } from "@i18n";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/page/PageHero.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const p = t.page.privacy;
+const EMAIL_TOKEN = "{email}";
+---
+
+<BaseLayout
+  locale={locale}
+  title={t.seo.privacy.title}
+  description={t.seo.privacy.description}
+  alternates={sectionAlternates("privacy")}
+  breadcrumbs={[
+    { name: t.nav.home, path: localePath(locale, "home") },
+    { name: t.nav.privacy, path: localePath(locale, "privacy") },
+  ]}
+>
+  <PageHero eyebrow={p.eyebrow} title={p.h1} lead={p.updated} />
+
+  <div class="container-mk page-body prose-page">
+    {p.sections.map((section, index) => (
+      <section class="page-section" aria-labelledby={`privacy-${index}`}>
+        <h2 id={`privacy-${index}`}>{section.title}</h2>
+        {section.body.map((paragraph) => {
+          const [before, after] = paragraph.split(EMAIL_TOKEN);
+          return after === undefined ? (
+            <p>{paragraph}</p>
+          ) : (
+            <p>{before}<a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>{after}</p>
+          );
+        })}
+      </section>
+    ))}
+  </div>
+</BaseLayout>

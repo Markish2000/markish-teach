@@ -1,0 +1,37 @@
+---
+/**
+ * Native <details>/<summary>: keyboard and screen-reader accessible without JS,
+ * and the answers stay in the HTML for crawlers.
+ */
+interface Props {
+  readonly items: ReadonlyArray<{
+    readonly id?: string;
+    readonly q: string;
+    readonly a: string;
+    readonly links?: ReadonlyArray<{ label: string; href: string }>;
+  }>;
+}
+
+const { items } = Astro.props;
+---
+
+<div class="faq-list">
+  {items.map((item) => (
+    <details class="faq-item" id={item.id}>
+      <summary>
+        <span class="faq-q">{item.q}</span>
+        <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </summary>
+      <div class="faq-a">
+        <p>{item.a}</p>
+        {item.links && item.links.length > 0 && (
+          <ul class="faq-links">
+            {item.links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+          </ul>
+        )}
+      </div>
+    </details>
+  ))}
+</div>

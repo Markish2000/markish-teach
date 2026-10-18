@@ -1,0 +1,37 @@
+{
+  "name": "Markish Tech — Custom web development and software",
+  "short_name": "Markish Tech",
+  "description": "Studio building custom websites, web applications and SaaS platforms in Buenos Aires, Argentina.",
+  "id": "/en",
+  "lang": "en-US",
+  "dir": "ltr",
+  "start_url": "/en",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#05070b",
+  "background_color": "#05070b",
+  "categories": [
+    "business",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

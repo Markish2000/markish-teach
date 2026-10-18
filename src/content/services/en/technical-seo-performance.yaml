@@ -1,0 +1,90 @@
+locale: en
+key: seo-performance
+slug: technical-seo-performance
+order: 3
+name: Technical SEO and web performance
+title: Technical SEO and Web Performance Optimization | Markish Tech
+description: Technical SEO and Core Web Vitals (LCP, INP, CLS) audits and fixes. Indexing, structured data, load speed and migrations without losing traffic.
+h1: Technical SEO and web performance optimization
+summary: >-
+  Markish Tech audits and fixes the technical issues that make a site slow or keep it out of
+  Google: indexing, canonical tags, sitemaps, hreflang, structured data and Core Web Vitals (LCP,
+  INP and CLS). We measure before and after with Lighthouse and Search Console and document every
+  change. We don't promise rankings: we fix what stops you from competing.
+card: Indexing, structured data and Core Web Vitals. Measured with Lighthouse and Search Console before and after every change.
+serviceType: Technical SEO and web performance optimization
+problems:
+  - Important pages that don't show up on Google or appear with the wrong title.
+  - A slow site on phones, with heavy images or too much JavaScript.
+  - Duplicate content, misconfigured canonical tags or mixed languages.
+  - A migration or redesign that caused organic traffic to drop.
+audience:
+  - Companies with their own site that don't get inquiries from search engines.
+  - Sites in several languages or countries that need correct hreflang.
+  - Teams about to redesign or migrate who want to protect their rankings.
+  - Digital products whose public site must load fast on mobile connections.
+deliverables:
+  - title: Technical audit
+    text: Prioritized report on indexing, metadata, links, structured data, performance and accessibility, with evidence for every finding.
+  - title: Indexing and crawling
+    text: robots.txt, XML sitemap, canonical tags, redirects, status codes and orphan pages.
+  - title: Structured data
+    text: JSON-LD for Organization, WebSite, Service, BreadcrumbList and whatever types match the real content.
+  - title: International SEO
+    text: Per-language URLs, reciprocal hreflang with x-default, self-referencing canonical tags and translated metadata.
+  - title: Core Web Vitals
+    text: LCP, INP and CLS improvements through responsive images, optimized fonts, less JavaScript and caching.
+  - title: Continuous measurement
+    text: Automated tests that catch SEO and performance regressions before release.
+method:
+  - title: Initial measurement
+    text: Lighthouse on mobile and desktop, review of the delivered HTML and Search Console data if you grant access.
+  - title: Prioritization
+    text: We rank issues by impact and effort.
+  - title: Implementation
+    text: We fix the code and document every change.
+  - title: Verification
+    text: We measure again under the same conditions and compare.
+  - title: Follow-up
+    text: We review Search Console in the following weeks to confirm indexing.
+tech:
+  - Lighthouse
+  - Google Search Console
+  - Bing Webmaster Tools
+  - Schema.org (JSON-LD)
+  - Playwright
+  - Astro
+  - Next.js
+whenYes:
+  - You have traffic or valuable content that isn't performing in search.
+  - You're about to migrate or redesign and don't want to lose rankings.
+  - Your site is slow on mobile and that affects inquiries.
+whenNo:
+  - "You expect instant ranking results: technical SEO removes barriers, but content and authority take time."
+  - The site has no content of its own yet; that needs to be created first.
+  - You want to buy links or use techniques that break Google's policies.
+projects: []
+related:
+  - web-development
+  - accessibility
+faqs:
+  - q: What are Core Web Vitals?
+    a: >-
+      Three Google metrics about real loading experience: LCP (how long the main content takes to
+      appear, ideally 2.5 s or less), INP (how quickly the page responds to an interaction, ideally
+      200 ms or less) and CLS (how much content shifts while loading, ideally 0.1 or less).
+  - q: How do you modernize a site without losing SEO rankings?
+    a: >-
+      By inventorying URLs with traffic and links, keeping the same URLs or redirecting each one with
+      a 301 to its equivalent, preserving titles and content that work, migrating structured data and
+      verifying in Search Console after launch. The most common mistake is changing every URL without
+      redirects.
+  - q: Do you guarantee the top spot on Google?
+    a: >-
+      No. Nobody can honestly guarantee that. What we do guarantee is fixing the measurable technical
+      problems that stop your site from competing, and showing you the evidence before and after.
+  - q: Does a Lighthouse score of 100 guarantee good rankings?
+    a: >-
+      No. Lighthouse measures in a lab and is a useful guide, but Google uses real-user data and many
+      other factors, above all content relevance. A good score removes technical obstacles; it
+      doesn't replace useful content.

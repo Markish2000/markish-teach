@@ -1,6 +1,6 @@
 /**
- * Reference content for the inline blocking script in BaseLayout.astro <head>.
- * The actual script is duplicated inline in the layout so it runs before paint
- * (no module overhead). Keep this file in sync if the bootstrap logic changes.
+ * Inline, render-blocking theme bootstrap for BaseLayout's <head> so the first
+ * paint already uses the right theme. A saved choice wins; otherwise the
+ * operating system preference decides. Without JS the page stays dark.
  */
-export const THEME_BOOTSTRAP_SCRIPT = `(function(){try{var t=localStorage.getItem("mk-theme");if(t!=="dark"&&t!=="light"){t="dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();`;
+export const THEME_BOOTSTRAP_SCRIPT = `(function(){var d=document.documentElement,t;try{t=localStorage.getItem("mk-theme")}catch(e){}if(t!=="dark"&&t!=="light"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}d.setAttribute("data-theme",t)})();`;

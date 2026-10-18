@@ -1,0 +1,16 @@
+---
+interface Props {
+  readonly eyebrow?: string | undefined;
+  readonly title: string;
+  readonly lead?: string | undefined;
+}
+
+const { eyebrow, title, lead } = Astro.props;
+---
+
+<header class="page-hero container-mk">
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h1>{title}</h1>
+  {lead && <p class="lede page-lead">{lead}</p>}
+  <slot />
+</header>

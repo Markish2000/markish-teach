@@ -1,0 +1,73 @@
+---
+import type { Locale } from "@shared/types";
+import { localePath, sectionAlternates } from "@shared/constants";
+import { getTranslations } from "@i18n";
+import { getFaq, resolveLink } from "@/lib/content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/page/PageHero.astro";
+import FaqList from "@components/page/FaqList.astro";
+import CtaBand from "@components/page/CtaBand.astro";
+
+interface Props {
+  readonly locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const faq = await getFaq(locale);
+const groups = await Promise.all(
+  faq.groups.map(async (group) => ({
+    title: group.title,
+    items: await Promise.all(
+      group.items.map(async (item) => ({
+        ...item,
+        links: await Promise.all(
+          item.links.map(async (link) => ({ label: link.label, href: await resolveLink(locale, link) })),
+        ),
+      })),
+    ),
+  })),
+);
+const allItems = groups.flatMap((g) => g.items);
+const h1 =
+  locale === "es"
+    ? "Preguntas frecuentes sobre desarrollo web y software"
+    : "Frequently asked questions about web development and software";
+const lead =
+  locale === "es"
+    ? "Respuestas directas a las preguntas que más nos hacen sobre costos, plazos, tecnologías y forma de trabajo."
+    : "Straight answers to the questions we get asked most about costs, timelines, technologies and how we work.";
+---
+
+<BaseLayout
+  locale={locale}
+  title={t.seo.faq.title}
+  description={t.seo.faq.description}
+  alternates={sectionAlternates("faq")}
+  pageType="FAQPage"
+  navCurrent="faq"
+  breadcrumbs={[
+    { name: t.nav.home, path: localePath(locale, "home") },
+    { name: t.nav.faq, path: localePath(locale, "faq") },
+  ]}
+  pageNode={{
+    mainEntity: allItems.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  }}
+>
+  <PageHero eyebrow={t.nav.faq} title={h1} lead={lead} />
+
+  <div class="container-mk page-body">
+    {groups.map((group, index) => (
+      <section class="page-section" aria-labelledby={`faq-group-${index}`}>
+        <h2 id={`faq-group-${index}`}>{group.title}</h2>
+        <FaqList items={group.items} />
+      </section>
+    ))}
+  </div>
+
+  <CtaBand locale={locale} title={t.page.service.cta_title} desc={t.page.service.cta_desc} />
+</BaseLayout>

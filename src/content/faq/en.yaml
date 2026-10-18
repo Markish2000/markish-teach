@@ -1,0 +1,171 @@
+locale: en
+groups:
+  - title: About Markish Tech
+    items:
+      - id: what-is-markish-tech
+        q: What is Markish Tech?
+        a: >-
+          Markish Tech is a software development studio based in Buenos Aires, Argentina, founded by
+          Marcos Hernán Parella. It builds custom websites, web applications, SaaS platforms and
+          automations, with a focus on performance, technical SEO and accessibility. Its work
+          includes Markish Arena and Markish Box (its own products) and the official FORJA Challenge
+          website (a client project).
+        links:
+          - label: About
+            to: about
+          - label: Projects
+            to: projects
+      - id: enterprise-software
+        q: Does Markish Tech build business software?
+        a: >-
+          Yes. We build management systems, admin panels and multi-tenant SaaS platforms with roles
+          and permissions, integrations with other tools and automated tasks. Markish Arena and
+          Markish Box are examples of platforms of this kind that we built.
+        links:
+          - label: Custom software and SaaS platforms
+            to: service
+            key: custom-software
+      - id: technologies
+        q: Which technologies does Markish Tech use?
+        a: >-
+          On the frontend we work with Astro, Next.js, React, TypeScript and Tailwind CSS; on the
+          backend with NestJS, PostgreSQL, Prisma, Redis, BullMQ and Socket.IO; on mobile with React
+          Native and Expo. We deploy on Vercel and measure quality with Lighthouse, axe-core and
+          Playwright. We pick the technology for the project, not the other way around.
+      - id: clients-outside-argentina
+        q: Do you work with clients outside Argentina?
+        a: >-
+          Yes. We work remotely, in Spanish and English. Our hours are Monday to Friday, 9 am to 6 pm
+          Argentina time (UTC−3).
+        links:
+          - label: Contact
+            to: contact
+  - title: Costs and timelines
+    items:
+      - id: website-cost
+        q: How much does it cost to build a website in Argentina?
+        a: >-
+          It mainly depends on four factors: the number and complexity of pages, whether the design
+          is custom, the integrations needed (forms, payments, CRM, languages) and who produces the
+          content. A one-page landing doesn't cost the same as a bilingual company site with several
+          sections. At Markish Tech we quote each project after a first conversation, with a written
+          proposal that details scope and stages. We don't publish fixed prices because they would be
+          misleading for most cases.
+        links:
+          - label: Custom web development
+            to: service
+            key: web-development
+          - label: Request a quote
+            to: contact
+      - id: website-timeline
+        q: How long does it take to build a professional website?
+        a: >-
+          The timeline depends on scope, on content (copy, images) being ready and on how fast reviews
+          happen. What delays a project most is usually not the coding but waiting for content or
+          approvals. That's why we define up front what each stage delivers and who is responsible
+          for each input.
+      - id: maintenance-cost
+        q: How much does it cost to maintain a web application?
+        a: >-
+          Maintenance has fixed and variable costs. Fixed costs are hosting, the domain and the
+          external services the application uses (database, email, storage). Variable costs are
+          security and dependency updates, error monitoring and improvements or new features. A
+          simple static site has very low infrastructure costs; a platform with a database, users and
+          background jobs needs more.
+  - title: Technology
+    items:
+      - id: astro-react-nextjs
+        q: What's the difference between Astro, React and Next.js?
+        a: >-
+          React is a library for building interactive interfaces. Next.js is a React-based framework
+          that adds routing, server rendering and backend logic: it's ideal for applications with
+          users, sessions and heavy interaction. Astro is a content-focused framework that generates
+          static HTML and only ships JavaScript to the parts that need it, which is why it's usually
+          faster for company sites, blogs and landing pages. Real examples of ours: this site is built
+          with Astro and Markish Arena with Next.js.
+        links:
+          - label: Custom web development
+            to: service
+            key: web-development
+      - id: external-apis
+        q: Can an application connect to external APIs?
+        a: >-
+          Yes, as long as the external service offers an API or webhooks. Common integrations include
+          email delivery, file storage, push notifications, Google or Apple sign-in and a company's
+          own systems. Before designing the integration we review the service's documentation,
+          authentication and rate limits.
+        links:
+          - label: Process automation and integrations
+            to: service
+            key: automation
+      - id: scalable-platform
+        q: How do you build a scalable platform?
+        a: >-
+          By separating responsibilities from the start: an API that holds the business rules, a
+          well-modeled database, queues for heavy or deferred work, caching where needed, data
+          isolation when there are several customers (multi-tenant) and error monitoring. Scaling
+          isn't just adding servers: it's code and data that let you grow without rewriting
+          everything.
+        links:
+          - label: Custom software and SaaS platforms
+            to: service
+            key: custom-software
+  - title: Custom software
+    items:
+      - id: custom-software
+        q: What is custom software development?
+        a: >-
+          It means building a system designed around a specific business's rules, users and
+          processes, instead of adapting the business to a generic tool. You own the code and the
+          data, and the system can evolve with the company. It makes sense when existing tools don't
+          cover important business rules; if a tool already solves almost everything, configuring it
+          is usually cheaper.
+        links:
+          - label: Custom software and SaaS platforms
+            to: service
+            key: custom-software
+      - id: saas-company
+        q: Which company can build a SaaS application?
+        a: >-
+          Look for a team that has already built and run a SaaS: one that knows how to handle
+          multi-tenancy, roles and permissions, billing or plans, and can show products that work.
+          Markish Tech built Markish Arena, a multi-tenant SaaS for fitness competitions that is live,
+          and is building Markish Box, a white-label web and mobile platform.
+        links:
+          - label: Markish Arena case study
+            to: project
+            key: markish-arena
+          - label: Markish Box case study
+            to: project
+            key: markish-box
+      - id: freelancer-or-company
+        q: When should you hire a freelance developer or a company?
+        a: >-
+          A freelancer is usually enough for small, well-defined tasks: a landing page, a fix or a
+          one-off integration. A studio or company makes sense when the project combines design,
+          frontend, backend, infrastructure and maintenance, or when you need continuity and
+          documentation. Either way, ask to see real projects, code or verifiable case studies.
+  - title: SEO and performance
+    items:
+      - id: modernize-without-losing-seo
+        q: How do you modernize a site without losing SEO rankings?
+        a: >-
+          Before changing anything, inventory the URLs that receive traffic and links. Then keep those
+          URLs or redirect each one with a 301 to its equivalent, preserve the titles and content that
+          work, migrate structured data and verify indexing in Google Search Console after launch. The
+          most common mistake is changing every URL without redirects.
+        links:
+          - label: Technical SEO and performance
+            to: service
+            key: seo-performance
+      - id: core-web-vitals
+        q: What are Core Web Vitals and which values are good?
+        a: >-
+          Three Google metrics about the real loading experience. LCP measures how long the main
+          content takes to appear (good: 2.5 s or less). INP measures how quickly the page responds to
+          an interaction (good: 200 ms or less). CLS measures how much content shifts while loading
+          (good: 0.1 or less).
+        links:
+          - label: Technical SEO and performance
+            to: service
+            key: seo-performance

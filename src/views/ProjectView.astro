@@ -1,0 +1,170 @@
+---
+import { Picture, getImage } from "astro:assets";
+import { localePath } from "@shared/constants";
+import { NODE_ID, absoluteUrl } from "@shared/helpers";
+import { getTranslations } from "@i18n";
+import {
+  entryAlternates,
+  findByKey,
+  getProjects,
+  projectPath,
+  servicePath,
+  type Project,
+} from "@/lib/content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/page/PageHero.astro";
+import ProjectCard from "@components/page/ProjectCard.astro";
+import CtaBand from "@components/page/CtaBand.astro";
+
+interface Props {
+  readonly project: Project;
+}
+
+const { project } = Astro.props;
+const p = project.data;
+const locale = p.locale;
+const t = getTranslations(locale);
+const l = t.page.project;
+const path = projectPath(project);
+const canonical = absoluteUrl(path);
+const alternates = await entryAlternates("projects", p.key);
+const services = await Promise.all(p.services.map((key) => findByKey("services", locale, key)));
+const others = (await getProjects(locale)).filter((o) => o.data.key !== p.key);
+
+// 1200px JPEG for social previews (OG images must be widely supported formats).
+const og = await getImage({ src: p.image, width: 1200, format: "jpg" });
+const ogHeight = Math.round((1200 / p.image.width) * p.image.height);
+
+const isSoftware = p.relation === "own";
+const workNode = {
+  "@type": isSoftware ? "SoftwareApplication" : "WebSite",
+  "@id": `${canonical}#work`,
+  name: p.name,
+  url: p.url,
+  description: p.summary,
+  image: absoluteUrl(og.src),
+  creator: { "@id": NODE_ID.organization },
+  inLanguage: locale === "es" ? "es-AR" : "en-US",
+  ...(isSoftware
+    ? {
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        publisher: { "@id": NODE_ID.organization },
+        ...(p.status === "in-development" ? { creativeWorkStatus: "In development" } : {}),
+      }
+    : {}),
+};
+---
+
+<BaseLayout
+  locale={locale}
+  title={p.title}
+  description={p.description}
+  alternates={alternates}
+  navCurrent="projects"
+  image={{ src: og.src, width: 1200, height: ogHeight, alt: p.imageAlt, type: "image/jpeg" }}
+  breadcrumbs={[
+    { name: t.nav.home, path: localePath(locale, "home") },
+    { name: t.nav.projects, path: localePath(locale, "projects") },
+    { name: p.name, path },
+  ]}
+  pageNode={{ mainEntity: { "@id": `${canonical}#work` } }}
+  nodes={[workNode]}
+>
+  <PageHero eyebrow={p.industry} title={p.name} lead={p.summary}>
+    <dl class="project-facts">
+      <div><dt>{l.relation}</dt><dd>{t.work.relation[p.relation]}</dd></div>
+      <div><dt>{l.status}</dt><dd>{t.work.status[p.status]}</dd></div>
+      <div><dt>{l.year}</dt><dd>{p.year}</dd></div>
+      <div>
+        <dt>{l.site}</dt>
+        <dd>
+          <a href={p.url} target="_blank" rel="noopener noreferrer">
+            {new URL(p.url).hostname}<span class="sr-only"> {t.a11y.new_tab}</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </PageHero>
+
+  <div class="container-mk page-body">
+    <figure class="project-shot">
+      <Picture
+        src={p.image}
+        alt={p.imageAlt}
+        formats={["avif", "webp"]}
+        widths={[480, 800, 1200, 1600]}
+        sizes="(min-width: 1360px) 1248px, calc(100vw - 2 * var(--pad-x, 20px))"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </figure>
+
+    <section class="page-section split three" aria-label={`${l.problem}, ${l.goal}, ${l.solution}`}>
+      <div><h2>{l.problem}</h2><p>{p.problem}</p></div>
+      <div><h2>{l.goal}</h2><p>{p.goal}</p></div>
+      <div><h2>{l.solution}</h2><p>{p.solution}</p></div>
+    </section>
+
+    <section class="page-section" aria-labelledby="features-title">
+      <h2 id="features-title">{l.features}</h2>
+      <ul class="check-list columns">{p.features.map((item) => <li>{item}</li>)}</ul>
+    </section>
+
+    <section class="page-section" aria-labelledby="stack-title">
+      <h2 id="stack-title">{l.stack}</h2>
+      <dl class="stack-list">
+        {p.stack.map((group) => (
+          <div>
+            <dt>{group.area}</dt>
+            <dd><ul class="tag-list">{group.items.map((item) => <li>{item}</li>)}</ul></dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <section class="page-section" aria-labelledby="architecture-title">
+      <h2 id="architecture-title">{l.architecture}</h2>
+      <ul class="check-list">{p.architecture.map((item) => <li>{item}</li>)}</ul>
+    </section>
+
+    <section class="page-section" aria-labelledby="challenges-title">
+      <h2 id="challenges-title">{l.challenges}</h2>
+      <div class="feature-grid">
+        {p.challenges.map((c) => (
+          <article class="feature-card">
+            <h3>{c.title}</h3>
+            <p>{c.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="page-section" aria-labelledby="results-title">
+      <h2 id="results-title">{l.results}</h2>
+      {p.results.length > 0 ? (
+        <ul class="check-list">{p.results.map((item) => <li>{item}</li>)}</ul>
+      ) : (
+        <p class="muted">{l.results_pending}</p>
+      )}
+    </section>
+
+    <section class="page-section" aria-labelledby="services-applied-title">
+      <h2 id="services-applied-title">{l.services}</h2>
+      <ul class="related-list">
+        {services.map((s) => (
+          <li><a href={servicePath(s)}>{s.data.name}</a><p>{s.data.card}</p></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="page-section" aria-labelledby="others-title">
+      <h2 id="others-title">{l.other}</h2>
+      <div class="cases-grid">
+        {others.map((o) => <ProjectCard project={o} />)}
+      </div>
+    </section>
+  </div>
+
+  <CtaBand locale={locale} title={l.cta_title} desc={l.cta_desc} />
+</BaseLayout>

@@ -1,0 +1,55 @@
+locale: en
+key: forja-challenge
+slug: forja-challenge
+order: 2
+name: FORJA Challenge
+relation: client
+status: live
+url: https://www.forjachallenge.com.ar/
+industry: Events · Functional fitness
+title: "FORJA Challenge: official event website | Case study"
+description: Case study of the official FORJA Challenge 2027 website, a functional fitness competition. A narrative landing page built with Next.js and scroll-driven animation.
+summary: >-
+  FORJA Challenge is a client project: Markish Tech built the official website for the 2027
+  edition of this functional fitness competition, which has an online qualifier and an in-person
+  final. It's a single-page, scroll-driven narrative landing page that presents the event, its
+  stages, divisions, standards per division, venue and sponsors.
+image: ../../../assets/forja-preview.png
+imageAlt: FORJA Challenge website cover with a hammer on an anvil and the event's dark visual identity.
+year: 2026
+problem: >-
+  The event needed its own website that conveyed its identity and gathered the information
+  athletes check before signing up: stages, divisions, weight and movement standards, venue and
+  sponsors.
+goal: >-
+  Tell the event's story in an immersive way without sacrificing clarity of information or the
+  experience on phones.
+solution: >-
+  We built a single-page Next.js landing with scroll-synchronized animation using GSAP and smooth
+  scrolling with Lenis. Event content (divisions, sponsors, copy) is kept separate from the code
+  so it can be updated without touching the components.
+features:
+  - Narrative presentation of the event, from the opening to the final.
+  - Competition stages - registration, online Open and in-person grand final.
+  - Beginners, Scaled, Advanced, RX and Masters divisions with their standards.
+  - Venue and sponsors section.
+  - Responsive design for mobile, tablet and desktop.
+stack:
+  - area: Frontend
+    items: [Next.js, React, TypeScript]
+  - area: Animation
+    items: [GSAP, Lenis]
+  - area: Measurement
+    items: [Vercel Analytics]
+architecture:
+  - Next.js application with one folder per visual section of the page.
+  - Event data kept in editable configuration modules.
+  - Strict TypeScript, linting and zero type errors as a delivery requirement.
+challenges:
+  - title: Animation that stays smooth
+    text: Scroll-driven scenes have to feel smooth on phones too. We concentrated animation logic in a shared hook and reusable scroll constants.
+  - title: A lot of information on one page
+    text: Stages, divisions and standards had to be easy to find inside a narrative experience. Each section keeps a clear heading and its content is edited from data files.
+results: []
+services:
+  - web-development

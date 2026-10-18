@@ -1,13 +1,17 @@
-import esRaw from "./es.json" with { type: "json" };
-import enRaw from "./en.json" with { type: "json" };
-import { DEFAULT_LOCALE, LOCALES } from "@shared/types";
+import es from "./es.json" with { type: "json" };
+import en from "./en.json" with { type: "json" };
 import type { Locale } from "@shared/types";
-import type { Dictionary, TranslationPath } from "./i18n.types";
-import type { Translations } from "./i18n.interfaces";
+import { LOCALES } from "@shared/types";
 
-const dictionary: Dictionary = {
-  es: esRaw as Translations,
-  en: enRaw as Translations,
+/**
+ * UI strings. The Spanish file is the source of truth for the shape; the English
+ * file must match it exactly (checked here by the type system and by tests).
+ */
+export type Translations = typeof es;
+
+const dictionary: Readonly<Record<Locale, Translations>> = {
+  es,
+  en: en satisfies Translations,
 };
 
 export const isLocale = (value: unknown): value is Locale =>
@@ -15,34 +19,8 @@ export const isLocale = (value: unknown): value is Locale =>
 
 export const getTranslations = (locale: Locale): Translations => dictionary[locale];
 
-export const getLocaleFromUrl = (url: URL): Locale => {
-  const segment = url.pathname.split("/").filter(Boolean)[0];
-  return isLocale(segment) ? segment : DEFAULT_LOCALE;
-};
-
-export const getAlternateLocaleUrl = (url: URL, target: Locale): string => {
-  const segments = url.pathname.split("/").filter(Boolean);
-  const first = segments[0];
-  if (isLocale(first)) {
-    segments[0] = target;
-  } else {
-    segments.unshift(target);
-  }
-  const path = `/${segments.join("/")}`;
-  return `${path}${url.search}${url.hash}`;
-};
-
-export const t = (path: TranslationPath, locale: Locale): string => {
-  const segments = path.split(".");
-  let cursor: unknown = dictionary[locale];
-  for (const segment of segments) {
-    if (cursor === null || typeof cursor !== "object") return path;
-    cursor = (cursor as Record<string, unknown>)[segment];
-  }
-  return typeof cursor === "string" ? cursor : path;
-};
+/** Replaces `{name}` placeholders in a translated string. */
+export const format = (template: string, values: Record<string, string | number>): string =>
+  template.replace(/\{(\w+)\}/g, (match, key: string) => String(values[key] ?? match));
 
 export type { Locale } from "@shared/types";
-export type { Translations } from "./i18n.interfaces";
-export type { TranslationPath } from "./i18n.types";
-export * from "./i18n.interfaces";

@@ -1,0 +1,133 @@
+---
+import { localePath } from "@shared/constants";
+import { NODE_ID, absoluteUrl } from "@shared/helpers";
+import { getTranslations } from "@i18n";
+import { entryAlternates, findByKey, servicePath, type Service } from "@/lib/content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/page/PageHero.astro";
+import FaqList from "@components/page/FaqList.astro";
+import CtaBand from "@components/page/CtaBand.astro";
+import ProjectCard from "@components/page/ProjectCard.astro";
+
+interface Props {
+  readonly service: Service;
+}
+
+const { service } = Astro.props;
+const s = service.data;
+const locale = s.locale;
+const t = getTranslations(locale);
+const l = t.page.service;
+const path = servicePath(service);
+const alternates = await entryAlternates("services", s.key);
+const projects = await Promise.all(s.projects.map((key) => findByKey("projects", locale, key)));
+const related = await Promise.all(s.related.map((key) => findByKey("services", locale, key)));
+const canonical = absoluteUrl(path);
+---
+
+<BaseLayout
+  locale={locale}
+  title={s.title}
+  description={s.description}
+  alternates={alternates}
+  navCurrent="services"
+  breadcrumbs={[
+    { name: t.nav.home, path: localePath(locale, "home") },
+    { name: t.nav.services, path: localePath(locale, "services") },
+    { name: s.name, path },
+  ]}
+  pageNode={{ mainEntity: { "@id": `${canonical}#service` } }}
+  nodes={[
+    {
+      "@type": "Service",
+      "@id": `${canonical}#service`,
+      name: s.name,
+      serviceType: s.serviceType,
+      description: s.summary,
+      url: canonical,
+      provider: { "@id": NODE_ID.organization },
+      areaServed: { "@type": "Country", name: "Argentina" },
+      availableLanguage: ["es", "en"],
+    },
+  ]}
+>
+  <PageHero eyebrow={t.nav.services} title={s.h1} lead={s.summary} />
+
+  <div class="container-mk page-body">
+    <section class="page-section split" aria-labelledby="problems-title">
+      <div>
+        <h2 id="problems-title">{l.problems}</h2>
+        <ul class="check-list">{s.problems.map((item) => <li>{item}</li>)}</ul>
+      </div>
+      <div>
+        <h2 id="audience-title">{l.audience}</h2>
+        <ul class="check-list">{s.audience.map((item) => <li>{item}</li>)}</ul>
+      </div>
+    </section>
+
+    <section class="page-section" aria-labelledby="deliverables-title">
+      <h2 id="deliverables-title">{l.deliverables}</h2>
+      <div class="feature-grid">
+        {s.deliverables.map((item) => (
+          <article class="feature-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="page-section" aria-labelledby="method-title">
+      <h2 id="method-title">{l.method}</h2>
+      <ol class="steps-list">
+        {s.method.map((step) => (
+          <li>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="page-section" aria-labelledby="tech-title">
+      <h2 id="tech-title">{l.tech}</h2>
+      <ul class="tag-list">{s.tech.map((item) => <li>{item}</li>)}</ul>
+    </section>
+
+    <section class="page-section split" aria-labelledby="when-yes-title">
+      <div>
+        <h2 id="when-yes-title">{l.when_yes}</h2>
+        <ul class="check-list is-yes">{s.whenYes.map((item) => <li>{item}</li>)}</ul>
+      </div>
+      <div>
+        <h2 id="when-no-title">{l.when_no}</h2>
+        <ul class="check-list is-no">{s.whenNo.map((item) => <li>{item}</li>)}</ul>
+      </div>
+    </section>
+
+    {projects.length > 0 && (
+      <section class="page-section" aria-labelledby="projects-title">
+        <h2 id="projects-title">{l.projects}</h2>
+        <div class="cases-grid">
+          {projects.map((project) => <ProjectCard project={project} />)}
+        </div>
+      </section>
+    )}
+
+    <section class="page-section" aria-labelledby="faq-title">
+      <h2 id="faq-title">{l.faq}</h2>
+      <FaqList items={s.faqs} />
+    </section>
+
+    <nav class="page-section" aria-labelledby="related-title">
+      <h2 id="related-title">{l.related}</h2>
+      <ul class="related-list">
+        {related.map((r) => (
+          <li><a href={servicePath(r)}>{r.data.name}</a><p>{r.data.card}</p></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+
+  <CtaBand locale={locale} title={l.cta_title} desc={l.cta_desc} />
+</BaseLayout>

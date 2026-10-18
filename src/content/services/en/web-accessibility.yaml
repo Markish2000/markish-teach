@@ -1,0 +1,84 @@
+locale: en
+key: accessibility
+slug: web-accessibility
+order: 4
+name: Web accessibility (WCAG 2.2)
+title: Web Accessibility and WCAG 2.2 AA Audits | Markish Tech
+description: Web accessibility audits and fixes following WCAG 2.2 AA. Contrast, keyboard, screen readers and forms, with automated and manual testing.
+h1: Web accessibility following WCAG 2.2 AA
+summary: >-
+  Markish Tech audits and fixes websites and web applications so people with visual, motor,
+  hearing or cognitive disabilities can use them, following WCAG 2.2 level AA. We combine
+  automated tools such as axe and Lighthouse with manual keyboard, zoom and screen reader
+  testing, because a perfect automated score doesn't guarantee an accessible site.
+card: Contrast, keyboard, screen readers and forms following WCAG 2.2 AA, with automated and manual testing.
+serviceType: Web accessibility
+problems:
+  - Low-contrast text, or text that gets cut off when zooming in.
+  - Menus, modals or forms that can't be used with a keyboard alone.
+  - Buttons and icons without an accessible name that a screen reader can't announce.
+  - Form errors indicated only by color.
+audience:
+  - Organizations that want everyone to be able to use their site.
+  - Companies that must meet accessibility requirements in tenders or contracts.
+  - Digital products that don't want to lose users to usability barriers.
+  - Teams who already built a site and need an expert review.
+deliverables:
+  - title: WCAG 2.2 AA audit
+    text: Review with axe, Lighthouse and manual testing, with each issue linked to the WCAG criterion it fails.
+  - title: Code fixes
+    text: Semantic HTML, ARIA roles and states only where needed, accessible names and a logical focus order.
+  - title: Keyboard and focus
+    text: Visible focus, skip links, menus and dialogs that trap and return focus correctly.
+  - title: Contrast and themes
+    text: Contrast checks in light and dark themes and support for high contrast mode.
+  - title: Forms
+    text: Real labels, descriptive errors tied to each field and announced status messages.
+  - title: Motion and zoom
+    text: Respect for the reduced motion preference and layouts that work at 200% and 400% zoom.
+method:
+  - title: Scoping
+    text: We pick representative pages and flows (home, forms, navigation, content).
+  - title: Automated testing
+    text: axe-core and Lighthouse on every template and in both themes.
+  - title: Manual testing
+    text: Full keyboard navigation, zoom, reflow at 320 px and screen reader checks.
+  - title: Fixes
+    text: We implement the changes or document them for your team.
+  - title: Regression
+    text: We leave automated tests so accessibility doesn't break with the next change.
+tech:
+  - WCAG 2.2
+  - axe-core
+  - Lighthouse
+  - Playwright
+  - Screen readers
+  - Semantic HTML and WAI-ARIA
+whenYes:
+  - You want to reach everyone, including people who use assistive technology.
+  - You have critical forms or processes (contact, checkout, sign-up).
+  - You need to prove compliance with evidence.
+whenNo:
+  - "You're looking for a one-script automatic fix that promises full accessibility: it doesn't exist."
+  - There's no way to change the site's code or content.
+projects: []
+related:
+  - web-development
+  - seo-performance
+faqs:
+  - q: What is WCAG 2.2 AA?
+    a: >-
+      WCAG (Web Content Accessibility Guidelines) is the W3C's international web accessibility
+      standard. Version 2.2 was published in 2023 and level AA is what regulations and contracts
+      usually require: minimum contrast, keyboard use, visible focus, text alternatives and
+      understandable forms, among other criteria.
+  - q: Does a Lighthouse accessibility score of 100 mean the site is accessible?
+    a: >-
+      No. Automated tools only catch part of the problems. Things like a logical focus order, whether
+      alt text actually describes the image or whether a flow makes sense with a screen reader need
+      manual testing.
+  - q: Do accessibility overlay widgets work?
+    a: >-
+      Generally they don't fix the underlying problems, which live in the HTML and the design, and
+      they sometimes interfere with the assistive technology people already use. We recommend fixing
+      the code.

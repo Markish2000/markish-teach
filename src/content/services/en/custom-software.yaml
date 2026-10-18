@@ -1,0 +1,96 @@
+locale: en
+key: custom-software
+slug: custom-software
+order: 2
+name: Custom software and SaaS platforms
+title: Custom Software and SaaS Platform Development | Markish Tech
+description: Custom web applications, admin panels and multi-tenant SaaS platforms built with Next.js, NestJS and PostgreSQL by a studio in Buenos Aires, Argentina.
+h1: Custom software and SaaS platform development
+summary: >-
+  Markish Tech builds custom web applications, management systems and SaaS platforms, from the
+  database to the interface. We use Next.js and React on the frontend, NestJS, PostgreSQL and
+  Redis on the backend, and multi-tenant architectures when each customer needs to operate
+  independently. It's the same technical foundation we used to build our own products, Markish
+  Arena and Markish Box.
+card: Web applications, admin panels and multi-tenant SaaS with Next.js, NestJS and PostgreSQL, from data model to interface.
+serviceType: Custom software development
+problems:
+  - Operations depend on spreadsheets, chats and manual work that doesn't scale.
+  - Generic tools don't fit your business rules.
+  - You have a digital product idea and need a first usable version.
+  - An existing system is hard to maintain or can't handle more users.
+audience:
+  - Companies that need their own internal system or admin panel.
+  - Founders and startups who want to launch a SaaS product.
+  - Businesses with several locations, brands or customers that need separate data and permissions.
+  - Teams that need to integrate their system with other tools through APIs.
+deliverables:
+  - title: Analysis and data model
+    text: We gather business rules, roles and flows and turn them into a documented data model and architecture.
+  - title: Backend and API
+    text: NestJS API with data validation, authentication, roles and permissions, job queues and scheduled tasks.
+  - title: Web frontend
+    text: Interfaces built with Next.js and React, typed with TypeScript, accessible and adapted to desktop and mobile.
+  - title: Multi-tenant and white label
+    text: When it applies, each organization operates with its own data, users and brand on the same platform.
+  - title: Real time and internationalization
+    text: Live updates over WebSockets and translatable text in several languages when the product needs it.
+  - title: Quality and operations
+    text: Automated tests, error monitoring and documentation so the system can be maintained.
+method:
+  - title: Discovery
+    text: We understand the problem, who uses the system and which rules can't be broken.
+  - title: First-version scope
+    text: We prioritize what is essential to go live and plan the rest.
+  - title: Design and prototype
+    text: We validate screens and flows with a prototype before writing production code.
+  - title: Iterative development
+    text: Partial deliveries you can test, with reviews and tests at every stage.
+  - title: Launch and evolution
+    text: Release, monitoring and improvements based on real usage.
+tech:
+  - Next.js
+  - React
+  - TypeScript
+  - NestJS
+  - PostgreSQL
+  - Prisma
+  - Redis and BullMQ
+  - Socket.IO
+  - React Native
+whenYes:
+  - Your processes have their own rules that a standard tool doesn't cover.
+  - You want to own the product, the code and the data.
+  - The system will grow in users, locations or features.
+whenNo:
+  - An existing tool already covers 90% of what you need; configuring it is usually cheaper.
+  - It isn't clear yet which problem the product solves; validate with something simpler first.
+  - There is no way to sustain maintenance after launch.
+projects:
+  - markish-arena
+  - markish-box
+related:
+  - automation
+  - web-development
+  - accessibility
+faqs:
+  - q: What is custom software development?
+    a: >-
+      It means building a system designed around a specific business's rules, users and processes,
+      instead of adapting the business to a generic tool. The result is a product you own: the code,
+      the data and its evolution depend on you.
+  - q: What does it mean for a platform to be multi-tenant?
+    a: >-
+      One application serves several organizations (tenants) and each one only sees its own data,
+      users and settings. It's the typical SaaS architecture. Markish Arena works this way: each gym
+      runs its competition independently with its own branding.
+  - q: Can the application connect to external APIs?
+    a: >-
+      Yes. We integrate external services through their APIs or webhooks: email delivery, file
+      storage, push notifications, Google sign-in and any other system that exposes an API.
+  - q: How do you build a scalable platform?
+    a: >-
+      By separating responsibilities from the start: an API with centralized business rules, a
+      well-modeled database, queues for heavy or deferred work, caching where needed and monitoring
+      to catch problems before users do. Scaling isn't just adding servers: it's code and data that
+      let you grow without rewriting everything.

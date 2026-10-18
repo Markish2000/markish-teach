@@ -1,0 +1,63 @@
+locale: es
+key: markish-box
+slug: markish-box
+order: 3
+name: Markish Box
+relation: own
+status: in-development
+url: https://www.markishbox.com.ar/
+industry: SaaS B2B · Gestión de gimnasios
+title: "Markish Box: plataforma de gestión de boxes | Caso de estudio"
+description: Markish Box, producto propio de Markish Tech en desarrollo, es una plataforma web y mobile de marca blanca para gestionar boxes y gimnasios de entrenamiento funcional.
+summary: >-
+  Markish Box es un producto propio de Markish Tech, actualmente en desarrollo: una plataforma
+  web y mobile de marca blanca para gestionar boxes, gimnasios de entrenamiento funcional y
+  marcas fitness con una o varias sedes. Reúne alumnos, membresías, reservas de clases,
+  check-in, progreso deportivo y pagos en un mismo sistema.
+image: ../../../assets/markish-box-preview.png
+imageAlt: Página pública de Markish Box con el titular "Tu box, de fierro. Tu gestión, blindada." y botones para solicitar una demo.
+year: 2026
+problem: >-
+  Los boxes y gimnasios funcionales suelen combinar varias herramientas para reservas, cobros,
+  asistencia y seguimiento de alumnos, y muchas no contemplan reglas propias del rubro como
+  cupos por clase, listas de espera o múltiples sedes de una misma marca.
+goal: >-
+  Ofrecer un sistema único, con la marca de cada box, que funcione igual en web y en la app
+  mobile para dueños, administradores, entrenadores y atletas.
+solution: >-
+  Estamos desarrollando un monorepo con una API en NestJS sobre PostgreSQL, una aplicación web en
+  Next.js, una app mobile con Expo/React Native y un sitio comercial en Astro. Las reglas de
+  negocio viven en un paquete de dominio compartido para que web, mobile y API apliquen
+  exactamente las mismas validaciones.
+features:
+  - Marcas, sedes, planes y módulos habilitados por marca.
+  - Reservas de clases con validaciones de cupo, membresía y horario, y lista de espera.
+  - Check-in de alumnos y seguimiento de asistencia.
+  - Seguimiento de progreso y récords personales.
+  - Marca blanca resuelta en el servidor según subdominio o dominio propio.
+  - Paridad funcional entre la aplicación web y la app mobile.
+stack:
+  - area: Web
+    items: [Next.js, React, TypeScript, TanStack Query, Tailwind CSS]
+  - area: Mobile
+    items: [Expo, React Native, Expo Router]
+  - area: Backend
+    items: [NestJS, Prisma, PostgreSQL, Redis, BullMQ]
+  - area: Sitio comercial
+    items: [Astro]
+architecture:
+  - Monorepo con aplicaciones web, mobile, API y landing, y paquetes compartidos de dominio, tokens de diseño e i18n.
+  - Las reglas de negocio (estados, permisos, validaciones de reserva) se definen una sola vez en el paquete de dominio.
+  - Multi-tenant con aislamiento por marca y sede, y control de acceso por rol.
+  - Pruebas de punta a punta contra la API para verificar aislamiento entre marcas, permisos y privacidad de datos.
+challenges:
+  - title: Una sola fuente de reglas para web, mobile y API
+    text: Las mismas validaciones tienen que aplicarse en tres clientes distintos. Un paquete de dominio compartido evita implementar dos veces la misma regla.
+  - title: Reservas con concurrencia
+    text: Cuando muchas personas reservan a la vez la misma clase, el cupo no puede superarse. Las validaciones se resuelven en el servidor y se prueban con escenarios de reservas simultáneas.
+  - title: Marca blanca desde el primer render
+    text: Cada box ve su propia marca desde la primera carga, sin parpadeos, porque la identidad se resuelve en el servidor.
+results: []
+services:
+  - custom-software
+  - automation

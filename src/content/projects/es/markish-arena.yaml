@@ -1,0 +1,63 @@
+locale: es
+key: markish-arena
+slug: markish-arena
+order: 1
+name: Markish Arena
+relation: own
+status: live
+url: https://www.markisharena.com.ar/
+industry: SaaS B2B · Fitness funcional
+title: "Markish Arena: SaaS para competencias de fitness | Caso de estudio"
+description: Caso de estudio de Markish Arena, plataforma SaaS multi-tenant de Markish Tech para organizar y puntuar competencias de fitness funcional en tiempo real.
+summary: >-
+  Markish Arena es un producto propio de Markish Tech: una plataforma SaaS multi-tenant para que
+  boxes y gimnasios organicen competencias de fitness funcional de punta a punta. Cubre
+  inscripción de atletas, categorías, workouts, heats, scorecards de jueces y un leaderboard que
+  se actualiza en tiempo real, incluida una pantalla pública para proyectar en el evento.
+image: ../../../assets/markish-arena-preview.png
+imageAlt: Pantalla de Markish Arena con un heat en vivo, el leaderboard en tiempo real y una scorecard firmada por el juez.
+year: 2026
+problem: >-
+  Las competencias de fitness funcional suelen gestionarse con planillas, formularios sueltos y
+  resultados que se cargan a mano al final de cada heat. Eso genera demoras, errores de cálculo
+  según el tipo de workout y poca visibilidad para atletas y público.
+goal: >-
+  Centralizar toda la competencia en una sola plataforma donde cada organización opere con su
+  propia marca, los jueces carguen resultados desde el celular y el ranking se recalcule al
+  instante.
+solution: >-
+  Desarrollamos un monorepo con una aplicación web en Next.js (administración, jueces, atletas y
+  pantalla pública) y una API en NestJS con PostgreSQL, Redis y colas de trabajo. Cada box es un
+  tenant con su propia marca. Los resultados viajan por WebSockets para que el leaderboard y la
+  pantalla del evento se actualicen sin recargar.
+features:
+  - Gestión de organizaciones, competencias, categorías, atletas y equipos.
+  - Workouts con modalidades AMRAP, For Time, EMOM y RM, con scoring adaptado a cada una.
+  - Heats y scorecards que los jueces completan y firman desde el celular.
+  - Leaderboard y pantalla pública actualizados en tiempo real.
+  - Roles y permisos para administradores, jueces y participantes.
+  - Marca propia por organización (logo y paleta de colores).
+  - Interfaz disponible en varios idiomas y funcionamiento como app instalable (PWA).
+stack:
+  - area: Frontend
+    items: [Next.js, React, TypeScript, TanStack Query, next-intl, Socket.IO client]
+  - area: Backend
+    items: [NestJS, Prisma, PostgreSQL, Redis, BullMQ, Socket.IO]
+  - area: Operación
+    items: [Almacenamiento compatible con S3, Sentry, Web Push]
+architecture:
+  - Monorepo con pnpm workspaces y Turborepo, con paquetes compartidos de tipos, validadores, i18n y componentes.
+  - API REST y WebSockets en NestJS; las reglas de negocio y de scoring viven en el backend.
+  - Aislamiento de datos por organización (multi-tenant) y permisos por rol.
+  - Colas de trabajo para tareas en segundo plano como notificaciones y exportaciones.
+challenges:
+  - title: Scoring correcto para cada tipo de workout
+    text: AMRAP, For Time, EMOM y RM se puntúan y desempatan de forma distinta. Centralizamos esa lógica en el backend para que web, jueces y pantalla pública muestren siempre el mismo resultado.
+  - title: Tiempo real durante el evento
+    text: Varios jueces cargan resultados a la vez mientras el público mira el ranking. Usamos WebSockets con Redis para propagar los cambios a todos los clientes conectados.
+  - title: Muchas organizaciones, una plataforma
+    text: Cada box necesita sus datos, usuarios y marca separados sin duplicar la aplicación. El modelo multi-tenant resuelve el aislamiento en la capa de datos y la marca en la interfaz.
+results: []
+services:
+  - custom-software
+  - automation

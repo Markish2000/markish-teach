@@ -1,17 +1,22 @@
 ---
-import type { ThemeToggleProps } from "./ThemeToggle.interfaces";
+import type { Locale } from "@shared/types";
+import { getTranslations } from "@i18n";
 
-type Props = ThemeToggleProps;
+interface Props {
+  readonly locale: Locale;
+}
 
-const { toggleLabel } = Astro.props;
+const t = getTranslations(Astro.props.locale).a11y;
 ---
 
+<!-- The label names the action; Header's script syncs it with the active theme. -->
 <button
   type="button"
   class="icon-btn"
   data-theme-toggle
-  aria-label={toggleLabel}
-  aria-pressed="true"
+  aria-label={t.theme_to_light}
+  data-label-light={t.theme_to_light}
+  data-label-dark={t.theme_to_dark}
 >
   <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path

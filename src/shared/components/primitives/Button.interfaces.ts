@@ -5,8 +5,8 @@ interface ButtonBaseProps {
   readonly label: string;
   readonly className?: string;
   readonly showArrow?: boolean;
-  readonly arrowLabel?: string;
-  readonly dataChatbotOpen?: boolean;
+  /** Extra text for screen readers only, e.g. "(opens in a new tab)". */
+  readonly srHint?: string;
 }
 
 export interface ButtonAsAnchorProps extends ButtonBaseProps {
@@ -14,7 +14,6 @@ export interface ButtonAsAnchorProps extends ButtonBaseProps {
   readonly target?: "_self" | "_blank";
   readonly rel?: string;
   readonly type?: never;
-  readonly onClickAttribute?: never;
 }
 
 export interface ButtonAsButtonProps extends ButtonBaseProps {
@@ -22,7 +21,6 @@ export interface ButtonAsButtonProps extends ButtonBaseProps {
   readonly target?: never;
   readonly rel?: never;
   readonly type?: "button" | "submit";
-  readonly onClickAttribute?: string;
 }
 
 export type ButtonProps = ButtonAsAnchorProps | ButtonAsButtonProps;
