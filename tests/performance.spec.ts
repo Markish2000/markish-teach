@@ -22,8 +22,10 @@ test("no forced synchronous layouts on load or first interaction", async ({ page
     await done;
     await cdp.detach();
 
+    const origin = new URL(page.url()).origin;
     const forced = events
-      .filter((e) => e.name === "Layout" && e.ph === "X" && e.args?.beginData?.stackTrace?.length)
+      // Only layouts forced by the site's own scripts (browser/test-injected code has no URL).
+      .filter((e) => e.name === "Layout" && e.ph === "X" && e.args?.beginData?.stackTrace?.[0]?.url.startsWith(origin))
       .map((e) => {
         const f = e.args!.beginData!.stackTrace![0]!;
         return `${width}px ${((e.dur ?? 0) / 1000).toFixed(1)}ms ${f.functionName || "(anonymous)"} ${f.url}:${f.lineNumber}`;

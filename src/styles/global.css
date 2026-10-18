@@ -2231,25 +2231,6 @@
   }
 }
 
-/* Lenis smooth scroll — required runtime styles (unlayered to win the cascade).
-   The `lenis` / `lenis-smooth` classes are added to <html> by Lenis at init. */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
-}
-
 /* Custom scrollbar — themed accent thumb, floats over a transparent track.
    Uses theme tokens so it swaps automatically between dark and light. */
 * {

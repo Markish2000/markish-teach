@@ -24,6 +24,17 @@ main:focus {
   outline: none;
 }
 
+/* ----- Native smooth scrolling for in-page links, clear of the fixed header ----- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* ----- Skip link ----- */
 .skip-link {
   position: absolute;

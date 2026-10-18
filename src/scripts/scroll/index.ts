@@ -3,10 +3,8 @@ import { initScrollProgress } from "./progress";
 import { initParallax } from "./parallax";
 
 /**
- * Premium scroll behaviours, wired in one place.
- *
- * Order matters: the controller must initialise first so subscribers know
- * whether smooth scroll is active and receive the correct initial state.
+ * Scroll-driven effects, wired in one place. The controller initialises first
+ * so subscribers receive the correct initial state.
  */
 export const initScroll = (): void => {
   initScrollController();

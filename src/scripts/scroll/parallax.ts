@@ -1,4 +1,4 @@
-import { isSmoothEnabled, subscribe } from "./controller";
+import { allowsScrollMotion, subscribe } from "./controller";
 
 interface ParallaxTarget {
   readonly el: HTMLElement;
@@ -10,15 +10,15 @@ interface ParallaxTarget {
  * `scroll * speed`. The attribute value is the speed factor, e.g.
  * `data-parallax="0.05"` drifts at 5% of scroll distance.
  *
- * Only runs when Lenis is active (pointer device + motion allowed); on
- * touch/reduced-motion it is a no-op so layers stay put.
+ * Only runs on pointer devices with motion allowed; on touch or
+ * reduced-motion it is a no-op so layers stay put.
  *
  * Targets are restricted to seamless layers (full-viewport backgrounds that
  * fade to the page colour, and overflow-clipped decorations) so drift never
  * exposes a hard edge.
  */
 export const initParallax = (): void => {
-  if (!isSmoothEnabled()) return;
+  if (!allowsScrollMotion()) return;
 
   const nodes = Array.from(document.querySelectorAll<HTMLElement>("[data-parallax]"));
   if (nodes.length === 0) return;

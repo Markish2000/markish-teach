@@ -52,6 +52,20 @@ CLS 0,000 en todas las páginas y dispositivos. Detalle por corrida en `reports/
 - Alternativa descartada: `font-display: optional` llevaría el puntaje a 100, pero en conexiones lentas la primera visita se vería sin la tipografía de la marca. Es un cambio de diseño para ganar un punto de laboratorio.
 - Impacto: ninguno práctico. 1,8 s está muy por debajo del umbral "bueno" de LCP (2,5 s).
 
+## Actualización: sin React ni Lenis (2026-10-18)
+
+Mediciones posteriores con el mismo método, después de reescribir el hero 3D en three.js puro, quitar React/React DOM/R3F y Lenis, y actualizar a Astro 7:
+
+| Página | Mobile | LCP | Desktop |
+| --- | --- | --- | --- |
+| `/es` | 100 · 100 · 100 · 100 | 1,58 s | 100 · 100 · 100 · 100 |
+| `/en` | 100 · 100 · 100 · 100 | 1,58 s | 100 · 100 · 100 · 100 |
+| `/es/servicios/software-a-medida` | 100 · 100 · 100 · 100 | 1,58 s | 100 · 100 · 100 · 100 |
+| `/es/proyectos/markish-arena` | 100 · 100 · 100 · 100 | 1,66 s | 100 · 100 · 100 · 100 |
+| `/en/faq` | 100 · 100 · 100 · 100 | 1,43 s | 100 · 100 · 100 · 100 |
+
+Montaje del hero 3D (Chrome, desktop, primera visita): frame más largo 110 ms → 14 ms y tareas largas 3 → 1, gracias a `renderer.compileAsync()`. JS del 3D: 248 KB → 110 KB (brotli). JS inicial propio: ≈ 21 KB → 3 KB sin comprimir. Las secciones de abajo describen la versión anterior a esta actualización.
+
 ## Qué cambió para llegar acá
 
 1. **CSS inline** (`build.inlineStylesheets: "always"`): elimina el CSS bloqueante (FCP mobile 2,8 s → 1,4 s).

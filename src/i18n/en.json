@@ -445,7 +445,7 @@
         {
           "title": "Analytics and cookies",
           "body": [
-            "This site doesn't use cookies. To know how many people visit it we use Vercel Web Analytics, which records aggregated data (for example page views, referring site, country and device type) without cookies and without identifying people.",
+            "This site doesn't use cookies. To know how many people visit it we may use Vercel Web Analytics, which records aggregated data (for example page views, referring site, country and device type) without cookies and without identifying people.",
             "Your light or dark theme preference is stored in your browser's local storage and is never sent to a server."
           ]
         },

@@ -89,15 +89,14 @@ const t = getTranslations(locale).hero;
   };
 
   const mountHero3D = async (mount: HTMLElement): Promise<void> => {
-    if (import.meta.env.DEV) {
-      await import("@vitejs/plugin-react/preamble");
+    const { mountHeroScene } = await import("@components/three/hero-scene");
+    await mountHeroScene(mount);
+    const fallback = mount.querySelector<HTMLElement>("[data-hero-3d-fallback]");
+    if (fallback) {
+      fallback.style.transition = "opacity 0.6s ease";
+      fallback.style.opacity = "0";
+      setTimeout(() => fallback.remove(), 700);
     }
-    const [{ createElement }, { createRoot }, { default: Hero3D }] = await Promise.all([
-      import("react"),
-      import("react-dom/client"),
-      import("@components/three/Hero3D"),
-    ]);
-    createRoot(mount).render(createElement(Hero3D));
   };
 
   const whenIdle = (callback: () => void): void => {

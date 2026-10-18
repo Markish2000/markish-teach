@@ -16,6 +16,8 @@ npm run preview      # sirve el build de producción localmente
 npm run validate     # astro check + build + todos los tests
 ```
 
+Vercel Web Analytics es opcional: se incluye solo con `VERCEL_WEB_ANALYTICS=true` en las variables de entorno de Vercel (y Analytics activado en el proyecto).
+
 El formulario de contacto envía por Gmail SMTP y necesita `GMAIL_USER` y `GMAIL_APP_PASSWORD` (ver `.env`, no versionado). Sin ellas, en desarrollo el envío se simula; en producción la API responde 503 en vez de fingir éxito.
 
 ## Estructura

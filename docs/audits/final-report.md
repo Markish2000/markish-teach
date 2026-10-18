@@ -79,10 +79,18 @@ Actualización posterior (rama `chore/update-dependencies`): **0 vulnerabilidade
 - TypeScript queda en 6.x: `@astrojs/check` solo soporta TypeScript 5 y 6. Subir a 7 cuando `@astrojs/check` lo soporte.
 - Node.js mínimo: 22.22 (requisito de Astro 7).
 
+## Actualización: consola limpia y menos JavaScript
+
+Reportado por el dueño en producción: `[Violation] Forced reflow`, `[Violation] 'requestAnimationFrame' handler took 113ms` y dos errores 404 de `/_vercel/insights/script.js`.
+
+- **Reflows forzados**: el script del header leía `scrollY` mientras la página se parseaba (18 ms) y Lenis medía la ventana en momentos arbitrarios (hasta 62 ms en producción). Se quitó Lenis: el scroll es nativo, las anclas usan `scroll-behavior: smooth` de CSS (desactivado con movimiento reducido) y la barra de progreso y el parallax toman las medidas de `ResizeObserver` sin lecturas sincrónicas. Se pierde la inercia suave de la rueda en desktop. Test: `tests/performance.spec.ts`.
+- **Frame de 113 ms del 3D**: era la compilación sincrónica de shaders en el primer frame. La escena se reescribió en three.js puro (`src/components/three/hero-scene.ts`) con `compileAsync()` antes del primer frame y fade-in. Se eliminaron React, React DOM, `@react-three/fiber`, `@astrojs/react`, `@vitejs/plugin-react` y el script que corregía `THREE.Clock` en fiber (three puro usa `Timer`).
+- **404 de Analytics**: el script de Vercel Web Analytics solo existe cuando Analytics está activado en el proyecto. Ahora es opcional: se incluye solo si la variable de entorno `VERCEL_WEB_ANALYTICS=true` está definida en Vercel. Para activarlo: Vercel → proyecto → Analytics → Enable, agregar la variable y hacer redeploy.
+
 ## Pendientes
 
 **Requieren credenciales o acceso del dueño**
-- Activar Vercel Web Analytics en el dashboard (el código ya lo incluye). Eventos personalizados (clics a WhatsApp, envíos) requieren plan Pro.
+- Vercel Web Analytics (opcional): activarlo en el dashboard y definir `VERCEL_WEB_ANALYTICS=true` en las variables de entorno del proyecto; sin la variable el script no se incluye. Eventos personalizados (clics a WhatsApp, envíos) requieren plan Pro.
 - Verificar el dominio en Google Search Console y Bing Webmaster Tools y enviar `/sitemap.xml`.
 - Confirmar que `GMAIL_USER` y `GMAIL_APP_PASSWORD` están configurados en Vercel (si no, el formulario ahora responde error en vez de perder el mensaje).
 
