@@ -71,7 +71,13 @@ INP: sin datos de campo todavía. Rutas auditadas: 18 con Lighthouse (todas las 
 
 ## Seguridad de dependencias
 
-Quedan 10 vulnerabilidades que solo se resuelven con versiones mayores: Astro 7 (XSS en atributos spread y en `transition:*` de islas hidratadas), `@astrojs/vercel` 11 (override de path en funciones ISR), `sharp` 0.35 (libvips/libheif) y `patch-package` 6 (dependencias de desarrollo). Impacto evaluado como bajo para este sitio: no renderiza contenido del usuario, no usa ISR ni View Transitions, y `sharp` solo procesa imágenes propias en build. Recomendación: migrar a Astro 7 y adapter 11 en una rama aparte, con esta misma suite como red de seguridad.
+Actualización posterior (rama `chore/update-dependencies`): **0 vulnerabilidades** según `npm audit`.
+
+- Astro 6.4 → 7.4, `@astrojs/vercel` 10 → 11, `@astrojs/react` 5 → 7, `@vitejs/plugin-react` 5 → 6, `sharp` 0.34 → 0.35, `three` 0.184 → 0.186 y el resto a su última versión. Sin cambios de código necesarios para Astro 7.
+- `patch-package` se reemplazó por `scripts/patch-r3f-clock.mjs` (mismo cambio en `@react-three/fiber`, sin dependencias): su árbol arrastraba `braces` ≤3.0.3, que no tiene versión corregida publicada.
+- `overrides` en `package.json`: `path-to-regexp` 6.3.0 dentro de `@vercel/routing-utils` (ReDoS en 6.1.0) y `esbuild` ^0.28.2.
+- TypeScript queda en 6.x: `@astrojs/check` solo soporta TypeScript 5 y 6. Subir a 7 cuando `@astrojs/check` lo soporte.
+- Node.js mínimo: 22.22 (requisito de Astro 7).
 
 ## Pendientes
 

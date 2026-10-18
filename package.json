@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.22.0"
   },
   "scripts": {
     "dev": "astro dev",
@@ -18,34 +18,39 @@
     "test:seo": "playwright test tests/seo.spec.ts tests/schema.spec.ts tests/content.spec.ts",
     "test:lighthouse": "node scripts/lighthouse.mjs --min 100",
     "validate": "npm run check && npm run build && npm test",
-    "postinstall": "patch-package"
+    "postinstall": "node scripts/patch-r3f-clock.mjs"
   },
   "dependencies": {
-    "@astrojs/react": "^5.0.4",
-    "@astrojs/vercel": "^10.0.6",
-    "@react-three/fiber": "^9.6.1",
-    "@tailwindcss/vite": "^4.2.4",
-    "astro": "^6.2.1",
-    "lenis": "^1.3.23",
-    "nodemailer": "^10.0.13",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
-    "sharp": "^0.34.5",
-    "tailwindcss": "^4.2.4",
-    "three": "^0.184.0",
-    "zod": "^4.4.2"
+    "@astrojs/react": "^7.1.0",
+    "@astrojs/vercel": "^11.0.15",
+    "@react-three/fiber": "^9.8.2",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.0",
+    "lenis": "^1.3.27",
+    "nodemailer": "^10.1.7",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.3",
+    "three": "^0.186.1",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
+    "@astrojs/check": "^0.9.10",
     "@axe-core/playwright": "^4.14.0",
     "@playwright/test": "^1.64.1",
     "@types/nodemailer": "^8.0.2",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "@types/three": "^0.184.1",
-    "@vitejs/plugin-react": "^5.2.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^6.1.2",
     "lighthouse": "^13.5.0",
-    "patch-package": "^8.0.1",
     "typescript": "^6.0.3"
+  },
+  "overrides": {
+    "@vercel/routing-utils": {
+      "path-to-regexp": "6.3.0"
+    },
+    "esbuild": "^0.28.2"
   }
 }

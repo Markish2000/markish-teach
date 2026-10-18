@@ -4,7 +4,7 @@ Sitio de [markishtech.com.ar](https://www.markishtech.com.ar), estudio de desarr
 
 ## Requisitos
 
-Node.js 22.12 o superior.
+Node.js 22.22 o superior (requisito de Astro 7).
 
 ## Uso
 

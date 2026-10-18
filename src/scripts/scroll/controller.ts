@@ -114,8 +114,14 @@ export const initScrollController = (): void => {
   if (typeof window === "undefined") return;
 
   if (!matches(REDUCE_QUERY) && !matches(TOUCH_QUERY)) {
-    const instance = new Lenis({ lerp: 0.09, smoothWheel: true });
+    // autoResize off: Lenis' own observer re-measures the page from a debounced
+    // timer, when layout may be dirty, which forced synchronous reflows. Inside a
+    // ResizeObserver callback layout is already computed, so measuring is free.
+    const instance = new Lenis({ lerp: 0.09, smoothWheel: true, autoResize: false });
     lenis = instance;
+    const resizeObserver = new ResizeObserver(() => instance.resize());
+    resizeObserver.observe(document.documentElement);
+    resizeObserver.observe(document.body);
     // Lenis owns smoothing; native CSS smooth on top double-eases and feels laggy.
     document.documentElement.style.scrollBehavior = "auto";
 

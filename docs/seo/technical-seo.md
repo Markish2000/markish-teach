@@ -55,7 +55,7 @@ El schema de las colecciones (`src/content.config.ts`) limita `title` a 70 carac
 
 `scripts/vercel-headers.mjs` corre después de `astro build` (`npm run build`, y `vercel.json` fija ese comando en Vercel). Inserta antes de la fase `filesystem` del router de Vercel:
 
-- `cache-control: public, max-age=31536000, immutable` en `/_astro/*` (assets con hash). El adapter oficial agrega esta regla después de `filesystem`, donde no aplica a archivos estáticos: en producción esos assets se servían con `max-age=0`.
+- `cache-control: public, max-age=31536000, immutable` en `/_astro/*` (assets con hash). Con `@astrojs/vercel` ≤10 la regla del adapter quedaba después de `filesystem`, donde no aplica a archivos estáticos, y producción servía esos assets con `max-age=0`. El adapter 11 ya la ubica bien; el script solo la agrega si falta.
 - `Content-Security-Policy`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, `Cross-Origin-Opener-Policy`.
 
 La CSP permite `'unsafe-inline'` en scripts y estilos porque el sitio usa scripts inline de Astro y atributos `style`. Mejora pendiente: activar `security.csp` de Astro (hashes) después de mover los `style="..."` a clases.

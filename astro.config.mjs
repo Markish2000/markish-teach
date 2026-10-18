@@ -47,6 +47,9 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    // The decorative 3D hero (three.js) is one ~900 KB chunk, loaded lazily after
+    // interaction/idle and never part of the initial page load.
+    build: { chunkSizeWarningLimit: 1000 },
     resolve: {
       alias: {
         "@": r("./src"),

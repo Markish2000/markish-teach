@@ -32,6 +32,7 @@ Para auditar otro entorno (preview de Vercel o producción): `BASE_URL=https://.
 | `theme` | Respeta `prefers-color-scheme`; el toggle cambia, persiste y nombra la acción siguiente |
 | `keyboard` | Skip link primero y mueve el foco a `main`; foco visible en los primeros 25 elementos; menú móvil atrapa y devuelve el foco; panel de contacto rápido; FAQ con teclado |
 | `a11y` | axe WCAG 2.2 AA en todas las páginas, tema oscuro y claro |
+| `performance` | Ningún layout forzado desde JavaScript (el "[Violation] Forced reflow" de la consola) al cargar ni en la primera interacción, a 390, 628 y 1440 px. Usa una traza de rendimiento de Chrome |
 
 `/api/contact` es una función serverless que no existe en el servidor local: los tests la simulan con `page.route`. Vercel Web Analytics tampoco existe localmente; el servidor responde un script vacío en `/_vercel/insights/script.js`.
 

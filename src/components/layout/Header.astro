@@ -46,10 +46,12 @@ const contactHref = localePath(locale, "contact");
   (function () {
     var header = document.getElementById("site-header");
     if (!header) return;
+    // Only read scrollY inside scroll events, when layout is already up to date.
+    // Reading it while the page is still parsing forced a full synchronous layout.
+    // A restored scroll position (reload, back/forward) also fires a scroll event.
     var onScroll = function () {
       header.classList.toggle("is-scrolled", window.scrollY > 30);
     };
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
   })();
 
